@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
-    //Public Variables
-    public float baseMovementSpeed = 5f; //Movement Speed
-    public float sprintMultiplier = 2f; // Sprint multipleier
+    // Public Variables
+    public float baseMovementSpeed = 5f; // Movement Speed
+    public float sprintMultiplier = 2f; // Sprint multiplier
+    private Rigidbody2D rb;
 
-    //Private Variables
+    // Private Variables
     private float currentMovementSpeed;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         currentMovementSpeed = baseMovementSpeed;
     }
 
@@ -21,8 +23,8 @@ public class playerMovement : MonoBehaviour
         // WASD Movement
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
-        Vector3 movement = new Vector3(horizontalInput, verticalInput, 0f).normalized;
-        transform.position += movement * currentMovementSpeed * Time.deltaTime;
+        Vector2 movement = new Vector2(horizontalInput, verticalInput).normalized * currentMovementSpeed;
+        rb.velocity = movement;
 
         // Shift Sprint
         if (Input.GetKey(KeyCode.LeftShift))
