@@ -8,6 +8,7 @@ public class playerMovement : MonoBehaviour
     public float baseMovementSpeed = 5f; // Movement Speed
     public float sprintMultiplier = 2f; // Sprint multiplier
     private Rigidbody2D rb;
+    private Animator anim;
 
     // Private Variables
     private float currentMovementSpeed;
@@ -15,6 +16,7 @@ public class playerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         currentMovementSpeed = baseMovementSpeed;
     }
 
@@ -35,5 +37,11 @@ public class playerMovement : MonoBehaviour
         {
             currentMovementSpeed = Mathf.Lerp(currentMovementSpeed, baseMovementSpeed, Time.deltaTime * 10f);
         }
+
+        // Animations
+        anim.SetFloat("Horizontal", movement.x);
+        anim.SetFloat("Vertical", movement.y);
+        anim.SetFloat("Speed", movement.sqrMagnitude);
+
     }
 }
