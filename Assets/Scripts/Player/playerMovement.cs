@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,8 @@ public class playerMovement : MonoBehaviour
     public float sprintMultiplier = 2f; // Sprint multiplier
     private Rigidbody2D rb;
     private Animator anim;
-
+    public CinemachineVirtualCamera mainCamera;
+    public Transform npc;
     // Private Variables
     private float currentMovementSpeed;
 
@@ -43,5 +45,9 @@ public class playerMovement : MonoBehaviour
         anim.SetFloat("Vertical", movement.y);
         anim.SetFloat("Speed", movement.sqrMagnitude);
 
+        if (Input.GetKey(KeyCode.E)) 
+        {
+            mainCamera.Follow = npc;
+        }
     }
 }
