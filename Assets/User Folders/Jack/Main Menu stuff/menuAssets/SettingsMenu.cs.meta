@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: d0a2e38fa584df646803c077396a9bc5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - masterMixer: {fileID: 24100000, guid: 20e3b4152ed5ec74a955bd5eab71c050, type: 2}
+  - resolutionDropdown: {instanceID: 0}
+  - QualityDropdown: {instanceID: 0}
+  - fullscreenToggle: {instanceID: 0}
+  - master: {instanceID: 0}
+  - music: {instanceID: 0}
+  - effects: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
