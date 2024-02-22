@@ -67,6 +67,8 @@ public class npcInteraction : MonoBehaviour
 
         // Ensure the FOV is exactly the target FOV
         mainCamera.m_Lens.FieldOfView = targetFOV;
+
+        // here we will call the gameplay manager which handles the storylines. We will parse in whatever npc this is probably based on the game object name or somth
         StartCoroutine(speechController.RevealText("Hello World"));
     }
 }
