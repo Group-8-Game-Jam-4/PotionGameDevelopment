@@ -45,9 +45,5 @@ public class playerMovement : MonoBehaviour
         anim.SetFloat("Vertical", movement.y);
         anim.SetFloat("Speed", movement.sqrMagnitude);
 
-        if (Input.GetKey(KeyCode.E)) 
-        {
-            mainCamera.Follow = npc;
-        }
     }
 }
