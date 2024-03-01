@@ -11,6 +11,7 @@ public class npcInteraction : MonoBehaviour
     public CinemachineVirtualCamera mainCamera;
     private GameObject currentNPC; // Reference to the GameObject this script is attached to
     public speechController speechController;
+    public string NPCname;
     private void Start()
     {
         // Assign the current GameObject to currentNPC
@@ -69,6 +70,9 @@ public class npcInteraction : MonoBehaviour
         mainCamera.m_Lens.FieldOfView = targetFOV;
 
         // here we will call the gameplay manager which handles the storylines. We will parse in whatever npc this is probably based on the game object name or somth
+        GameplayManager gameplayManager = GameObject.FindObjectOfType<GameplayManager>();
+
+        gameplayManager.GetQuest(NPCname);  
         StartCoroutine(speechController.RevealText("Hello World"));
     }
 }

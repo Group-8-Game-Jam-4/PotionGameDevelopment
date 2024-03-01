@@ -52,7 +52,7 @@ public class GameplayManager : MonoBehaviour
             List<string[]> neededItems = ongoingQuests[NPCName].NeededItems;
 
             // get the questlines for that npc
-            List<string[]> values = questLines[name];
+            List<string[]> values = questLines[NPCName];
 
             // if awaiting items (also check we have questlines left just for saftey)
             if(awaitingItems && textCounter <= values.Count)
@@ -67,11 +67,7 @@ public class GameplayManager : MonoBehaviour
                 {
                     // yipppeeee time to load a questline
                     string[] array = values.ElementAt(textCounter);
-                    foreach (string str in array)
-                    {
-                        Debug.Log("CURRENT QUESTLINE");
-                        Debug.Log(str);
-                    }
+                    SplitInfo(array);
 
                     // here we need to iterate the textCounter by 1 so were on the next bit. Obviously this is different if awaiting items as we need to stay on that one
                     textCounter += 1;
@@ -94,20 +90,34 @@ public class GameplayManager : MonoBehaviour
             // display their text this is probs something along the lines of hey traveller im barry or something
 
             // get the questlines for that npc
-            List<string[]> values = questLines[name];
+            List<string[]> values = questLines[NPCName];
 
             // do the first bit of text
             string[] array = values.ElementAt(0);
-            foreach (string str in array)
-            {
-                Debug.Log("CURRENT QUESTLINE YOU HAVENT INTERACTED WITH THIS GUY BEFORE");
-                Debug.Log(str);
-            }
+            SplitInfo(array);
 
             // here we need to iterate the textCounter by 1 so were on the next bit
             ongoingQuests[NPCName].TextCounter += 1;
         }
 
+    }
+
+    void SplitInfo(string[] array)
+    {
+        string questText = array[1];
+        string reward = array[5];
+
+        Debug.Log($"StoryLine: {questText}");
+        
+        for(int i = 2; i < 5; i++)
+        {
+            if(array[i] != "")
+            {
+                Debug.Log($"Needed item: {array[i]}");
+            }
+        }
+
+        Debug.Log($"Reward: {reward}");
     }
 
     void LoadCSV()
