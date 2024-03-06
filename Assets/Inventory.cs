@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Inventory : MonoBehaviour
 {
     public int inventoryMaxLength = 10;
-    private Dictionary<string, ItemClass> totalInventory;
-    private List<string[]> formattedInventory;
+    private Dictionary<string, ItemClass> totalInventory = new Dictionary<string, ItemClass>();
+    private List<string[]> formattedInventory = new List<string[]>();
+
+    private void Start() {
+        LoadCSV();
+    }
 
     public List<string[]> GetInventory()
     {
@@ -101,13 +106,13 @@ public class Inventory : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log($"InventoryError: No inventory space left for {quantity} {itemName}s");
+                    Debug.LogError($"InventoryError: No inventory space left for {quantity} {itemName}s");
                 }
             }
         }
         else
         {
-            Debug.Log($"InventoryError: Invalid item {itemName}");
+            Debug.LogError($"InventoryError: Invalid item {itemName}");
         }
 
         SaveInventory();
@@ -186,14 +191,14 @@ public class Inventory : MonoBehaviour
             }
             else
             {
-                Debug.Log($"InventoryError: Inventory does not contain {quantity} {itemName}s so they cannot be taken");
+                Debug.LogError($"InventoryError: Inventory does not contain {quantity} {itemName}s so they cannot be taken");
                 return false;
             }
             return true;
         }
         else
         {
-            Debug.Log($"InventoryError: Invalid item {itemName}");
+            Debug.LogError($"InventoryError: Invalid item {itemName}");
         }
         return false;
 
@@ -215,47 +220,112 @@ public class Inventory : MonoBehaviour
         // we need to load the csv to get all the possible items into the total inventory if they arent there already
     }
 
-    void LoadCSV()
+    private void LoadCSV()
     {
-        // // loop thru the csv, see if the className exists in totalInventory as a key. If it doesent make a new instance of the itemclass, add in the info from the csv and add it into totalInventory
+        // // loop thru the csv, see if the className (column 0 (not rows 0 or 1)) exists in totalInventory as a key. If it doesent make a new instance of "ItemClass", add in the info from the csv and add it into totalInventory
+        // ItemClass.className is column 0
+        // ItemClass.displayName is column 1
+        // ItemClass.imageName is column 2
+        // ItemClass.stackSize is column 6
+        // ItemClass.rarity is column 3
+        // ItemClass.spawnBiome1 is column 4
+        // ItemClass.spawnBiome2 is column 5
+        // ItemClass.sellPrice is column 7
+        // ItemClass.storePrice is column 8
+        // ItemClass.goblinPrice is column 9
 
+        // Load CSV file
+        TextAsset textFile = Resources.Load<TextAsset>("itemTable");
 
+        // Split CSV into lines
+        string[] lines = textFile.text.Split('\n');
 
-        // // imports the csv
-        // TextAsset textFile = Resources.Load<TextAsset>("questLines");
+        // Parse each line of the CSV
+        for (int i = 2; i < lines.Length; i++)
+        {
+            string[] values = ParseCSVLine(lines[i]);
 
-        // Debug.Log(textFile);
+            // Check if all required values are present
+            if (values.Length < 10)
+            {
+                Debug.LogError($"Incomplete data for line {i + 1}: {lines[i]}");
+                continue;
+            }
 
-        // // splits into lines
-        // string[] splittedLines = textFile.text.Split("\n");
+            // Attempt to parse values
+            ItemClass newItem = new ItemClass();
+            if (!int.TryParse(values[6], out newItem.stackSize))
+            {
+                Debug.LogError($"Failed to parse stackSize for line {i + 1}: {values[6]}");
+                continue;
+            }
+            if (!int.TryParse(values[7], out newItem.sellPrice))
+            {
+                Debug.LogError($"Failed to parse sellPrice for line {i + 1}: {values[7]}");
+                continue;
+            }
+            if (!int.TryParse(values[8], out newItem.storePrice))
+            {
+                Debug.LogError($"Failed to parse storePrice for line {i + 1}: {values[8]}");
+                continue;
+            }
+            if (!int.TryParse(values[9], out newItem.goblinPrice))
+            {
+                Debug.LogError($"Failed to parse goblinPrice for line {i + 1}: {values[9]}");
+                continue;
+            }
 
-        // string prevName = "";
-        // List<string[]> questsList = new List<string[]>();
+            // Assign other values
+            newItem.className = values[0];
+            newItem.displayName = values[1];
+            newItem.imageName = values[2];
+            newItem.rarity = values[3];
+            newItem.spawnBiome1 = values[4];
+            newItem.spawnBiome2 = values[5];
 
-        // // splits into items
-        // for (int i = 2; i < splittedLines.Length; i++)
-        // {
-        //     //Debug.Log(splittedLines[i]);
-        //     string[] splittedValues = ParseCSVLine(splittedLines[i]);
+            // Check if className exists in totalInventory
+            if (totalInventory.ContainsKey(values[0]))
+            {
+                // Retrieve existing item
+                ItemClass existingItem = totalInventory[values[0]];
 
-        //     // if it's a new NPC name, add it to the list and create a new quest list
-        //     if (splittedValues[0] != "" && splittedValues[0] != prevName)
-        //     {
-        //         npcNames.Add(splittedValues[0]);
+                // Check if any property has changed (excluding stackSize)
+                if (existingItem.displayName != newItem.displayName ||
+                    existingItem.imageName != newItem.imageName ||
+                    existingItem.rarity != newItem.rarity ||
+                    existingItem.spawnBiome1 != newItem.spawnBiome1 ||
+                    existingItem.spawnBiome2 != newItem.spawnBiome2 ||
+                    existingItem.sellPrice != newItem.sellPrice ||
+                    existingItem.storePrice != newItem.storePrice ||
+                    existingItem.stackSize != newItem.stackSize ||
+                    existingItem.goblinPrice != newItem.goblinPrice)
+                {
+                    // Update values
+                    existingItem.displayName = newItem.displayName;
+                    existingItem.imageName = newItem.imageName;
+                    existingItem.rarity = newItem.rarity;
+                    existingItem.spawnBiome1 = newItem.spawnBiome1;
+                    existingItem.spawnBiome2 = newItem.spawnBiome2;
+                    existingItem.sellPrice = newItem.sellPrice;
+                    existingItem.storePrice = newItem.storePrice;
+                    existingItem.stackSize = newItem.stackSize;
+                    existingItem.goblinPrice = newItem.goblinPrice;
 
-        //         // Create a new quest list for this NPC
-        //         questsList = new List<string[]>();
+                    Debug.Log($"Item {existingItem.className} updated in inventory.");
+                }
+            }
+            else
+            {
+                // Add newItem to totalInventory
+                totalInventory.Add(newItem.className, newItem);
+            }
+        }
 
-        //         // Add the new quest list to the hashmap by name
-        //         questLines.Add(splittedValues[0], questsList);
-
-        //         // set the new prevName
-        //         prevName = splittedValues[0];
-        //     }
-
-        //     // adds this line to the quest list
-        //     questsList.Add(splittedValues);
-        // }
+        // Debug output for verification
+        foreach (var item in totalInventory.Values)
+        {
+            Debug.Log($"Item: {item.className}, Display Name: {item.displayName}, Image Name: {item.imageName}, Stack Size: {item.stackSize}, Rarity: {item.rarity}, Spawn Biome 1: {item.spawnBiome1}, Spawn Biome 2: {item.spawnBiome2}, Sell Price: {item.sellPrice}, Store Price: {item.storePrice}, Goblin Price: {item.goblinPrice}");
+        }
     }
 
     public string[] ParseCSVLine(string csvLine)

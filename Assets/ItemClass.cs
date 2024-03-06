@@ -13,14 +13,14 @@ public class ItemClass
     // how many of the item per stack
     public int stackSize = 16;
     // common = 0, uncommon = 1, rare = 2, epic = 3
-    public int rarity = 0;
+    public string rarity;
     public int quantity = 0;
 
 
     // spawn locations
     // grassland = 0, volcano = 2, snowyMountains = 3
-    public int spawnBiome1;
-    public int spawnBiome2;
+    public string spawnBiome1;
+    public string spawnBiome2;
 
 
     // economy values

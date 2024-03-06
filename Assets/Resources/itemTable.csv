@@ -1,0 +1,12 @@
+Class Name,Display Name,Image Name,Rarity,Spawn Biome 1,Spawn Biome 2,Stack Size,SellPrice,StorePrice,GoblinPrice
+,,,,,,,,,
+wood,Wood,wood,Common,Grassland,SnowyMountains,16,2,3,5
+honey,Honey,honey,Rare,Grassland,,16,3,5,8
+sugar,Sugar,sugar,Uncommon,,,16,5,10,15
+volcanic_melon,Volcanic Melon,volcanic_melon,Epic,Volcano,,16,15,20,30
+feather,Feather,feather,Common,,,16,2,3,5
+frost_air,Frost Air,frost_air,Uncommon,SnowyMountains,,16,5,10,15
+magic_flower,Magic Flower,magic_flower,Epic,Grassland,,16,15,20,30
+stick,Stick,stick,Common,Grassland,SnowyMountains,16,2,3,5
+coal,Coal,coal,Uncommon,Grassland,Volcano,16,5,10,15
+water,Water,water,Common,Grassland,SnowyMountains,,,,
