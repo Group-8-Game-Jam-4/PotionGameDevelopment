@@ -72,8 +72,23 @@ public class npcInteraction : MonoBehaviour
         // here we will call the gameplay manager which handles the storylines. We will parse in whatever npc this is probably based on the game object name or somth
         GameplayManager gameplayManager = GameObject.FindObjectOfType<GameplayManager>();
 
-        gameplayManager.GetQuest(NPCname);  
-        StartCoroutine(speechController.RevealText("Hello World"));
+        QuestClass currentQuest = gameplayManager.GetQuest(NPCname);
+        switch (currentQuest.state)
+        {
+            case 0:
+                // display the standard storyline like text
+                Debug.Log("ballsack: " + currentQuest.currentStoryline);
+                StartCoroutine(speechController.RevealText(currentQuest.currentStoryline));
+                break;
+            case 1:
+                // display the text asking for the missing items and then probably display like a ui where the player can transfer them
+                StartCoroutine(speechController.RevealText(currentQuest.doYouHaveThis));
+                break;
+            case 2:
+                // display the text saying there are no more quests available
+                StartCoroutine(speechController.RevealText(currentQuest.noQuestsAvailable));
+                break;
+        }  
     }
 }
 

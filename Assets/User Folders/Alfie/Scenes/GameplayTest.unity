@@ -738,7 +738,7 @@ MonoBehaviour:
   interactText: {fileID: 1152343668}
   mainCamera: {fileID: 225448861}
   speechController: {fileID: 1808193606}
-  NPCname: Barry
+  NPCname: Frank
 --- !u!1 &892750950
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UIElements.Experimental;
 
 public class GameplayManager : MonoBehaviour
 {
@@ -40,7 +38,7 @@ public class GameplayManager : MonoBehaviour
         // }
     }
 
-    public void GetQuest(string NPCName)
+    public QuestClass GetQuest(string NPCName)
     {
         if(ongoingQuests.ContainsKey(NPCName))
         {
@@ -58,6 +56,7 @@ public class GameplayManager : MonoBehaviour
             if(awaitingItems && textCounter <= values.Count)
             {
                 Debug.Log("This npc needs items!");
+                ongoingQuests[NPCName].state = 1;
                 // display whatever text is this npcs like i need items text. At the start of the csv for that npc there will be 2 values one for awaiting items one for no quests rn
             }
             else
@@ -67,7 +66,7 @@ public class GameplayManager : MonoBehaviour
                 {
                     // yipppeeee time to load a questline
                     string[] array = values.ElementAt(textCounter);
-                    SplitInfo(array);
+                    SplitInfo(array, NPCName);
 
                     // here we need to iterate the textCounter by 1 so were on the next bit. Obviously this is different if awaiting items as we need to stay on that one
                     textCounter += 1;
@@ -77,6 +76,7 @@ public class GameplayManager : MonoBehaviour
                 {
                     // display no remaining quests text
                     Debug.Log("There are no remaining quests for this npc!");
+                    ongoingQuests[NPCName].state = 2;
                 }
             }
         }
@@ -92,28 +92,47 @@ public class GameplayManager : MonoBehaviour
             // get the questlines for that npc
             List<string[]> values = questLines[NPCName];
 
+            // get the default no quests and needed item text lines
+            ongoingQuests[NPCName].noQuestsAvailable = values.ElementAt(0)[1];
+            ongoingQuests[NPCName].doYouHaveThis = values.ElementAt(1)[1];
+
             // do the first bit of text
-            string[] array = values.ElementAt(0);
-            SplitInfo(array);
+            string[] array = values.ElementAt(2);
+            SplitInfo(array, NPCName);
 
             // here we need to iterate the textCounter by 1 so were on the next bit
             ongoingQuests[NPCName].TextCounter += 1;
         }
 
+        return ongoingQuests[NPCName];
     }
 
-    void SplitInfo(string[] array)
+    void SplitInfo(string[] array, string NPCName)
     {
         string questText = array[1];
         string reward = array[5];
 
+
+        // assign the current questline to the quest class so the npc can display it
+        ongoingQuests[NPCName].currentStoryline = questText;
+        ongoingQuests[NPCName].state = 0;
+
         Debug.Log($"StoryLine: {questText}");
-        
-        for(int i = 2; i < 5; i++)
+
+
+        // loops are slow and theres no point trying to do this every time if were already waiting for items
+        if(!ongoingQuests[NPCName].AwaitingItems)
         {
-            if(array[i] != "")
+            for(int i = 2; i < 5; i++)
             {
-                Debug.Log($"Needed item: {array[i]}");
+                if(array[i] != "")
+                {
+                    Debug.Log($"Needed item: {array[i]}");
+
+                    // fill out the needed items in the quest class (wont do this until the inventory is like existing)
+                    ongoingQuests[NPCName].AwaitingItems = true;
+                    ongoingQuests[NPCName].state = 1;
+                }
             }
         }
 
