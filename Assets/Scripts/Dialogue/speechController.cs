@@ -10,7 +10,6 @@ public class speechController : MonoBehaviour
     public IEnumerator RevealText(string text)
     {
         Debug.Log("reveltext called");
-        text = "Hello World";
         // Clear the text
         textUI.text = "";
 
