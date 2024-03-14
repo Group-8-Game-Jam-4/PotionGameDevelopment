@@ -10,8 +10,13 @@ public class npcInteraction : MonoBehaviour
     public GameObject interactText;
     public CinemachineVirtualCamera mainCamera;
     private GameObject currentNPC; // Reference to the GameObject this script is attached to
-    public speechController speechController;
+    public SpeechController speechController;
     public string NPCname;
+    private Transform player;
+    float initialFOV;
+    bool camAtNPC = false;
+
+
     private void Start()
     {
         // Assign the current GameObject to currentNPC
@@ -22,6 +27,7 @@ public class npcInteraction : MonoBehaviour
     {
         interactText.SetActive(true);
         Debug.Log("Player entered trigger");
+        player = other.gameObject.transform;
         // Check if the colliding object is the player
         if (other.CompareTag("Player"))
         {
@@ -38,6 +44,7 @@ public class npcInteraction : MonoBehaviour
         {
             Debug.Log("Player exited trigger zone of NPC.");
             playerInRange = false;
+            StartCoroutine(ResetCamera());
         }
     }
 
@@ -50,45 +57,77 @@ public class npcInteraction : MonoBehaviour
         }
     }
 
+    IEnumerator ResetCamera()
+    {
+        if(camAtNPC)
+        {
+            float currentFov = mainCamera.m_Lens.FieldOfView;
+            float targetFOV = initialFOV;
+            float duration = 0.2f;
+            float elapsedTime = 0f;
+            mainCamera.Follow = currentNPC.transform;
+
+            while (elapsedTime < duration)
+            {
+                elapsedTime += Time.deltaTime;
+                mainCamera.m_Lens.FieldOfView = Mathf.Lerp(currentFov, targetFOV, elapsedTime / duration);
+                yield return null;
+            }
+
+            camAtNPC = false;
+            mainCamera.m_Lens.FieldOfView = initialFOV;
+        }
+    }
+
     IEnumerator AdjustCameraWithDelay()
     {
-        float initialFOV = mainCamera.m_Lens.FieldOfView;
-        float targetFOV = 60f;
-        float duration = 0.2f;
-        float elapsedTime = 0f;
-        mainCamera.Follow = currentNPC.transform;
-        yield return new WaitForSeconds(1.0f); // Wait for 2 seconds
-
-        while (elapsedTime < duration)
+        if(!camAtNPC)
         {
-            elapsedTime += Time.deltaTime;
-            mainCamera.m_Lens.FieldOfView = Mathf.Lerp(initialFOV, targetFOV, elapsedTime / duration);
-            yield return null;
+            initialFOV = mainCamera.m_Lens.FieldOfView;
+            float targetFOV = 60f;
+            float duration = 0.2f;
+            float elapsedTime = 0f;
+            mainCamera.Follow = currentNPC.transform;
+
+            while (elapsedTime < duration)
+            {
+                elapsedTime += Time.deltaTime;
+                mainCamera.m_Lens.FieldOfView = Mathf.Lerp(initialFOV, targetFOV, elapsedTime / duration);
+                yield return null;
+            }
+            camAtNPC = true;
+
+            // Ensure the FOV is exactly the target FOV
+            mainCamera.m_Lens.FieldOfView = targetFOV;
         }
 
-        // Ensure the FOV is exactly the target FOV
-        mainCamera.m_Lens.FieldOfView = targetFOV;
-
-        // here we will call the gameplay manager which handles the storylines. We will parse in whatever npc this is probably based on the game object name or somth
-        GameplayManager gameplayManager = GameObject.FindObjectOfType<GameplayManager>();
-
-        QuestClass currentQuest = gameplayManager.GetQuest(NPCname);
-        switch (currentQuest.state)
+        if(speechController.isRevealing)
         {
-            case 0:
-                // display the standard storyline like text
-                Debug.Log("ballsack: " + currentQuest.currentStoryline);
-                StartCoroutine(speechController.RevealText(currentQuest.currentStoryline));
-                break;
-            case 1:
-                // display the text asking for the missing items and then probably display like a ui where the player can transfer them
-                StartCoroutine(speechController.RevealText(currentQuest.doYouHaveThis));
-                break;
-            case 2:
-                // display the text saying there are no more quests available
-                StartCoroutine(speechController.RevealText(currentQuest.noQuestsAvailable));
-                break;
-        }  
+            speechController.SkipText();
+            Debug.Log("eee");
+        }
+        else
+        {
+            // here we will call the gameplay manager which handles the storylines. We will parse in whatever npc this is probably based on the game object name or somth
+            GameplayManager gameplayManager = GameObject.FindObjectOfType<GameplayManager>();
+
+            QuestClass currentQuest = gameplayManager.GetQuest(NPCname);
+            switch (currentQuest.state)
+            {
+                case 0:
+                    // display the standard storyline like text
+                    speechController.RevealText(currentQuest.currentStoryline);
+                    break;
+                case 1:
+                    // display the text asking for the missing items and then probably display like a ui where the player can transfer them
+                    speechController.RevealText(currentQuest.doYouHaveThis);
+                    break;
+                case 2:
+                    // display the text saying there are no more quests available
+                    speechController.RevealText(currentQuest.noQuestsAvailable);
+                    break;
+            }  
+        }
     }
 }
 
