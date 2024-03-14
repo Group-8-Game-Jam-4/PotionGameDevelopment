@@ -26,12 +26,12 @@ public class npcInteraction : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         interactText.SetActive(true);
-        Debug.Log("Player entered trigger");
+        // Debug.Log("Player entered trigger");
         player = other.gameObject.transform;
         // Check if the colliding object is the player
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player entered trigger zone of NPC.");
+            // Debug.Log("Player entered trigger zone of NPC.");
             playerInRange = true;
         }
     }
@@ -42,7 +42,7 @@ public class npcInteraction : MonoBehaviour
         // Check if the colliding object is the player
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player exited trigger zone of NPC.");
+            // Debug.Log("Player exited trigger zone of NPC.");
             playerInRange = false;
             StartCoroutine(ResetCamera());
         }
@@ -104,7 +104,6 @@ public class npcInteraction : MonoBehaviour
         if(speechController.isRevealing)
         {
             speechController.SkipText();
-            Debug.Log("eee");
         }
         else
         {

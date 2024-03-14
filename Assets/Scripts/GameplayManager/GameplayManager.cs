@@ -12,30 +12,6 @@ public class GameplayManager : MonoBehaviour
     void Start()
     {
         LoadCSV();
-
-        // string name = "Barry";
-        // if (questLines.ContainsKey(name))
-        // {
-        //     List<string[]> values = questLines[name];
-        //     if (values != null && values.Count > 0)
-        //     {
-        //         foreach (string[] array in values)
-        //         {
-        //             foreach (string str in array)
-        //             {
-        //                 Debug.Log(str);
-        //             }
-        //         }
-        //     }
-        //     else
-        //     {
-        //         Debug.Log($"No values found for the name {name}");
-        //     }
-        // }
-        // else
-        // {
-        //     Debug.Log($"No values found for the name {name}");
-        // }
     }
 
     public QuestClass GetQuest(string NPCName)
@@ -55,7 +31,7 @@ public class GameplayManager : MonoBehaviour
             // if awaiting items (also check we have questlines left just for saftey)
             if(awaitingItems && textCounter <= values.Count)
             {
-                Debug.Log("This npc needs items!");
+                // Debug.Log("This npc needs items!");
                 ongoingQuests[NPCName].state = 1;
                 // display whatever text is this npcs like i need items text. At the start of the csv for that npc there will be 2 values one for awaiting items one for no quests rn
             }
@@ -75,7 +51,7 @@ public class GameplayManager : MonoBehaviour
                 else
                 {
                     // display no remaining quests text
-                    Debug.Log("There are no remaining quests for this npc!");
+                    // Debug.Log("There are no remaining quests for this npc!");
                     ongoingQuests[NPCName].state = 2;
                 }
             }
@@ -144,7 +120,7 @@ public class GameplayManager : MonoBehaviour
         // imports the csv
         TextAsset textFile = Resources.Load<TextAsset>("questLines");
 
-        Debug.Log(textFile);
+        // Debug.Log(textFile);
 
         // splits into lines
         string[] splittedLines = textFile.text.Split("\n");
