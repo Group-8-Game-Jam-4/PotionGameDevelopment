@@ -48,12 +48,11 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
-    //public void LoadMenu()
-
-    //{
-    //    Time.timeScale = 1f;
-    //    SceneManager.LoadScene("Main Menu");
-    //}
+    public void LoadMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu Test");
+    }
 
     public void QuitGame()
     {
