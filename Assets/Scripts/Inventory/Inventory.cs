@@ -2,15 +2,63 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using TMPro;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
     public int inventoryMaxLength = 10;
+    public GameObject UITemplate;
+    public GameObject inventory;
     private Dictionary<string, ItemClass> totalInventory = new Dictionary<string, ItemClass>();
     private List<string[]> formattedInventory = new List<string[]>();
 
-    private void Start() {
+    private void Start() 
+    {
         LoadCSV();
+        AddItem("stick", 12);
+        AddItem("stick", 5);
+        AddItem("stick", 9);
+        PopulateInventoryUI();
+    }
+
+    private void PopulateInventoryUI()
+    {
+        // foreach thing in formatted inventory get name and quantity (values 1 and 2) Each one of these will be an object in the ui. Each object will also need an image and the display name which we will get from the item class by querying the total inventory
+
+        GameObject playerItemList;
+        GameObject containerItemList;
+
+        // Find the InventoryUI object in the scene
+        GameObject inventoryUI = GameObject.Find("InventoryUI");
+
+        // Find the child object named ItemsListContent
+        GameObject inventories = inventoryUI.transform.Find("Inventories").gameObject;
+        playerItemList = inventories.transform.Find("Player").transform.Find("ItemsListContent").gameObject;
+        containerItemList = inventories.transform.Find("Container").transform.Find("ItemsListContent").gameObject;
+
+
+        // first we populate the player inventory
+
+        foreach (string[] array in formattedInventory)
+        {
+            // Prep the object
+            GameObject UIElement = Instantiate(UITemplate, playerItemList.transform);
+
+            // Get child text object named title (as TMPro Text)
+            TextMeshProUGUI titleText = UIElement.transform.Find("Title").GetComponent<TextMeshProUGUI>();
+
+            // Get child image named Image (as a UI Image)
+            Image imageComponent = UIElement.transform.Find("Image").GetComponent<Image>();
+
+            // Get child text (child of the image object) as TMPro Text (named quantity)
+            TextMeshProUGUI quantityText = imageComponent.transform.Find("Quantity").GetComponent<TextMeshProUGUI>();
+
+            // get the info for it
+
+            quantityText.text = array[1].ToString();
+            titleText.text = array[0];
+        }
     }
 
     public List<string[]> GetInventory()
@@ -121,6 +169,9 @@ public class Inventory : MonoBehaviour
         return quantity;
     }
 
+
+    // this needs to be modified to confirm its adding the correct quantity that will fit in a stack (or potentially change it above line 150. This is because when you add idk like 40 items if you had none of them to begin with it just adds them as 1 stack)
+    // this could be an issue but it really shouldnt be because you can only ever move or recieve a stack of items at a time
     void addNewStack(string itemName, int quantity)
     {
         // create a new string array with itemName and quantity
