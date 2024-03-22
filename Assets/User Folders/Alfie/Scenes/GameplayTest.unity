@@ -5002,7 +5002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24276c90cb4248246803b800eb6827e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryMaxLength: 10
+  inventoryMaxLength: 16
   UITemplate: {fileID: 8050344346438448059, guid: cdc12a99278a14a42bdb25bc1fdf88a3, type: 3}
   inventory: {fileID: 2139082013}
 --- !u!1 &1500523562

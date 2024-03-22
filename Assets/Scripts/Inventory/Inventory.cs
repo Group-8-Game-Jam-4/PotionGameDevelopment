@@ -59,6 +59,33 @@ public class Inventory : MonoBehaviour
             quantityText.text = array[1].ToString();
             titleText.text = array[0];
         }
+
+        // add the empty ones
+
+        int a = inventoryMaxLength - formattedInventory.Count();
+
+        if(a > 0)
+        {
+            for(int i = 0; i < a; i++)
+            {
+                // Prep the object
+                GameObject UIElement = Instantiate(UITemplate, playerItemList.transform);
+
+                // Get child text object named title (as TMPro Text)
+                TextMeshProUGUI titleText = UIElement.transform.Find("Title").GetComponent<TextMeshProUGUI>();
+
+                // Get child image named Image (as a UI Image)
+                Image imageComponent = UIElement.transform.Find("Image").GetComponent<Image>();
+
+                // Get child text (child of the image object) as TMPro Text (named quantity)
+                TextMeshProUGUI quantityText = imageComponent.transform.Find("Quantity").GetComponent<TextMeshProUGUI>();
+
+                // get the info for it
+
+                quantityText.text = "";
+                titleText.text = "";
+            }
+        }
     }
 
     public List<string[]> GetInventory()
