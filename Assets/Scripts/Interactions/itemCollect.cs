@@ -9,14 +9,14 @@ public class itemCollect : MonoBehaviour
     public float moveSpeed = 5f;
     public bool isPickedUp = false;
     private bool inRange;
-    public bool hasInteracted = false; // Flag to track whether the object has been picked up and moved towards the player
+    public bool hasInteracted = false;
     public ParticleSystem burstEffect;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && inRange && !isPickedUp)
         {
             isPickedUp = true;
-            hasInteracted = true; // Set the flag when the object is picked up
+            hasInteracted = true;
         }
 
         if (isPickedUp)
@@ -28,10 +28,8 @@ public class itemCollect : MonoBehaviour
 
     public void RemoveItem()
     {
-            // Set the item's position to the player's position
             transform.position = player.transform.position;
             burstEffect.Play();
-            // Destroy the item immediately
             Destroy(gameObject);
     }
 
