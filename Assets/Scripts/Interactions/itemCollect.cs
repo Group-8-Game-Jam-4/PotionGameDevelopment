@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interactions : MonoBehaviour
+public class itemCollect : MonoBehaviour
 {
     public GameObject player;
     public GameObject hintText;
     public float moveSpeed = 5f;
-    private bool isPickedUp = false;
+    public bool isPickedUp = false;
     private bool inRange;
-    private bool hasInteracted = false; // Flag to track whether the object has been picked up and moved towards the player
+    public bool hasInteracted = false; // Flag to track whether the object has been picked up and moved towards the player
     public ParticleSystem burstEffect;
     void Update()
     {
@@ -26,16 +26,13 @@ public class Interactions : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void RemoveItem()
     {
-        if (collision.gameObject == player && hasInteracted && isPickedUp)
-        {
             // Set the item's position to the player's position
             transform.position = player.transform.position;
             burstEffect.Play();
             // Destroy the item immediately
             Destroy(gameObject);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
