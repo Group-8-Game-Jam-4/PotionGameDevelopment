@@ -1,19 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class itemCollect : MonoBehaviour
 {
     public GameObject player;
-    public GameObject hintText;
+    public TextMeshProUGUI hintText;
+    public ParticleSystem burstEffect;
+
     public float moveSpeed = 5f;
     public bool isPickedUp = false;
     private bool inRange;
     public bool hasInteracted = false;
-    public ParticleSystem burstEffect;
+
+    private void Awake()
+    {
+        player = GameObject.Find("Player");
+        GameObject canvas = GameObject.Find("HintText");
+        //hintText = canvas.transform.Find("ItemHint").GetComponent<TextMeshProUGUI>();
+        burstEffect = player.GetComponentInChildren<ParticleSystem>();
+    }
+
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && inRange && !isPickedUp)
+        if (inRange && !isPickedUp)
         {
             isPickedUp = true;
             hasInteracted = true;
@@ -28,16 +40,16 @@ public class itemCollect : MonoBehaviour
 
     public void RemoveItem()
     {
-            transform.position = player.transform.position;
-            burstEffect.Play();
-            Destroy(gameObject);
+        transform.position = player.transform.position;
+        burstEffect.Play();
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject == player && !isPickedUp)
         {
-            hintText.SetActive(true);
+            //hintText.gameObject.SetActive(true);
             inRange = true;
         }
     }
@@ -46,7 +58,7 @@ public class itemCollect : MonoBehaviour
     {
         if (collision.gameObject == player)
         {
-            hintText.SetActive(false);
+            //hintText.gameObject.SetActive(false);
             inRange = false;
         }
     }

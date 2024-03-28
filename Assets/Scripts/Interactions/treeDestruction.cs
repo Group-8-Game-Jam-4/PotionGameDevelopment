@@ -10,12 +10,13 @@ public class TreeDestruction : MonoBehaviour
     public SpriteRenderer treeRenderer;
     public Sprite brokenTreeSprite;
     public Sprite grownTreeSprite;
+    public GameObject woodItemPrefab; // Prefab of the wood item
     public float regrowTime = 180f;
     public float shakeIntensity = 0.1f;
     public float shakeDuration = 0.2f;
+    public float woodSpawnRadius = 2f; // Radius within which wood items will spawn
 
     private bool isBroken = false;
-
     private Quaternion initialRotation;
 
     void Start()
@@ -32,11 +33,14 @@ public class TreeDestruction : MonoBehaviour
             treeRenderer.sprite = brokenTreeSprite;
             isBroken = true;
             StartCoroutine(RegrowTree());
+
+            // Instantiate wood items
+            InstantiateWoodItems();
         }
 
-        if (Input.GetMouseButtonDown(0) && enterTrigger == true && !isBroken)
+        if (Input.GetMouseButtonDown(0) && enterTrigger && !isBroken)
         {
-            //Put players animation here hwne you get it
+            // Put players animation here when you get it
             treeHealth -= 20;
             damageParticle.Play();
 
@@ -83,4 +87,42 @@ public class TreeDestruction : MonoBehaviour
     {
         enterTrigger = false;
     }
+
+    void InstantiateWoodItems()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            // Generate random offset within the radius around the tree
+            Vector3 randomOffset = Random.insideUnitCircle * woodSpawnRadius;
+            Vector3 spawnPosition = transform.position + new Vector3(randomOffset.x, randomOffset.y, 0);
+
+            // Instantiate wood items at the random position
+            GameObject woodItem = Instantiate(woodItemPrefab, spawnPosition, Quaternion.identity);
+
+            // Start coroutine to scale the wood item
+            StartCoroutine(ScaleWoodItem(woodItem));
+        }
+    }
+
+
+    IEnumerator ScaleWoodItem(GameObject woodItem)
+    {
+        Vector3 originalScale = Vector3.zero;
+        Vector3 targetScale = Vector3.one;
+        float duration = 0.5f; // Adjust the duration as needed
+
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            woodItem.transform.localScale = Vector3.Lerp(originalScale, targetScale, t);
+            yield return null;
+        }
+
+        // Ensure that the wood item reaches the exact target scale
+        woodItem.transform.localScale = targetScale;
+    }
+
+
 }
