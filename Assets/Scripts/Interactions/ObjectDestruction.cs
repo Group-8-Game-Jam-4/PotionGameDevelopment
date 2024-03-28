@@ -1,57 +1,60 @@
 using System.Collections;
 using UnityEngine;
 
-public class TreeDestruction : MonoBehaviour
+public class ObjectDestruction : MonoBehaviour
 {
-    public int treeHealth = 100;
+    public int objectHealth = 100;
     public bool enterTrigger = false;
     public ParticleSystem damageParticle;
     public ParticleSystem destroyParticle;
-    public SpriteRenderer treeRenderer;
-    public Sprite brokenTreeSprite;
-    public Sprite grownTreeSprite;
-    public GameObject woodItemPrefab;
+    public SpriteRenderer spriteRenderer;
+    public Sprite brokenSprite;
+    public Sprite grownSprite;
+    public GameObject dropItemPrefab;
     public float regrowTime = 180f;
     public float shakeIntensity = 0.1f;
     public float shakeDuration = 0.2f;
-    public float woodSpawnRadius = 2f;
+    public float spawnRadius = 2f;
 
     private bool isBroken = false;
     private Quaternion initialRotation;
 
     void Start()
     {
-        treeRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         initialRotation = transform.rotation;
     }
 
     void Update()
     {
-        if (treeHealth <= 0 && !isBroken)
+        if (objectHealth <= 0 && !isBroken)
         {
             destroyParticle.Play();
-            treeRenderer.sprite = brokenTreeSprite;
+            spriteRenderer.sprite = brokenSprite;
             isBroken = true;
-            StartCoroutine(RegrowTree());
-            InstantiateWoodItems();
+            StartCoroutine(Regrow());
+            InstantiateItems();
+
+            ParticleSystem.MainModule mainModule = destroyParticle.main;
+            mainModule.loop = false;
         }
 
         if (Input.GetMouseButtonDown(0) && enterTrigger && !isBroken)
         {
-            // Put players animation here when you get it
-            treeHealth -= 20;
+            objectHealth -= 20;
             damageParticle.Play();
 
             StartCoroutine(Shake());
         }
     }
 
-    IEnumerator RegrowTree()
+
+    IEnumerator Regrow()
     {
         yield return new WaitForSeconds(regrowTime);
-        treeRenderer.sprite = grownTreeSprite;
+        spriteRenderer.sprite = grownSprite;
         isBroken = false;
-        treeHealth = 100;
+        objectHealth = 100;
     }
 
     IEnumerator Shake()
@@ -86,28 +89,23 @@ public class TreeDestruction : MonoBehaviour
         enterTrigger = false;
     }
 
-    void InstantiateWoodItems()
+    void InstantiateItems()
     {
         for (int i = 0; i < 5; i++)
         {
-            // Generate random offset within the radius around the tree
-            Vector3 randomOffset = Random.insideUnitCircle * woodSpawnRadius;
+            Vector3 randomOffset = Random.insideUnitCircle * spawnRadius;
             Vector3 spawnPosition = transform.position + new Vector3(randomOffset.x, randomOffset.y, 0);
-
-            // Instantiate wood items at the random position
-            GameObject woodItem = Instantiate(woodItemPrefab, spawnPosition, Quaternion.identity);
-
-            // Start coroutine to scale the wood item
-            StartCoroutine(ScaleWoodItem(woodItem));
+            GameObject woodItem = Instantiate(dropItemPrefab, spawnPosition, Quaternion.identity);
+            StartCoroutine(ScaleItem(woodItem));
         }
     }
 
 
-    IEnumerator ScaleWoodItem(GameObject woodItem)
+    IEnumerator ScaleItem(GameObject woodItem)
     {
         Vector3 originalScale = Vector3.zero;
         Vector3 targetScale = Vector3.one;
-        float duration = 0.5f; // Adjust the duration as needed
+        float duration = 0.5f;
 
         float elapsed = 0f;
         while (elapsed < duration)
@@ -117,8 +115,6 @@ public class TreeDestruction : MonoBehaviour
             woodItem.transform.localScale = Vector3.Lerp(originalScale, targetScale, t);
             yield return null;
         }
-
-        // Ensure that the wood item reaches the exact target scale
         woodItem.transform.localScale = targetScale;
     }
 

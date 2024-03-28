@@ -14,14 +14,21 @@ public class itemCollect : MonoBehaviour
     private bool inRange;
     public bool hasInteracted = false;
 
+    private Color originalColor;
+    private SpriteRenderer spriteRenderer;
+    private float hueChangeSpeed = 0.5f;
+    private float currentHue = 0f;
+
     private void Awake()
     {
         player = GameObject.Find("Player");
         GameObject canvas = GameObject.Find("HintText");
         //hintText = canvas.transform.Find("ItemHint").GetComponent<TextMeshProUGUI>();
         burstEffect = player.GetComponentInChildren<ParticleSystem>();
-    }
 
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
+    }
 
     void Update()
     {
