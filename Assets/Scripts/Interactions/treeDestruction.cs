@@ -10,11 +10,11 @@ public class TreeDestruction : MonoBehaviour
     public SpriteRenderer treeRenderer;
     public Sprite brokenTreeSprite;
     public Sprite grownTreeSprite;
-    public GameObject woodItemPrefab; // Prefab of the wood item
+    public GameObject woodItemPrefab;
     public float regrowTime = 180f;
     public float shakeIntensity = 0.1f;
     public float shakeDuration = 0.2f;
-    public float woodSpawnRadius = 2f; // Radius within which wood items will spawn
+    public float woodSpawnRadius = 2f;
 
     private bool isBroken = false;
     private Quaternion initialRotation;
@@ -33,8 +33,6 @@ public class TreeDestruction : MonoBehaviour
             treeRenderer.sprite = brokenTreeSprite;
             isBroken = true;
             StartCoroutine(RegrowTree());
-
-            // Instantiate wood items
             InstantiateWoodItems();
         }
 
