@@ -18,6 +18,7 @@ public class InventoryOpener : MonoBehaviour
             else
             {
                 inventoryObject.SetActive(true);
+                inventoryObject.GetComponent<InventoryLoader>().RefreshInventories();
             }
         }
     }

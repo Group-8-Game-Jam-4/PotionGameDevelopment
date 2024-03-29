@@ -16,9 +16,6 @@ public class PlayerInventory : MonoBehaviour
         formattedInventory = inventory.formattedInventory;
         totalInventory = inventory.totalInventory;
         inventory.LoadCSV();
-        inventory.AddItem("stick", 12);
-        inventory.AddItem("stick", 5);
-        inventory.AddItem("stick", 9);
     }
 
     public void SaveInventory()
