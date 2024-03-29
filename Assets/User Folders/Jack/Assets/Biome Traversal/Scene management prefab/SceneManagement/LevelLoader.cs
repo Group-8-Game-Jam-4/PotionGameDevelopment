@@ -23,8 +23,11 @@ public class LevelLoader : MonoBehaviour
         //Wait
         yield return new WaitForSeconds(transitionTime);
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //i've commented this out bc i think morgan's trees use the cursor to break so id rather the cursor stay
+        //commented out so its not lost in case it gets put back in
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+
         //Load scene
         SceneManager.LoadScene(levelName);
     }

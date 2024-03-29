@@ -8,6 +8,7 @@ public class BiomeCollider : MonoBehaviour
     bool interactable = false;
     public string scenename;
     public GameObject transitioner;
+    public GameObject interactText;
 
     // Update is called once per frame
     void Update()
@@ -15,8 +16,9 @@ public class BiomeCollider : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E) && interactable == true)
         {
             transitioner.GetComponent<LevelLoader>().LoadNextScene(scenename);
-            //SceneManager.LoadScene(scenename);
+            interactText.SetActive(false);
             interactable = false;
+            //get rid of interact text so it doesnt mess with the animation
         }
     }
 
@@ -26,7 +28,8 @@ public class BiomeCollider : MonoBehaviour
         if (collision.tag == "Player")
         {
             interactable = true;
-            Debug.Log(interactable);
+            interactText.SetActive(true);
+            //show interact text
         }
     }
 
@@ -36,7 +39,8 @@ public class BiomeCollider : MonoBehaviour
         if (collision.tag == "Player")
         {
             interactable = false;
-            Debug.Log(interactable);
+            interactText.SetActive(false);
+            //get rid of interact text
         }
     }
 }
