@@ -106,7 +106,7 @@ public class InventoryLoader : MonoBehaviour
         sliderElement.SetActive(false);
     }
 
-    private void RefreshInventories()
+    public void RefreshInventories()
     {
         // if player inventory is enabled show it in the left bit. If not just show the container
         if(playerInventory)
@@ -174,6 +174,7 @@ public class InventoryLoader : MonoBehaviour
             // get the info for it
             quantityText.text = array[1].ToString();
             titleText.text = array[0];
+            imageComponent.sprite = Resources.Load<Sprite>(array[0]);
 
             UIElement.GetComponent<ButtonValue>().value = i;
             UIElement.GetComponent<ButtonValue>().isPlayer = isPlayer;

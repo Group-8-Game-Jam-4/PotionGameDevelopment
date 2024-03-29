@@ -35,7 +35,6 @@ public class Inventory
                                 // adds what it can to the formatted inventory
 
                                 // howm any items have been added to the stack
-                                int addingQuantity = 0;
 
                                 // howm any more items can fit in that stack
                                 int stackSpace = 0;
@@ -56,9 +55,9 @@ public class Inventory
                                     // adds it to the total inventory
                                     totalInventory[itemName].quantity += quantity;
 
-                                    quantity = 0;
+                                    //quantity = 0;
 
-                                    itemsAllAdded = true;
+                                    //itemsAllAdded = true;
 
                                     Debug.Log($"InventoryStatus: Added {quantity} {itemName}s to the inventory");
                                     return true;

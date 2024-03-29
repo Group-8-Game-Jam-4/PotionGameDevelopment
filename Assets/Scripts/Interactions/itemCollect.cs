@@ -13,6 +13,7 @@ public class itemCollect : MonoBehaviour
     public bool isPickedUp = false;
     private bool inRange;
     public bool hasInteracted = false;
+    public string itemName;
 
     private Color originalColor;
     private SpriteRenderer spriteRenderer;
@@ -49,6 +50,11 @@ public class itemCollect : MonoBehaviour
     {
         transform.position = player.transform.position;
         burstEffect.Play();
+
+        // actually give the item
+        player.GetComponentInChildren<InventoryOpener>().inventoryObject.GetComponent<InventoryLoader>().playerInv.inventory.AddItem(itemName, 1);
+        Debug.Log(itemName);
+
         Destroy(gameObject);
     }
 
