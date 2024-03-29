@@ -7,13 +7,15 @@ public class BiomeCollider : MonoBehaviour
 {
     bool interactable = false;
     public string scenename;
+    public GameObject transitioner;
 
     // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.E) && interactable == true)
         {
-            SceneManager.LoadScene(scenename);
+            transitioner.GetComponent<LevelLoader>().LoadNextScene(scenename);
+            //SceneManager.LoadScene(scenename);
             interactable = false;
         }
     }
