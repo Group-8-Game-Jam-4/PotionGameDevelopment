@@ -9,8 +9,6 @@ public class VideoMenu : MonoBehaviour {
 
     public TMPro.TMP_Dropdown resolutionDropdown;
 
-    public TMPro.TMP_Dropdown QualityDropdown;
-
     public Toggle fullscreenToggle;
 
     public int currentResolutionIndex;
@@ -52,12 +50,6 @@ public class VideoMenu : MonoBehaviour {
         PlayerPrefs.SetInt("ResolutionIndex", resolutionIndex);
     }
 
-    public void SetQuality (int qualityIndex)
-    {
-        QualitySettings.SetQualityLevel(qualityIndex);
-        PlayerPrefs.SetInt("QualityLevel", qualityIndex);
-    }
-
     public void SetFullscreen (bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
@@ -91,7 +83,6 @@ public class VideoMenu : MonoBehaviour {
 
     void LoadPrefs()
     {
-        QualityDropdown.value = PlayerPrefs.GetInt("QualityLevel");
         CheckFullscreen(PlayerPrefs.GetInt("FullscreenBool"));
     }
 
