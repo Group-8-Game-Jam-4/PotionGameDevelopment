@@ -1,28 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
-public class Inventory : MonoBehaviour
+public class Inventory
 {
     public int inventoryMaxLength = 10;
-    private Dictionary<string, ItemClass> totalInventory = new Dictionary<string, ItemClass>();
-    private List<string[]> formattedInventory = new List<string[]>();
+    public Dictionary<string, ItemClass> totalInventory = new Dictionary<string, ItemClass>();
+    public List<string[]> formattedInventory = new List<string[]>();
 
-    private void Start() {
-        LoadCSV();
-    }
 
     public List<string[]> GetInventory()
     {
-        LoadInventory();
         return formattedInventory;
     }
 
-    public int AddItem(string itemName, int quantity)
+    public bool AddItem(string itemName, int quantity)
     {
-        LoadInventory();
-
         // if the item exists
         if(totalInventory.ContainsKey(itemName))
         {
@@ -69,26 +61,26 @@ public class Inventory : MonoBehaviour
                                     itemsAllAdded = true;
 
                                     Debug.Log($"InventoryStatus: Added {quantity} {itemName}s to the inventory");
-                                    break;
+                                    return true;
                                 }
                                 else
                                 {
-                                    // adds as many as we can and then leaves the remainder in quantity
-                                    addingQuantity = stackSpace;
-                                    quantity -= addingQuantity;
+                                    // // adds as many as we can and then leaves the remainder in quantity
+                                    // addingQuantity = stackSpace;
+                                    // quantity -= addingQuantity;
                                     
-                                    if (int.TryParse(array[1], out currentQuantity))
-                                    {
-                                        array[1] = (currentQuantity + addingQuantity).ToString();
-                                    }
+                                    // if (int.TryParse(array[1], out currentQuantity))
+                                    // {
+                                    //     array[1] = (currentQuantity + addingQuantity).ToString();
+                                    // }
 
-                                    // adds it to the total inventory
-                                    totalInventory[itemName].quantity += addingQuantity;
+                                    // // adds it to the total inventory
+                                    // totalInventory[itemName].quantity += addingQuantity;
 
-                                    Debug.Log($"InventoryStatus: Added {addingQuantity} {itemName}s to the inventory with {quantity} remaining");
+                                    // Debug.Log($"InventoryStatus: Added {addingQuantity} {itemName}s to the inventory with {quantity} remaining");
 
-                                    // we wont break here. This means that once this is added it will keep iterating the inventory to see if theres any more stacks it can add to.
-                                    // If theres any space left it will make a new stack if not it will give up
+                                    // // we wont break here. This means that once this is added it will keep iterating the inventory to see if theres any more stacks it can add to.
+                                    // // If theres any space left it will make a new stack if not it will give up
                                 }
                             }
                         }
@@ -107,20 +99,22 @@ public class Inventory : MonoBehaviour
                 else
                 {
                     Debug.LogError($"InventoryError: No inventory space left for {quantity} {itemName}s");
+                    return false;
                 }
             }
         }
         else
         {
             Debug.LogError($"InventoryError: Invalid item {itemName}");
+            return false;
         }
-
-        SaveInventory();
-
+        return false;
         // if we cant add all the items needed we will return however many are left, if we can add them all we will return 0 which the script can check to make sure we got the items
-        return quantity;
     }
 
+
+    // this needs to be modified to confirm its adding the correct quantity that will fit in a stack (or potentially change it above line 150. This is because when you add idk like 40 items if you had none of them to begin with it just adds them as 1 stack)
+    // this could be an issue but it really shouldnt be because you can only ever move or recieve a stack of items at a time
     void addNewStack(string itemName, int quantity)
     {
         // create a new string array with itemName and quantity
@@ -164,28 +158,36 @@ public class Inventory : MonoBehaviour
 
                                 quantity = 0;
 
+                                if(array[1] == "0")
+                                {
+                                    formattedInventory.Remove(array);
+                                }
+
                                 Debug.Log($"InventoryStatus: Removed {quantity} {itemName}s from the inventory");
                                 break;
                             }
                         }
-                        else
-                        {
-                            // adds as many as we can and then leaves the remainder in quantity
-                            if (int.TryParse(array[1], out takingQuantity))
-                            {
-                                quantity -= takingQuantity;
-                            }
 
-                            // we need to totally remove this stack from the inv since its been zeroed
-                            formattedInventory.Remove(array);
+                        // im not convinced this code is useful or actually does anything
 
-                            // removes it from the total inventory
-                            totalInventory[itemName].quantity -= takingQuantity;
+                        // else
+                        // {
+                        //     // adds as many as we can and then leaves the remainder in quantity
+                        //     if (int.TryParse(array[1], out takingQuantity))
+                        //     {
+                        //         quantity -= takingQuantity;
+                        //     }
 
-                            Debug.Log($"InventoryStatus: Removed {takingQuantity} {itemName}s from the inventory with {quantity} remaining to take");
+                        //     // we need to totally remove this stack from the inv since its been zeroed
+                        //     formattedInventory.Remove(array);
 
-                            // we wont break here. This means that once this is added it will keep iterating the inventory to take from the other stacks.
-                        }
+                        //     // removes it from the total inventory
+                        //     totalInventory[itemName].quantity -= takingQuantity;
+
+                        //     Debug.Log($"InventoryStatus: Removed {takingQuantity} {itemName}s from the inventory with {quantity} remaining to take");
+
+                        //     // we wont break here. This means that once this is added it will keep iterating the inventory to take from the other stacks.
+                        // }
                     }
                 }
             }
@@ -205,22 +207,7 @@ public class Inventory : MonoBehaviour
         // get the inventory and see if there is any of the item to take, if there is -1 of that item and return true. This method will be used primarily by give item
     }
 
-    public void GiveItem()
-    {
-        // parse in the npc name we want to give the item to (from gameplay manager or somth) then if take item is true take it
-    }
-
-    public void SaveInventory()
-    {
-        // just save it using the save system here
-    }
-
-    public void LoadInventory()
-    {
-        // we need to load the csv to get all the possible items into the total inventory if they arent there already
-    }
-
-    private void LoadCSV()
+    public void LoadCSV()
     {
         // // loop thru the csv, see if the className (column 0 (not rows 0 or 1)) exists in totalInventory as a key. If it doesent make a new instance of "ItemClass", add in the info from the csv and add it into totalInventory
         // ItemClass.className is column 0
