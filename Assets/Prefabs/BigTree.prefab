@@ -9935,6 +9935,7 @@ MonoBehaviour:
   shakeIntensity: 0.1
   shakeDuration: 0.1
   spawnRadius: 2
+  itemDropNum: 5
 --- !u!70 &5483858506151275429
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -9969,6 +9970,6 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.1, y: 0.71851635}
-  m_Size: {x: 2.7000003, y: 1.46}
+  m_Offset: {x: -0.0148526905, y: 0.61642355}
+  m_Size: {x: 2.4958203, y: 1.0261134}
   m_Direction: 1
