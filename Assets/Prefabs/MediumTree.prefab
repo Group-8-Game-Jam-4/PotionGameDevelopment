@@ -9935,6 +9935,7 @@ MonoBehaviour:
   shakeIntensity: 0.1
   shakeDuration: 0.1
   spawnRadius: 2
+  itemDropNum: 5
 --- !u!70 &5483858506151275429
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

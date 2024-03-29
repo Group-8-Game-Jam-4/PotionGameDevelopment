@@ -15,7 +15,7 @@ public class ObjectDestruction : MonoBehaviour
     public float shakeIntensity = 0.1f;
     public float shakeDuration = 0.2f;
     public float spawnRadius = 2f;
-
+    public int itemDropNum;
     private bool isBroken = false;
     private Quaternion initialRotation;
 
@@ -91,7 +91,7 @@ public class ObjectDestruction : MonoBehaviour
 
     void InstantiateItems()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < itemDropNum; i++)
         {
             Vector3 randomOffset = Random.insideUnitCircle * spawnRadius;
             Vector3 spawnPosition = transform.position + new Vector3(randomOffset.x, randomOffset.y, 0);
