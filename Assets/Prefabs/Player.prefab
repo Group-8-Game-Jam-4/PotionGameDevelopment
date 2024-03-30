@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryObject: {fileID: 6712104064605541121}
+  isPlayer: 1
+  isCart: 0
+  interactText: {fileID: 0}
 --- !u!1 &398027093960938354
 GameObject:
   m_ObjectHideFlags: 0
