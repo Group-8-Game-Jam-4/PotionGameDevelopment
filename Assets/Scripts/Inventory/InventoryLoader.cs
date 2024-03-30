@@ -77,13 +77,29 @@ public class InventoryLoader : MonoBehaviour
         // if we are moving an item from the player inventory
         if(selectedPlayerItem)
         {
-            // if we can actually take that many
-            if(playerInv.inventory.TakeItem(selectedItem.className, sliderValue))
+            if(containerInv)
             {
-                if(containerInventory == true)
+                // if we can actually take that many
+                if(playerInv.inventory.TakeItem(selectedItem.className, sliderValue))
                 {
-                    // if we can actually fit that many
-                    if(containerInv.inventory.AddItem(selectedItem.className, sliderValue));
+                    if(containerInventory == true)
+                    {
+                        // if we can actually fit that many
+                        if(containerInv.inventory.AddItem(selectedItem.className, sliderValue));
+                    }
+                }
+            }
+            else
+            {
+                // if theres no container we can assume its just the player inv so these items need to be dropped
+                // if we can actually take that many
+                if(playerInv.inventory.TakeItem(selectedItem.className, sliderValue))
+                {
+                    if(containerInventory == true)
+                    {
+                        // if we can actually fit that many
+                        Dropitem(selectedItem.className, sliderValue);
+                    }
                 }
             }
         }
@@ -104,6 +120,15 @@ public class InventoryLoader : MonoBehaviour
         // refresh inventories
         RefreshInventories();
         sliderElement.SetActive(false);
+    }
+
+    void Dropitem(string name, int quantity)
+    {
+        for(int i = 0; i < quantity; i++)
+        {
+            // for each item thats meant to be dropped:
+            // instantiate the corresponding item object
+        }
     }
 
     public void RefreshInventories()
