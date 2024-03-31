@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2909534838713316262}
   - component: {fileID: 1841255285691316336}
   m_Layer: 0
-  m_Name: StickItem
+  m_Name: wood_prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 234005473, guid: 326c4081bcacf0f4aa02c55f9d9bbfea, type: 3}
+  m_Sprite: {fileID: -1238842106, guid: 326c4081bcacf0f4aa02c55f9d9bbfea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
   moveSpeed: 10
   isPickedUp: 0
   hasInteracted: 0
-  itemName: stick
+  itemName: wood
 --- !u!50 &2909534838713316262
 Rigidbody2D:
   serializedVersion: 4
