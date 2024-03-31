@@ -16,9 +16,9 @@ public class playerMovement : MonoBehaviour
     public int horizontal = 0;
     public int vertical = 0;
 
+    
     // Private Variables
     private float currentMovementSpeed;
-
 
 
     void Start()
