@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using TMPro;
 using UnityEngine.UI;
+using System.Resources;
 
 public class InventoryLoader : MonoBehaviour
 {
@@ -88,6 +89,7 @@ public class InventoryLoader : MonoBehaviour
                         if(containerInv.inventory.AddItem(selectedItem.className, sliderValue));
                     }
                 }
+                containerInv.SaveInventory();
             }
             else
             {
@@ -95,12 +97,10 @@ public class InventoryLoader : MonoBehaviour
                 // if we can actually take that many
                 if(playerInv.inventory.TakeItem(selectedItem.className, sliderValue))
                 {
-                    if(containerInventory == true)
-                    {
-                        // if we can actually fit that many
-                        Dropitem(selectedItem.className, sliderValue);
-                    }
+                    // drop the itms
+                    Dropitem(selectedItem.className, sliderValue);
                 }
+                playerInv.SaveInventory();
             }
         }
         else
@@ -113,10 +113,6 @@ public class InventoryLoader : MonoBehaviour
             }
         }
 
-        // save the inventories and reload the uis
-        playerInv.SaveInventory();
-        containerInv.SaveInventory();
-
         // refresh inventories
         RefreshInventories();
         sliderElement.SetActive(false);
@@ -126,10 +122,45 @@ public class InventoryLoader : MonoBehaviour
     {
         for(int i = 0; i < quantity; i++)
         {
-            // for each item thats meant to be dropped:
+            GameObject itemPrefab;
+            
+            itemPrefab = Resources.Load<GameObject>(name + "_prefab");
+            itemPrefab.GetComponent<CircleCollider2D>().radius=0.5f;
+            Debug.Log(name);
+
+
             // instantiate the corresponding item object
+            Vector3 randomOffset = Random.insideUnitCircle * 2;
+            Vector3 spawnPosition = transform.parent.position + new Vector3(randomOffset.x, randomOffset.y, 0);
+            GameObject woodItem = Instantiate(itemPrefab, spawnPosition, Quaternion.identity);
+            StartCoroutine(ScaleItem(woodItem));
         }
     }
+
+    IEnumerator ScaleItem(GameObject woodItem)
+    {
+        Vector3 originalScale = Vector3.zero;
+        Vector3 targetScale = Vector3.one;
+        float duration = 0.5f;
+
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            if(woodItem != null)
+            {
+                elapsed += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsed / duration);
+                woodItem.transform.localScale = Vector3.Lerp(originalScale, targetScale, t);
+                yield return null;
+            }
+            else
+            {
+                yield return null;
+            }
+        }
+        if(woodItem != null){woodItem.transform.localScale = targetScale;}
+    }
+
 
     public void RefreshInventories()
     {
