@@ -123,6 +123,8 @@ public class InventoryOpener : MonoBehaviour
         {
             // Debug.Log("Player exited trigger zone of NPC.");
             playerInRange = false;
+            inventoryObject.SetActive(false);
+            inUi = false;
         }
     }
 }

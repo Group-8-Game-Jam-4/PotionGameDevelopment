@@ -11,6 +11,8 @@ public class InventoryLoader : MonoBehaviour
     // inventory
     public bool playerInventory = true;
     public bool containerInventory = false;
+    public GameObject playerInvUI;
+    public GameObject containerInvUI;
     public GameObject UITemplate;
     public GameObject sliderElement;
     public TextMeshProUGUI sliderQuantityText;
@@ -167,10 +169,12 @@ public class InventoryLoader : MonoBehaviour
         // if player inventory is enabled show it in the left bit. If not just show the container
         if(playerInventory)
         {
+            playerInvUI.SetActive(true);
             PopulateInventoryUI(playerInv.formattedInventory, playerInv.inventoryMaxLength, true);
         }
         if(containerInventory)
         {
+            containerInvUI.SetActive(true);
             // change these to be well not the playerInv. Like the cart inv or something
             PopulateInventoryUI(containerInv.formattedInventory, containerInv.inventoryMaxLength, false);
         }
