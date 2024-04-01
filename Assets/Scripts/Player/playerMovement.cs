@@ -60,6 +60,10 @@ public class playerMovement : MonoBehaviour
         {
             isMoving = false;
         }
+        if(isSwinging)
+        {
+            isMoving = false;
+        }
 
         rb.velocity = movement;
 
@@ -145,30 +149,22 @@ public class playerMovement : MonoBehaviour
         {
             anim.SetBool("swingFront", true);
             isSwinging= true;
-            verticalInput = 0;
-            horizontalInput = 0;
         }
 
         if (Input.GetMouseButtonDown(0) && vertical == 1)
         {
             anim.SetBool("swingBack", true);
             isSwinging = true;
-            verticalInput = 0;
-            horizontalInput = 0;
         }
         if (Input.GetMouseButtonDown(0) && horizontal == 1)
         {
             anim.SetBool("swingRight", true);
             isSwinging = true;
-            horizontalInput = 0;
-            verticalInput = 0;
         }
         if (Input.GetMouseButtonDown(0) && horizontal == -1)
         {
             anim.SetBool("swingLeft", true);
             isSwinging = true;
-            horizontalInput = 0;
-            verticalInput = 0;
         }
 
 
