@@ -11,6 +11,7 @@ public class InventoryLoader : MonoBehaviour
     // inventory
     public bool playerInventory = true;
     public bool containerInventory = false;
+    public bool isCupboard = false;
     public GameObject UITemplate;
     public GameObject sliderElement;
     public TextMeshProUGUI sliderQuantityText;
@@ -87,6 +88,22 @@ public class InventoryLoader : MonoBehaviour
                     {
                         // if we can actually fit that many
                         if(containerInv.inventory.AddItem(selectedItem.className, sliderValue));
+                        if (isCupboard)
+                        {
+                            if (containerInv.inventory.totalInventory["stick"].quantity != 0)
+                            {
+                                GameObject furnitureObject;
+                                string name = containerInv.inventory.totalInventory["stick"].className;
+                                furnitureObject = Resources.Load<GameObject>(name + "_prefab");
+                                for (int i = 0; i < containerInv.inventory.totalInventory["stick"].quantity; i++);
+                                Vector3 randomOffset = Random.insideUnitCircle * 2;
+                                Vector3 spawnPosition = transform.parent.position + new Vector3(randomOffset.x, randomOffset.y, 0);
+                                {
+                                    GameObject furniture = Instantiate(furnitureObject, spawnPosition, Quaternion.identity);
+                                }
+                                
+                            }
+                        }
                     }
                 }
                 containerInv.SaveInventory();
