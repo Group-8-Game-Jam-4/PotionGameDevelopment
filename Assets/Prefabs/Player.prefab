@@ -490,13 +490,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cff4404054715546aae3bd266561a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMovementSpeed: 5
-  sprintMultiplier: 2
+  baseMovementSpeed: 3
+  sprintMultiplier: 1.5
   mainCamera: {fileID: 0}
   npc: {fileID: 0}
   isMoving: 0
   horizontal: 0
   vertical: 0
+  isSwinging: 0
 --- !u!114 &9107804017541945277
 MonoBehaviour:
   m_ObjectHideFlags: 0
