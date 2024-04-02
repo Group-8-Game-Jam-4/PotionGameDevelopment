@@ -38,15 +38,26 @@ public class npcInteraction : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
+<<<<<<< Updated upstream
         interactText.SetActive(false);
+=======
+        if (interactText != null)
+        {
+            interactText.SetActive(false);
+            ResetUi();
+        }
+>>>>>>> Stashed changes
         // Check if the colliding object is the player
         if (other.CompareTag("Player"))
         {
-            // Debug.Log("Player exited trigger zone of NPC.");
+            Debug.Log("Player exited trigger zone of NPC.");
             playerInRange = false;
             StartCoroutine(ResetCamera());
+            speechController.textUI.text = "";
         }
     }
+
+    
 
     void Update()
     {
