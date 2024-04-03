@@ -2497,6 +2497,24 @@ MonoBehaviour:
   mainCamera: {fileID: 225448861}
   speechController: {fileID: 1808193606}
   NPCname: Frank
+  missingItemsUi: {fileID: 891567126}
+  missingText:
+  - {fileID: 1262407019}
+  - {fileID: 1849322715}
+  - {fileID: 532180258}
+  missingStrikes:
+  - {fileID: 1200713075}
+  - {fileID: 1397673450}
+  - {fileID: 356293103}
+  haveItemsUi: {fileID: 20658520}
+  haveText:
+  - {fileID: 1122695125}
+  - {fileID: 705228416}
+  - {fileID: 353843527}
+  haveStrikes:
+  - {fileID: 1028903689}
+  - {fileID: 104711930}
+  - {fileID: 1133479420}
 --- !u!1 &891567126
 GameObject:
   m_ObjectHideFlags: 0
