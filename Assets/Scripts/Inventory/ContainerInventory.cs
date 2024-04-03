@@ -16,7 +16,8 @@ public class ContainerInventory : MonoBehaviour
         formattedInventory = inventory.formattedInventory;
         totalInventory = inventory.totalInventory;
         inventory.LoadCSV();
-        inventory.AddItem("stick", 2);
+        inventory.AddItem("carpet_blue", 1);
+        inventory.AddItem("tall_lamp", 1);
     }
 
     public void SaveInventory()

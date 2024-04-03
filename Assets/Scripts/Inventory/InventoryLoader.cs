@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine.UI;
 using System.Resources;
+using Unity.VisualScripting;
 
 public class InventoryLoader : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class InventoryLoader : MonoBehaviour
     public ContainerInventory containerInv;
     ItemClass selectedItem;
     bool selectedPlayerItem;
+
+    // furniture
+    GameObject furniture;
+    string lastSelectedFurniture;
 
     private void Start() 
     {
@@ -88,20 +93,26 @@ public class InventoryLoader : MonoBehaviour
                     {
                         // if we can actually fit that many
                         if(containerInv.inventory.AddItem(selectedItem.className, sliderValue));
+
+                        //if the container we're interacting with is a cupboard
                         if (isCupboard)
                         {
-                            if (containerInv.inventory.totalInventory["stick"].quantity != 0)
+                            lastSelectedFurniture = selectedItem.className;
+                            //if the item we're interacting with is a blue carpet
+                            if (selectedItem.className == "carpet_blue" && containerInv.inventory.totalInventory["carpet_blue"].quantity != 0)
                             {
-                                GameObject furnitureObject;
-                                string name = containerInv.inventory.totalInventory["stick"].className;
-                                furnitureObject = Resources.Load<GameObject>(name + "_prefab");
-                                for (int i = 0; i < containerInv.inventory.totalInventory["stick"].quantity; i++);
-                                Vector3 randomOffset = Random.insideUnitCircle * 2;
-                                Vector3 spawnPosition = transform.parent.position + new Vector3(randomOffset.x, randomOffset.y, 0);
-                                {
-                                    GameObject furniture = Instantiate(furnitureObject, spawnPosition, Quaternion.identity);
-                                }
-                                
+                                //create a clone of carpet_blue_prefab
+                                GameObject furnitureObject = Resources.Load<GameObject>(selectedItem.className + "_prefab");
+                                Vector3 spawnPosition = transform.parent.position + new Vector3((float)-4.7, -9, 0);
+                                furniture = Instantiate(furnitureObject, spawnPosition, Quaternion.identity);
+                            }
+                            //if the item we're interacting with is a tall lamp
+                            if (selectedItem.className == "tall_lamp" && containerInv.inventory.totalInventory["tall_lamp"].quantity != 0)
+                            {
+                                //create a clone of tall_lamp_prefab
+                                GameObject furnitureObject = Resources.Load<GameObject>(selectedItem.className + "_prefab");
+                                Vector3 spawnPosition = transform.parent.position + new Vector3(0, -9, 0);
+                                furniture = Instantiate(furnitureObject, spawnPosition, Quaternion.identity);
                             }
                         }
                     }
@@ -127,6 +138,29 @@ public class InventoryLoader : MonoBehaviour
             {
                 // if we can actually fit that many
                 if(playerInv.inventory.AddItem(selectedItem.className, sliderValue));
+
+                //if item is being taken from the cupboard
+                if (isCupboard)
+                {
+                    //if the item is a blue carpet
+                    if(selectedItem.className == "carpet_blue" && containerInv.inventory.totalInventory["carpet_blue"].quantity == 0)
+                    {
+                        //destroy the carpet
+                        if (lastSelectedFurniture == selectedItem.className)
+                        {
+                            Destroy(furniture); //THIS CURRENTLY IS BUGGED IT WILL ONLY DELETE THE MOST RECENT PIECE OF FURNITURE
+                        }
+                    }
+                    //if the item is a tall lamp
+                    if (selectedItem.className == "tall_lamp" && containerInv.inventory.totalInventory["tall_lamp"].quantity == 0)
+                    {
+                        //destroy the lamp
+                        if (lastSelectedFurniture == selectedItem.className)
+                        {
+                            Destroy(furniture); //THIS CURRENTLY IS BUGGED IT WILL ONLY DELETE THE MOST RECENT PIECE OF FURNITURE
+                        }
+                    }
+                }
             }
         }
 

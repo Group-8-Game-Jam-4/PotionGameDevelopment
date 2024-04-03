@@ -1,12 +1,16 @@
 Class Name,Display Name,Image Name,Rarity,Spawn Biome 1,Spawn Biome 2,Stack Size,SellPrice,StorePrice,GoblinPrice
 ,,,,,,,,,
-wood,Wood,wood,Common,Grassland,SnowyMountains,16,2,3,5
-honey,Honey,honey,Rare,Grassland,,16,3,5,8
-sugar,Sugar,sugar,Uncommon,,,16,5,10,15
-volcanic_melon,Volcanic Melon,volcanic_melon,Epic,Volcano,,16,15,20,30
-feather,Feather,feather,Common,,,16,2,3,5
-frost_air,Frost Air,frost_air,Uncommon,SnowyMountains,,16,5,10,15
-magic_flower,Magic Flower,magic_flower,Epic,Grassland,,16,15,20,30
-stick,Stick,stick,Common,Grassland,SnowyMountains,16,2,3,5
+wood,Wood,wood,Common,Grassland,SnowyMountains,15,2,3,5
+honey,Honey,honey,Rare,Grassland,none,16,3,5,8
+sugar,Sugar,sugar,Uncommon,none,none,20,5,10,15
+volcanic_melon,Volcanic Melon,volcanic_melon,Epic,Volcano,none,5,15,20,30
+feather,Feather,feather,Common,none,none,30,2,3,5
+frost_air,Frost Air,frost_air,Uncommon,SnowyMountains,none,5,5,10,15
+magic_flower,Magic Flower,magic_flower,Epic,Grassland,none,20,15,20,30
+stick,Stick,stick,Common,Grassland,SnowyMountains,20,2,3,5
 coal,Coal,coal,Uncommon,Grassland,Volcano,16,5,10,15
-water,Water,water,Common,Grassland,SnowyMountains,,,,
+water,Water,water,Common,Grassland,SnowyMountains,1,1,2,1
+Ice,Ice,Ice,Common,SnowyMountains,SnowyMountains,10,1,2,1
+Stone,Stone,Stone,Common,Grass / Snow,Grass / Snow,5,1,2,1
+carpet_blue,Blue Carpet,carpet_blue,Epic,N/A,N/A,1,0,0,0
+tall_lamp,Tall Lamp,tall_lamp,Epic,N/A,N/A,1,0,0,0
