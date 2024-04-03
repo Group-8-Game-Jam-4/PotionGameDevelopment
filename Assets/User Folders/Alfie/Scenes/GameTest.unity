@@ -4740,8 +4740,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0ae4a21ef281d9c429060ad7cc13de27, type: 2}
+  m_sharedMaterial: {fileID: -3874300850532515076, guid: 0ae4a21ef281d9c429060ad7cc13de27, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5210,6 +5210,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3484277035017726425, guid: c3e3f84bf956c0a4a9aa4a1b7e65cc0e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484277035017726425, guid: c3e3f84bf956c0a4a9aa4a1b7e65cc0e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6144153367142152703, guid: c3e3f84bf956c0a4a9aa4a1b7e65cc0e, type: 3}
       propertyPath: inventoryObject
       value: 
@@ -5318,6 +5326,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6945943733049163899, guid: a742b73c2217f554a9d7304c968a516b, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274339924213165130, guid: a742b73c2217f554a9d7304c968a516b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274339924213165130, guid: a742b73c2217f554a9d7304c968a516b, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7783035037807588447, guid: a742b73c2217f554a9d7304c968a516b, type: 3}
