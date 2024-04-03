@@ -1,7 +1,6 @@
 using Cinemachine;
 using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class npcInteraction : MonoBehaviour
@@ -29,7 +28,7 @@ public class npcInteraction : MonoBehaviour
 
     QuestClass lastQuest;
     Inventory playerInventory;
-    
+
     private void Start()
     {
         // Assign the current GameObject to currentNPC
@@ -52,7 +51,7 @@ public class npcInteraction : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if(interactText != null)
+        if (interactText != null)
         {
             interactText.SetActive(false);
             ResetUi();

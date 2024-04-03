@@ -11,6 +11,8 @@ public class InventoryLoader : MonoBehaviour
     // inventory
     public bool playerInventory = true;
     public bool containerInventory = false;
+    public bool isWorkstation = false;
+    public bool renderPlayerInv = true;
     public GameObject playerInvUI;
     public GameObject containerInvUI;
     public GameObject UITemplate;
@@ -18,6 +20,7 @@ public class InventoryLoader : MonoBehaviour
     public TextMeshProUGUI sliderQuantityText;
     public PlayerInventory playerInv;
     public ContainerInventory containerInv;
+    public WorkstationSystem workstation;
     ItemClass selectedItem;
     bool selectedPlayerItem;
 
@@ -66,6 +69,7 @@ public class InventoryLoader : MonoBehaviour
                 if (int.TryParse(item[1], out int currentQuantity))
                 {
                     transform.Find("Give Items Slider").transform.Find("Slider").gameObject.GetComponent<Slider>().maxValue = currentQuantity;
+                    Debug.Log(currentQuantity);
                 }
             }
         }
@@ -88,7 +92,7 @@ public class InventoryLoader : MonoBehaviour
                     if(containerInventory == true)
                     {
                         // if we can actually fit that many
-                        if(containerInv.inventory.AddItem(selectedItem.className, sliderValue));
+                        containerInv.inventory.AddItem(selectedItem.className, sliderValue);
                     }
                 }
                 containerInv.SaveInventory();
@@ -111,7 +115,7 @@ public class InventoryLoader : MonoBehaviour
             if(containerInv.inventory.TakeItem(selectedItem.className, sliderValue))
             {
                 // if we can actually fit that many
-                if(playerInv.inventory.AddItem(selectedItem.className, sliderValue));
+                playerInv.inventory.AddItem(selectedItem.className, sliderValue);
             }
         }
 
@@ -167,7 +171,7 @@ public class InventoryLoader : MonoBehaviour
     public void RefreshInventories()
     {
         // if player inventory is enabled show it in the left bit. If not just show the container
-        if(playerInventory)
+        if(playerInventory && renderPlayerInv)
         {
             playerInvUI.SetActive(true);
             PopulateInventoryUI(playerInv.formattedInventory, playerInv.inventoryMaxLength, true);
@@ -177,6 +181,10 @@ public class InventoryLoader : MonoBehaviour
             containerInvUI.SetActive(true);
             // change these to be well not the playerInv. Like the cart inv or something
             PopulateInventoryUI(containerInv.formattedInventory, containerInv.inventoryMaxLength, false);
+        }
+        if(isWorkstation)
+        {
+            workstation.CheckPotion();
         }
     }
 
