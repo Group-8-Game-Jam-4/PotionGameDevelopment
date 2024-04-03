@@ -4,7 +4,10 @@ using UnityEngine;
 public class Inventory
 {
     public int inventoryMaxLength = 10;
+
+    // the key string here is the class name of the item. NOT the displayname
     public Dictionary<string, ItemClass> totalInventory = new Dictionary<string, ItemClass>();
+    // the first value here is the class name of the item. NOT the displayname
     public List<string[]> formattedInventory = new List<string[]>();
 
 
@@ -35,7 +38,6 @@ public class Inventory
                                 // adds what it can to the formatted inventory
 
                                 // howm any items have been added to the stack
-                                int addingQuantity = 0;
 
                                 // howm any more items can fit in that stack
                                 int stackSpace = 0;
@@ -56,9 +58,9 @@ public class Inventory
                                     // adds it to the total inventory
                                     totalInventory[itemName].quantity += quantity;
 
-                                    quantity = 0;
+                                    //quantity = 0;
 
-                                    itemsAllAdded = true;
+                                    //itemsAllAdded = true;
 
                                     Debug.Log($"InventoryStatus: Added {quantity} {itemName}s to the inventory");
                                     return true;
@@ -311,7 +313,7 @@ public class Inventory
         // Debug output for verification
         foreach (var item in totalInventory.Values)
         {
-            Debug.Log($"Item: {item.className}, Display Name: {item.displayName}, Image Name: {item.imageName}, Stack Size: {item.stackSize}, Rarity: {item.rarity}, Spawn Biome 1: {item.spawnBiome1}, Spawn Biome 2: {item.spawnBiome2}, Sell Price: {item.sellPrice}, Store Price: {item.storePrice}, Goblin Price: {item.goblinPrice}");
+            //Debug.Log($"Item: {item.className}, Display Name: {item.displayName}, Image Name: {item.imageName}, Stack Size: {item.stackSize}, Rarity: {item.rarity}, Spawn Biome 1: {item.spawnBiome1}, Spawn Biome 2: {item.spawnBiome2}, Sell Price: {item.sellPrice}, Store Price: {item.storePrice}, Goblin Price: {item.goblinPrice}");
         }
     }
 

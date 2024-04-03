@@ -110,12 +110,19 @@ public class ObjectDestruction : MonoBehaviour
         float elapsed = 0f;
         while (elapsed < duration)
         {
-            elapsed += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsed / duration);
-            woodItem.transform.localScale = Vector3.Lerp(originalScale, targetScale, t);
-            yield return null;
+            if(woodItem != null)
+            {
+                elapsed += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsed / duration);
+                woodItem.transform.localScale = Vector3.Lerp(originalScale, targetScale, t);
+                yield return null;
+            }
+            else
+            {
+                yield return null;
+            }
         }
-        woodItem.transform.localScale = targetScale;
+        if(woodItem != null){woodItem.transform.localScale = targetScale;}
     }
 
 

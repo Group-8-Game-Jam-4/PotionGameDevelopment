@@ -11,11 +11,8 @@ public class QuestClass
     // if items are needed we need the ui for that and it will just display text like hey have you got those things I asked for
     public bool AwaitingItems = false;
 
-    // value 1 is item name value 2 is item quantity
-    public List<string[]> SubmittedItems = new List<string[]>();
-
-    // value 1 is item name value 2 is item quantity
-    public List<string[]> NeededItems = new List<string[]>();
+    // listo f item classes so we can get the amounts needed
+    public List<ItemClass> NeededItems = new List<ItemClass>();
 
     // various text things for the npc to display
     public string currentStoryline = "";
