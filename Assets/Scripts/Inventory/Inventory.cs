@@ -60,29 +60,10 @@ public class Inventory
 
                                     //quantity = 0;
 
-                                    //itemsAllAdded = true;
+                                    itemsAllAdded = true;
 
                                     Debug.Log($"InventoryStatus: Added {quantity} {itemName}s to the inventory");
                                     return true;
-                                }
-                                else
-                                {
-                                    // // adds as many as we can and then leaves the remainder in quantity
-                                    // addingQuantity = stackSpace;
-                                    // quantity -= addingQuantity;
-                                    
-                                    // if (int.TryParse(array[1], out currentQuantity))
-                                    // {
-                                    //     array[1] = (currentQuantity + addingQuantity).ToString();
-                                    // }
-
-                                    // // adds it to the total inventory
-                                    // totalInventory[itemName].quantity += addingQuantity;
-
-                                    // Debug.Log($"InventoryStatus: Added {addingQuantity} {itemName}s to the inventory with {quantity} remaining");
-
-                                    // // we wont break here. This means that once this is added it will keep iterating the inventory to see if theres any more stacks it can add to.
-                                    // // If theres any space left it will make a new stack if not it will give up
                                 }
                             }
                         }
@@ -97,6 +78,7 @@ public class Inventory
                 {
                     addNewStack(itemName, quantity);
                     Debug.Log($"InventoryStatus: Added {quantity} {itemName}s to the inventory as a new stack");
+                    return true;
                 }
                 else
                 {
@@ -169,27 +151,6 @@ public class Inventory
                                 break;
                             }
                         }
-
-                        // im not convinced this code is useful or actually does anything
-
-                        // else
-                        // {
-                        //     // adds as many as we can and then leaves the remainder in quantity
-                        //     if (int.TryParse(array[1], out takingQuantity))
-                        //     {
-                        //         quantity -= takingQuantity;
-                        //     }
-
-                        //     // we need to totally remove this stack from the inv since its been zeroed
-                        //     formattedInventory.Remove(array);
-
-                        //     // removes it from the total inventory
-                        //     totalInventory[itemName].quantity -= takingQuantity;
-
-                        //     Debug.Log($"InventoryStatus: Removed {takingQuantity} {itemName}s from the inventory with {quantity} remaining to take");
-
-                        //     // we wont break here. This means that once this is added it will keep iterating the inventory to take from the other stacks.
-                        // }
                     }
                 }
             }
@@ -299,6 +260,8 @@ public class Inventory
                     existingItem.storePrice = newItem.storePrice;
                     existingItem.stackSize = newItem.stackSize;
                     existingItem.goblinPrice = newItem.goblinPrice;
+
+                    totalInventory[values[0]] = existingItem;
 
                     Debug.Log($"Item {existingItem.className} updated in inventory.");
                 }
