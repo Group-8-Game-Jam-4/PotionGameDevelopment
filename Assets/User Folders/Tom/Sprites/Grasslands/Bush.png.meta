@@ -100,8 +100,8 @@ TextureImporter:
         serializedVersion: 2
         x: 80
         y: 128
-        width: 16
-        height: 32
+        width: 48
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,48 +111,6 @@ TextureImporter:
       bones: []
       spriteID: daa30ba9170511f4c8ee97bee97a265f
       internalID: -988546086
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bush_1
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 128
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5f58ffc76175c9b4cbf915f64334a65d
-      internalID: -997732241
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bush_2
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 128
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a277b24597329a245a9334a8653f439d
-      internalID: -1887050204
       vertices: []
       indices: 
       edges: []
@@ -247,7 +205,7 @@ TextureImporter:
         serializedVersion: 2
         x: 81
         y: 80
-        width: 15
+        width: 42
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -258,48 +216,6 @@ TextureImporter:
       bones: []
       spriteID: 733ad6a4d6c864742b59485c7819e7e9
       internalID: 1357983787
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bush_15
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 80
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a9a8248a9ef8dc14982435533fca00ad
-      internalID: 58570125
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bush_16
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 80
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ccbb1c91b7d401f42a831e2ca9f3c9ba
-      internalID: 2006865183
       vertices: []
       indices: 
       edges: []
