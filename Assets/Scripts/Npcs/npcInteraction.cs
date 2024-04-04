@@ -62,6 +62,7 @@ public class npcInteraction : MonoBehaviour
             // Debug.Log("Player exited trigger zone of NPC.");
             playerInRange = false;
             StartCoroutine(ResetCamera());
+            speechController.textUI.text = "";
         }
     }
 
