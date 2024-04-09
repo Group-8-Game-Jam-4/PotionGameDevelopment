@@ -234,6 +234,70 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 104711930}
   m_CullTransparentMesh: 1
+<<<<<<< Updated upstream:Assets/Scenes/Final Game Ish Sort of.unity
+=======
+--- !u!1001 &117479527
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 548070957533330370, guid: 52d991c4cf271514ebcd5620bae7e1bb, type: 3}
+      propertyPath: sceneToLoad
+      value: ShopInterior
+      objectReference: {fileID: 0}
+    - target: {fileID: 6320781198619027567, guid: 52d991c4cf271514ebcd5620bae7e1bb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.709301
+      objectReference: {fileID: 0}
+    - target: {fileID: 6320781198619027567, guid: 52d991c4cf271514ebcd5620bae7e1bb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 14.852861
+      objectReference: {fileID: 0}
+    - target: {fileID: 6320781198619027567, guid: 52d991c4cf271514ebcd5620bae7e1bb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.158519
+      objectReference: {fileID: 0}
+    - target: {fileID: 6320781198619027567, guid: 52d991c4cf271514ebcd5620bae7e1bb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6320781198619027567, guid: 52d991c4cf271514ebcd5620bae7e1bb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6320781198619027567, guid: 52d991c4cf271514ebcd5620bae7e1bb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6320781198619027567, guid: 52d991c4cf271514ebcd5620bae7e1bb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6320781198619027567, guid: 52d991c4cf271514ebcd5620bae7e1bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6320781198619027567, guid: 52d991c4cf271514ebcd5620bae7e1bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6320781198619027567, guid: 52d991c4cf271514ebcd5620bae7e1bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099067857974221052, guid: 52d991c4cf271514ebcd5620bae7e1bb, type: 3}
+      propertyPath: m_Name
+      value: PotionShop
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 52d991c4cf271514ebcd5620bae7e1bb, type: 3}
+>>>>>>> Stashed changes:Assets/User Folders/Morgan/Morgan_FinalGame.unity
 --- !u!1 &118021000
 GameObject:
   m_ObjectHideFlags: 0
