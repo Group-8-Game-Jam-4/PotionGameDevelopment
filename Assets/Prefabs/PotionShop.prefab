@@ -81,6 +81,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65214d2a0742ee54fbf09e38191b9886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneToLoad: ShopInterior
+  entered: 0
 --- !u!1 &9099067857974221052
 GameObject:
   m_ObjectHideFlags: 0

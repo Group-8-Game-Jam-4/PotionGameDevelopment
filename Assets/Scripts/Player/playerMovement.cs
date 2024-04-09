@@ -3,6 +3,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class playerMovement : MonoBehaviour
 {
@@ -21,6 +22,15 @@ public class playerMovement : MonoBehaviour
     private float currentMovementSpeed;
 
 
+    public void stopMovement()
+    {
+        baseMovementSpeed= 0;
+    }
+
+    public void startMovement()
+    {
+        baseMovementSpeed= 3;
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
