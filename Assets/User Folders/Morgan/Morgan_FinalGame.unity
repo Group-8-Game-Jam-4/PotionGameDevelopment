@@ -242,6 +242,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 548070957533330370, guid: 52d991c4cf271514ebcd5620bae7e1bb, type: 3}
+      propertyPath: sceneToLoad
+      value: Morg_ShopInterior
+      objectReference: {fileID: 0}
     - target: {fileID: 6320781198619027567, guid: 52d991c4cf271514ebcd5620bae7e1bb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.709301
