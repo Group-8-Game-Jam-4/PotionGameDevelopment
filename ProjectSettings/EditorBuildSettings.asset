@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ShopInterior.unity
     guid: 2794ed0552e20984bb48441da3759ccc
+  - enabled: 1
+    path: Assets/User Folders/Morgan/Morg_ShopInterior.unity
+    guid: 783b071376636b145bd8c447076fa1fd
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

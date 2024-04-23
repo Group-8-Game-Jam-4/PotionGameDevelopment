@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Collections;
 public class furnaceController : MonoBehaviour
 {
     public int furnaceLvl;
@@ -17,13 +17,18 @@ public class furnaceController : MonoBehaviour
         UpdateFurnaceSprite();
     }
 
+
+
     public void Update()
     {
         if (furnaceLvl == 4)
         {
             workStationScript.BrewPotion();
         }
+
+        furnaceImage.sprite = furnaceSprites[furnaceLvl];
     }
+
         public void progressLvl()
         {
             clicksNeeded--;
@@ -35,7 +40,7 @@ public class furnaceController : MonoBehaviour
                 UpdateFurnaceSprite();
             }
         }
-
+                                                                               
         void SetClicksNeeded()
         {
             // Generate random number between 1 and 3 for the next progression

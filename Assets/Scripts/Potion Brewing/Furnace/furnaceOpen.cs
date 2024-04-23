@@ -7,6 +7,9 @@ public class furnaceOpen : MonoBehaviour
 {
     public bool entered = true;
     public GameObject furnaceCanvas;
+    public furnaceController furnaceController;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +25,7 @@ public class furnaceOpen : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            furnaceController.furnaceLvl = 0;
             furnaceCanvas.SetActive(false);
         }
     }
@@ -37,6 +41,8 @@ public class furnaceOpen : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         entered = false;
+        furnaceController.furnaceLvl = 0;
+        furnaceCanvas.SetActive(false);
     }
 
     public void OpenFurnaceUI()
