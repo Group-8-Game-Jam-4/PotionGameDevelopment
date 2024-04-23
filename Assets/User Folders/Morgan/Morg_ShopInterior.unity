@@ -179,6 +179,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 96c408c5707fba243ba38f911ed5908c, type: 3}
   - {fileID: 21300000, guid: d6e0ccd978c7af64b96476b408dedcdb, type: 3}
   workStationScript: {fileID: 6713210554843349711}
+  timeIntervalInSeconds: 5
 --- !u!114 &118310489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4342,6 +4343,7 @@ MonoBehaviour:
   playerInventory: 1
   containerInventory: 1
   isWorkstation: 1
+  isWorkstationOutput: 0
   renderPlayerInv: 1
   playerInvUI: {fileID: 6717776595835585445}
   containerInvUI: {fileID: 6499178933480136105}
@@ -4351,6 +4353,7 @@ MonoBehaviour:
   playerInv: {fileID: 8898652458122037930}
   containerInv: {fileID: 8113054295174162107}
   workstation: {fileID: 6713210554843349711}
+  playerInventoryObject: {fileID: 0}
 --- !u!114 &2239241713411915978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5343,6 +5346,7 @@ MonoBehaviour:
   playerInventory: 1
   containerInventory: 1
   isWorkstation: 0
+  isWorkstationOutput: 1
   renderPlayerInv: 0
   playerInvUI: {fileID: 6717776595835585445}
   containerInvUI: {fileID: 861831425}
@@ -5352,6 +5356,7 @@ MonoBehaviour:
   playerInv: {fileID: 8898652458122037930}
   containerInv: {fileID: 933618834622576605}
   workstation: {fileID: 6713210554843349711}
+  playerInventoryObject: {fileID: 6717776595835585445}
 --- !u!224 &4420763084030041283
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6391,8 +6396,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 559, y: -253}
-  m_SizeDelta: {x: 771.374, y: 110}
+  m_AnchoredPosition: {x: 561, y: -253}
+  m_SizeDelta: {x: 161.3647, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6178314951683073351
 MonoBehaviour:
