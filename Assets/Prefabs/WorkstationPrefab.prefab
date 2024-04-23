@@ -1692,6 +1692,7 @@ MonoBehaviour:
   playerInventory: 1
   containerInventory: 1
   isWorkstation: 0
+  isWorkstationOutput: 1
   renderPlayerInv: 0
   playerInvUI: {fileID: 7240213054297940955}
   containerInvUI: {fileID: 1764031971551508986}
@@ -1701,6 +1702,7 @@ MonoBehaviour:
   playerInv: {fileID: 0}
   containerInv: {fileID: 3869946897648015267}
   workstation: {fileID: 7235644401818722993}
+  playerInventoryObject: {fileID: 7240213054297940955}
 --- !u!1 &3979647431018291873
 GameObject:
   m_ObjectHideFlags: 0
@@ -3545,6 +3547,7 @@ MonoBehaviour:
   playerInventory: 1
   containerInventory: 1
   isWorkstation: 1
+  isWorkstationOutput: 0
   renderPlayerInv: 1
   playerInvUI: {fileID: 7240213054297940955}
   containerInvUI: {fileID: 7165659799884709335}
@@ -3554,6 +3557,7 @@ MonoBehaviour:
   playerInv: {fileID: 0}
   containerInv: {fileID: 5320838809040291525}
   workstation: {fileID: 7235644401818722993}
+  playerInventoryObject: {fileID: 0}
 --- !u!1 &8498564730820187942
 GameObject:
   m_ObjectHideFlags: 0
