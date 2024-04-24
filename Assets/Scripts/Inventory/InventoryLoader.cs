@@ -95,29 +95,29 @@ public class InventoryLoader : MonoBehaviour
                         {
                             foreach (string[] a in containerInv.inventory.formattedInventory)
                             {
-                                if (a[0] == "carpet_blue")
+                                if (a[0] == "carpet")
                                 {
-                                    GameObject furnitureObject = GameObject.Find("carpet_blue_prefab");
+                                    GameObject furnitureObject = GameObject.Find("carpet_prefab");
                                     furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
                                 }
-                                if (a[0] == "lamp_blue")
+                                if (a[0] == "lamp")
                                 {
-                                    GameObject furnitureObject = GameObject.Find("lamp_blue_prefab");
+                                    GameObject furnitureObject = GameObject.Find("lamp_prefab");
                                     furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
                                 }
-                                if (a[0] == "painting_blue")
+                                if (a[0] == "painting")
                                 {
-                                    GameObject furnitureObject = GameObject.Find("painting_blue_prefab");
+                                    GameObject furnitureObject = GameObject.Find("painting_prefab");
                                     furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
                                 }
-                                if (a[0] == "rack_blue")
+                                if (a[0] == "rack")
                                 {
-                                    GameObject furnitureObject = GameObject.Find("rack_blue_prefab");
+                                    GameObject furnitureObject = GameObject.Find("rack_prefab");
                                     furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
                                 }
-                                if (a[0] == "table_blue")
+                                if (a[0] == "table")
                                 {
-                                    GameObject furnitureObject = GameObject.Find("table_blue_prefab");
+                                    GameObject furnitureObject = GameObject.Find("table_prefab");
                                     furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
                                 }
                             }
@@ -151,29 +151,29 @@ public class InventoryLoader : MonoBehaviour
                 {
                     foreach (string[] a in playerInv.inventory.formattedInventory)
                     {
-                        if (a[0] == "carpet_blue")
+                        if (a[0] == "carpet")
                         {
-                            GameObject furnitureObject = GameObject.Find("carpet_blue_prefab");
+                            GameObject furnitureObject = GameObject.Find("carpet_prefab");
                             furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
                         }
-                        if (a[0] == "lamp_blue")
+                        if (a[0] == "lamp")
                         {
-                            GameObject furnitureObject = GameObject.Find("lamp_blue_prefab");
+                            GameObject furnitureObject = GameObject.Find("lamp_prefab");
                             furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
                         }
-                        if (a[0] == "painting_blue")
+                        if (a[0] == "painting")
                         {
-                            GameObject furnitureObject = GameObject.Find("painting_blue_prefab");
+                            GameObject furnitureObject = GameObject.Find("painting_prefab");
                             furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
                         }
-                        if (a[0] == "rack_blue")
+                        if (a[0] == "rack")
                         {
-                            GameObject furnitureObject = GameObject.Find("rack_blue_prefab");
+                            GameObject furnitureObject = GameObject.Find("rack_prefab");
                             furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
                         }
-                        if (a[0] == "table_blue")
+                        if (a[0] == "table")
                         {
-                            GameObject furnitureObject = GameObject.Find("table_blue_prefab");
+                            GameObject furnitureObject = GameObject.Find("table_prefab");
                             furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
                         }
                     }

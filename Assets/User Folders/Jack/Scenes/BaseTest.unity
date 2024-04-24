@@ -667,8 +667,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 488140879623574673, guid: 67532b05c26defe45bd1158a9d4392c2, type: 3}
       propertyPath: m_Name
-      value: rack_blue_prefab
+      value: rack_prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 5512951883706326618, guid: 67532b05c26defe45bd1158a9d4392c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666837267023815160, guid: 67532b05c26defe45bd1158a9d4392c2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 00214497ec20ed046b3ded16fb9e0443, type: 3}
     - target: {fileID: 7245829440687346698, guid: 67532b05c26defe45bd1158a9d4392c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.6902864
@@ -1386,12 +1394,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 509263036872946526, guid: d06c5991670f46a4bb9475d751c87ec0, type: 3}
       propertyPath: m_Name
-      value: carpet_blue_prefab
+      value: carpet_prefab
       objectReference: {fileID: 0}
     - target: {fileID: 509263036872946526, guid: d06c5991670f46a4bb9475d751c87ec0, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4416559031082511412, guid: d06c5991670f46a4bb9475d751c87ec0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b88b86606d0d2564d9313ca51ae047b4, type: 3}
     - target: {fileID: 5752885887378216731, guid: d06c5991670f46a4bb9475d751c87ec0, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1604,6 +1616,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1879667450587038879, guid: 58024e4377e42754f85321b35fdcf87b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5a66679513c885b4f87e736997dcb2fa, type: 3}
     - target: {fileID: 3407130113027954285, guid: 58024e4377e42754f85321b35fdcf87b, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.8839
@@ -1658,7 +1674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5318498892937140561, guid: 58024e4377e42754f85321b35fdcf87b, type: 3}
       propertyPath: m_Name
-      value: lamp_blue_prefab
+      value: lamp_prefab
       objectReference: {fileID: 0}
     - target: {fileID: 5318498892937140561, guid: 58024e4377e42754f85321b35fdcf87b, type: 3}
       propertyPath: m_IsActive
@@ -1691,7 +1707,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5713220241902203411, guid: 151f21c2a9f078f45bdd27356585c851, type: 3}
       propertyPath: m_Name
-      value: painting_blue_prefab
+      value: painting_prefab
       objectReference: {fileID: 0}
     - target: {fileID: 5718802165780840333, guid: 151f21c2a9f078f45bdd27356585c851, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1740,7 +1756,7 @@ PrefabInstance:
     - target: {fileID: 7523620771941608545, guid: 151f21c2a9f078f45bdd27356585c851, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 70ab85ed0bb9ff940bba5285f42be020, type: 3}
+      objectReference: {fileID: 21300000, guid: ff8ce82734d5b954ca538eb175b99704, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2064,8 +2080,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4105161770452576001, guid: 4c9e70e008f3fb443bb2edd1caa8b757, type: 3}
       propertyPath: m_Name
-      value: table_blue_prefab
+      value: table_prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 8393655410528252436, guid: 4c9e70e008f3fb443bb2edd1caa8b757, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 90ff850f6d3280747af09e3ec00a3562, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
