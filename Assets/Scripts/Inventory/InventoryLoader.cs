@@ -21,10 +21,6 @@ public class InventoryLoader : MonoBehaviour
     ItemClass selectedItem;
     bool selectedPlayerItem;
 
-    // furniture
-    GameObject furniture;
-    string lastSelectedFurniture;
-
     private void Start() 
     {
         RefreshInventories();
@@ -97,35 +93,33 @@ public class InventoryLoader : MonoBehaviour
                         //if the container we're interacting with is a cupboard
                         if (isCupboard)
                         {
-                            /*lastSelectedFurniture = selectedItem.className;
-                            //if the item we're interacting with is a blue carpet
-                            if (selectedItem.className == "carpet_blue" && containerInv.inventory.totalInventory["carpet_blue"].quantity != 0)
+                            foreach (string[] a in containerInv.inventory.formattedInventory)
                             {
-                                //create a clone of carpet_blue_prefab
-                                GameObject furnitureObject = Resources.Load<GameObject>(selectedItem.className + "_prefab");
-                                Vector3 spawnPosition = transform.parent.position + new Vector3((float)-4.7, -9, 0);
-                                furniture = Instantiate(furnitureObject, spawnPosition, Quaternion.identity);
-                            }
-                            //if the item we're interacting with is a tall lamp
-                            if (selectedItem.className == "lamp_blue" && containerInv.inventory.totalInventory["lamp_blue"].quantity != 0)
-                            {
-                                //create a clone of tall_lamp_prefab
-                                GameObject furnitureObject = Resources.Load<GameObject>(selectedItem.className + "_prefab");
-                                Vector3 spawnPosition = transform.parent.position + new Vector3(0, -9, 0);
-                                furniture = Instantiate(furnitureObject, spawnPosition, Quaternion.identity);
-                            }*/
-
-                            if (containerInv.inventory.totalInventory.ContainsKey("carpet_blue") == true)
-                            {
-                                GameObject furnitureObject = GameObject.Find("carpet_blue_prefab");
-                                furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
-                                
-                            }
-                            if (containerInv.inventory.totalInventory.ContainsKey("lamp_blue") == true)
-                            {
-                                GameObject furnitureObject = GameObject.Find("lamp_blue_prefab");
-                                furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
-
+                                if (a[0] == "carpet_blue")
+                                {
+                                    GameObject furnitureObject = GameObject.Find("carpet_blue_prefab");
+                                    furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
+                                }
+                                if (a[0] == "lamp_blue")
+                                {
+                                    GameObject furnitureObject = GameObject.Find("lamp_blue_prefab");
+                                    furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
+                                }
+                                if (a[0] == "painting_blue")
+                                {
+                                    GameObject furnitureObject = GameObject.Find("painting_blue_prefab");
+                                    furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
+                                }
+                                if (a[0] == "rack_blue")
+                                {
+                                    GameObject furnitureObject = GameObject.Find("rack_blue_prefab");
+                                    furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
+                                }
+                                if (a[0] == "table_blue")
+                                {
+                                    GameObject furnitureObject = GameObject.Find("table_blue_prefab");
+                                    furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
+                                }
                             }
                         }
                     }
@@ -155,17 +149,33 @@ public class InventoryLoader : MonoBehaviour
                 //if item is being taken from the cupboard
                 if (isCupboard)
                 {
-                    if (playerInv.inventory.totalInventory.ContainsKey("carpet_blue"))
+                    foreach (string[] a in playerInv.inventory.formattedInventory)
                     {
-                        GameObject furnitureObject = GameObject.Find("carpet_blue_prefab");
-                        furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
-
-                    }
-                    if (playerInv.inventory.totalInventory.ContainsKey("lamp_blue"))
-                    {
-                        GameObject furnitureObject = GameObject.Find("lamp_blue_prefab");
-                        furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
-
+                        if (a[0] == "carpet_blue")
+                        {
+                            GameObject furnitureObject = GameObject.Find("carpet_blue_prefab");
+                            furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
+                        }
+                        if (a[0] == "lamp_blue")
+                        {
+                            GameObject furnitureObject = GameObject.Find("lamp_blue_prefab");
+                            furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
+                        }
+                        if (a[0] == "painting_blue")
+                        {
+                            GameObject furnitureObject = GameObject.Find("painting_blue_prefab");
+                            furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
+                        }
+                        if (a[0] == "rack_blue")
+                        {
+                            GameObject furnitureObject = GameObject.Find("rack_blue_prefab");
+                            furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
+                        }
+                        if (a[0] == "table_blue")
+                        {
+                            GameObject furnitureObject = GameObject.Find("table_blue_prefab");
+                            furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
+                        }
                     }
                 }
             }

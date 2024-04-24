@@ -18,6 +18,9 @@ public class ContainerInventory : MonoBehaviour
         inventory.LoadCSV();
         inventory.AddItem("carpet_blue", 1);
         inventory.AddItem("lamp_blue", 1);
+        inventory.AddItem("painting_blue", 1);
+        inventory.AddItem("rack_blue", 1);
+        inventory.AddItem("table_blue", 1);
     }
 
     public void SaveInventory()
