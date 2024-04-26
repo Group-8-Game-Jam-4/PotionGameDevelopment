@@ -6,10 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/User Folders/Jack/Scenes/MainMenu Test.unity
-    guid: 769f4e909ba86f146b280fca72b94e0d
+    path: Assets/Scenes/MainMenu Test.unity
+    guid: dc36f2a8c14b8bb4e8f4f9664bb7674c
   - enabled: 1
-    path: Assets/User Folders/Morgan/MorganScene.unity
-    guid: 7c3634c405da50046a23cd85fa9730fa
+    path: Assets/Scenes/FinalGame.unity
+    guid: cae3e379bdd448d4e9a9549ca9a5a5c0
+  - enabled: 1
+    path: Assets/Scenes/ShopInterior.unity
+    guid: 2794ed0552e20984bb48441da3759ccc
+  - enabled: 1
+    path: Assets/User Folders/Morgan/Morg_ShopInterior.unity
+    guid: 783b071376636b145bd8c447076fa1fd
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
