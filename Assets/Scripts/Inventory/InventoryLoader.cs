@@ -13,13 +13,22 @@ public class InventoryLoader : MonoBehaviour
     public bool playerInventory = true;
     public bool containerInventory = false;
     public bool isCupboard = false;
+    public bool isWorkstation = false;
+    public bool isWorkstationOutput = false;
+    public bool renderPlayerInv = true;
+    public GameObject playerInvUI;
+    public GameObject containerInvUI;
     public GameObject UITemplate;
     public GameObject sliderElement;
     public TextMeshProUGUI sliderQuantityText;
     public PlayerInventory playerInv;
     public ContainerInventory containerInv;
+    public WorkstationSystem workstation;
     ItemClass selectedItem;
     bool selectedPlayerItem;
+
+    // this is only ever used under very specific circumstances and only exists because theres a major flaw with how i do these that should be fixed but i cant be arsed
+    public GameObject playerInventoryObject;
 
     private void Start() 
     {
@@ -66,6 +75,7 @@ public class InventoryLoader : MonoBehaviour
                 if (int.TryParse(item[1], out int currentQuantity))
                 {
                     transform.Find("Give Items Slider").transform.Find("Slider").gameObject.GetComponent<Slider>().maxValue = currentQuantity;
+                    Debug.Log(currentQuantity);
                 }
             }
         }
@@ -247,14 +257,94 @@ public class InventoryLoader : MonoBehaviour
     public void RefreshInventories()
     {
         // if player inventory is enabled show it in the left bit. If not just show the container
-        if(playerInventory)
+        if(playerInventory && renderPlayerInv)
         {
+            playerInvUI.SetActive(true);
             PopulateInventoryUI(playerInv.formattedInventory, playerInv.inventoryMaxLength, true);
+        }
+        if(playerInventory && !renderPlayerInv && isWorkstationOutput)
+        {
+            PopulateContainerOutputInventoryUI(playerInv.formattedInventory, playerInv.inventoryMaxLength);
         }
         if(containerInventory)
         {
+            containerInvUI.SetActive(true);
             // change these to be well not the playerInv. Like the cart inv or something
             PopulateInventoryUI(containerInv.formattedInventory, containerInv.inventoryMaxLength, false);
+        }
+        if(isWorkstation)
+        {
+            workstation.CheckPotion();
+        }
+    }
+
+    // this is only ever used under very specific circumstances and only exists because theres a major flaw with how i do these that should be fixed but i cant be arsed
+    private void PopulateContainerOutputInventoryUI(List<string[]> formattedInventory, int inventoryMaxLength)
+    {
+        // foreach thing in formatted inventory get name and quantity (values 1 and 2) Each one of these will be an object in the ui. Each object will also need an image and the display name which we will get from the item class by querying the total inventory
+
+
+        GameObject ItemList = playerInventoryObject.transform.Find("ItemsListContent").gameObject;
+        foreach (Transform child in ItemList.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+
+
+        // first we populate the player inventory
+
+        for (int i = 0; i < formattedInventory.Count; i++)
+        {
+            string[] array = formattedInventory[i];
+
+            // Prep the object
+            GameObject UIElement = Instantiate(UITemplate, ItemList.transform);
+
+            // Get child text object named title (as TMPro Text)
+            TextMeshProUGUI titleText = UIElement.transform.Find("Title").GetComponent<TextMeshProUGUI>();
+
+            // Get child image named Image (as a UI Image)
+            Image imageComponent = UIElement.transform.Find("Image").GetComponent<Image>();
+
+            // Get child text (child of the image object) as TMPro Text (named quantity)
+            TextMeshProUGUI quantityText = imageComponent.transform.Find("Quantity").GetComponent<TextMeshProUGUI>();
+
+            // get the info for it
+            quantityText.text = array[1].ToString();
+            titleText.text = array[0];
+            imageComponent.sprite = Resources.Load<Sprite>(array[0]);
+
+            UIElement.GetComponent<ButtonValue>().value = i;
+
+            // this will probably cause issues at a later date but i cant be arsed to fix it, cheers
+            UIElement.GetComponent<ButtonValue>().isPlayer = true;
+        }
+
+        // add the empty ones
+
+        int a = inventoryMaxLength - formattedInventory.Count();
+
+        if(a > 0)
+        {
+            for(int i = 0; i < a; i++)
+            {
+                // Prep the object
+                GameObject UIElement = Instantiate(UITemplate, ItemList.transform);
+
+                // Get child text object named title (as TMPro Text)
+                TextMeshProUGUI titleText = UIElement.transform.Find("Title").GetComponent<TextMeshProUGUI>();
+
+                // Get child image named Image (as a UI Image)
+                Image imageComponent = UIElement.transform.Find("Image").GetComponent<Image>();
+
+                // Get child text (child of the image object) as TMPro Text (named quantity)
+                TextMeshProUGUI quantityText = imageComponent.transform.Find("Quantity").GetComponent<TextMeshProUGUI>();
+
+                // get the info for it
+
+                quantityText.text = "";
+                titleText.text = "";
+            }
         }
     }
 

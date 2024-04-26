@@ -6,7 +6,8 @@ public class InventoryOpener : MonoBehaviour
 {
     public GameObject inventoryObject;
     public bool isPlayer = false;
-    public bool isCart = false;
+    public bool isContainer = false;
+    public bool isWorkstation = false;
     public GameObject interactText;
     private Transform player;
     private bool playerInRange = false;
@@ -84,7 +85,7 @@ public class InventoryOpener : MonoBehaviour
             }
         }
 
-        if(isCart)
+        if(isContainer && !isWorkstation)
         {
             // Check if the player is in range and presses the "E" key
             if (playerInRange && Input.GetKeyDown(KeyCode.E) && !InInventory())
@@ -96,13 +97,27 @@ public class InventoryOpener : MonoBehaviour
                 return;
             }
         }
+        if(isContainer && isWorkstation)
+        {
+            // Check if the player is in range and presses the "E" key
+            if (playerInRange && Input.GetKeyDown(KeyCode.E) && !InInventory())
+            {
+                // display the inventories
+                inventoryObject.SetActive(true);
+                inUi = true;
+                inventoryObject.GetComponent<WorkstationInventoryController>().RefreshInventories();
+                return;
+            }
+        }
+
+
 
         if(Input.GetKeyUp(KeyCode.Tab)){pressed = false;}
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(!isCart){return;}
+        if(!isContainer){return;}
         interactText.SetActive(true);
         // Debug.Log("Player entered trigger");
         player = other.gameObject.transform;
@@ -116,13 +131,15 @@ public class InventoryOpener : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if(!isCart){return;}
+        if(!isContainer){return;}
         interactText.SetActive(false);
         // Check if the colliding object is the player
         if (other.CompareTag("Player"))
         {
             // Debug.Log("Player exited trigger zone of NPC.");
             playerInRange = false;
+            inventoryObject.SetActive(false);
+            inUi = false;
         }
     }
 }

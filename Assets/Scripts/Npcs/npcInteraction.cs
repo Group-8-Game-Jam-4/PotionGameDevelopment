@@ -17,6 +17,18 @@ public class npcInteraction : MonoBehaviour
     bool camAtNPC = false;
 
 
+    // all the ui stuff
+    public GameObject missingItemsUi;
+    public TextMeshProUGUI[] missingText;
+    public GameObject[] missingStrikes;
+
+    public GameObject haveItemsUi;
+    public TextMeshProUGUI[] haveText;
+    public GameObject[] haveStrikes;
+
+    QuestClass lastQuest;
+    Inventory playerInventory;
+
     private void Start()
     {
         // Assign the current GameObject to currentNPC
@@ -28,6 +40,7 @@ public class npcInteraction : MonoBehaviour
         interactText.SetActive(true);
         // Debug.Log("Player entered trigger");
         player = other.gameObject.transform;
+        playerInventory = player.GetComponentInChildren<PlayerInventory>().inventory;
         // Check if the colliding object is the player
         if (other.CompareTag("Player"))
         {
@@ -38,13 +51,18 @@ public class npcInteraction : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        interactText.SetActive(false);
+        if (interactText != null)
+        {
+            interactText.SetActive(false);
+            ResetUi();
+        }
         // Check if the colliding object is the player
         if (other.CompareTag("Player"))
         {
             // Debug.Log("Player exited trigger zone of NPC.");
             playerInRange = false;
             StartCoroutine(ResetCamera());
+            speechController.textUI.text = "";
         }
     }
 
@@ -54,6 +72,10 @@ public class npcInteraction : MonoBehaviour
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
             StartCoroutine(AdjustCameraWithDelay());
+        }
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            ResetUi();
         }
     }
 
@@ -65,7 +87,7 @@ public class npcInteraction : MonoBehaviour
             float targetFOV = initialFOV;
             float duration = 0.2f;
             float elapsedTime = 0f;
-            mainCamera.Follow = currentNPC.transform;
+            mainCamera.Follow = player.transform;
 
             while (elapsedTime < duration)
             {
@@ -120,6 +142,10 @@ public class npcInteraction : MonoBehaviour
                 case 1:
                     // display the text asking for the missing items and then probably display like a ui where the player can transfer them
                     speechController.RevealText(currentQuest.doYouHaveThis);
+
+                    // show the ui where its like do you want to give these items
+                    ResetUi();
+                    ShowUI(currentQuest);
                     break;
                 case 2:
                     // display the text saying there are no more quests available
@@ -127,6 +153,89 @@ public class npcInteraction : MonoBehaviour
                     break;
             }  
         }
+    }
+
+    void ShowUI(QuestClass currentQuest)
+    {
+        Inventory playerInventory = player.GetComponentInChildren<PlayerInventory>().inventory;
+        lastQuest = currentQuest;
+        bool hasAllItems = true;
+        // we need to see if we have all the items in the inventory or not
+        for(int i = 0; i < currentQuest.NeededItems.Count; i++)
+        {
+            // i will be the current item
+            ItemClass item = currentQuest.NeededItems[i];
+            string className = item.className;
+
+            // this means we have some of that item
+            if(playerInventory.totalInventory.ContainsKey(className))
+            {
+                if(item.quantity <= playerInventory.totalInventory[className].quantity)
+                {
+                    // enable the strike for this index as we have enough of it
+                    missingText[i].text = item.displayName + " x" + item.quantity.ToString();
+                    haveText[i].text = item.displayName + " x" + item.quantity.ToString();
+                    missingStrikes[i].SetActive(true);
+                    haveStrikes[i].SetActive(true);
+                }
+                else
+                {
+                    missingText[i].text = item.displayName + " x" + item.quantity.ToString();
+                    haveText[i].text = item.displayName + " x" + item.quantity.ToString();
+                    hasAllItems = false;
+                }
+            }
+        }
+
+        if(hasAllItems)
+        {
+            // show gui for whether or not u wanna give them
+            missingItemsUi.SetActive(false);
+            haveItemsUi.SetActive(true);
+        }
+        else
+        {
+            // show the gui showing the needed items
+            haveItemsUi.SetActive(false);
+            missingItemsUi.SetActive(true);
+        }
+    }
+
+    void ResetUi()
+    {
+        for(int i = 0; i < 2; i++)
+        {
+            missingText[i].text = "";
+            haveText[i].text = "";
+            missingStrikes[i].SetActive(false);
+            haveStrikes[i].SetActive(false);
+            haveItemsUi.SetActive(false);
+            missingItemsUi.SetActive(false);
+        }
+    }
+
+    public void GiveQuestItems()
+    {
+        // take items from player
+        foreach(ItemClass item in lastQuest.NeededItems)
+        {
+            playerInventory.TakeItem(item.className, item.quantity);
+        }
+
+        // make it so this quest is like done
+        lastQuest.NeededItems = null;
+        lastQuest.AwaitingItems = false;
+        haveItemsUi.SetActive(false);
+        missingItemsUi.SetActive(false);
+
+        // show the next bit of text
+        StartCoroutine(AdjustCameraWithDelay());
+    }
+
+    public void No()
+    {
+        haveItemsUi.SetActive(false);
+        missingItemsUi.SetActive(false);
     }
 }
 
