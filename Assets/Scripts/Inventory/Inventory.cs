@@ -170,6 +170,40 @@ public class Inventory
         // get the inventory and see if there is any of the item to take, if there is -1 of that item and return true. This method will be used primarily by give item
     }
 
+    public bool IsPotion(string itemName)
+    {
+        // if the item exists
+        if(!totalInventory.ContainsKey(itemName))
+        {
+            if(totalInventory[itemName].isPotion == "TRUE")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    public bool Contains(string itemName)
+    {
+        // if the item exists
+        if(!totalInventory.ContainsKey(itemName))
+        {
+            if(totalInventory[itemName].quantity >= 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return false;
+    }
+
     public void LoadCSV()
     {
         // // loop thru the csv, see if the className (column 0 (not rows 0 or 1)) exists in totalInventory as a key. If it doesent make a new instance of "ItemClass", add in the info from the csv and add it into totalInventory
@@ -196,7 +230,7 @@ public class Inventory
             string[] values = ParseCSVLine(lines[i]);
 
             // Check if all required values are present
-            if (values.Length < 10)
+            if (values.Length < 11)
             {
                 Debug.LogError($"Incomplete data for line {i + 1}: {lines[i]}");
                 continue;
@@ -232,6 +266,7 @@ public class Inventory
             newItem.rarity = values[3];
             newItem.spawnBiome1 = values[4];
             newItem.spawnBiome2 = values[5];
+            newItem.isPotion = values[10];
 
             // Check if className exists in totalInventory
             if (totalInventory.ContainsKey(values[0]))
@@ -248,7 +283,8 @@ public class Inventory
                     existingItem.sellPrice != newItem.sellPrice ||
                     existingItem.storePrice != newItem.storePrice ||
                     existingItem.stackSize != newItem.stackSize ||
-                    existingItem.goblinPrice != newItem.goblinPrice)
+                    existingItem.goblinPrice != newItem.goblinPrice ||
+                    existingItem.isPotion != newItem.isPotion)
                 {
                     // Update values
                     existingItem.displayName = newItem.displayName;
@@ -260,6 +296,7 @@ public class Inventory
                     existingItem.storePrice = newItem.storePrice;
                     existingItem.stackSize = newItem.stackSize;
                     existingItem.goblinPrice = newItem.goblinPrice;
+                    existingItem.isPotion = newItem.isPotion;
 
                     totalInventory[values[0]] = existingItem;
 
