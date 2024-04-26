@@ -1,19 +1,44 @@
-Class Name,Display Name,Image Name,Rarity,Spawn Biome 1,Spawn Biome 2,Stack Size,SellPrice,StorePrice,GoblinPrice
-,,,,,,,,,
-wood,Wood,wood,Common,Grassland,SnowyMountains,15,2,3,5
-honey,Honey,honey,Rare,Grassland,none,16,3,5,8
-sugar,Sugar,sugar,Uncommon,none,none,20,5,10,15
-volcanic_melon,Volcanic Melon,volcanic_melon,Epic,Volcano,none,5,15,20,30
-feather,Feather,feather,Common,none,none,30,2,3,5
-frost_air,Frost Air,frost_air,Uncommon,SnowyMountains,none,5,5,10,15
-magic_flower,Magic Flower,magic_flower,Epic,Grassland,none,20,15,20,30
-stick,Stick,stick,Common,Grassland,SnowyMountains,20,2,3,5
-coal,Coal,coal,Uncommon,Grassland,Volcano,16,5,10,15
-water,Water,water,Common,Grassland,SnowyMountains,1,1,2,1
-Ice,Ice,Ice,Common,SnowyMountains,SnowyMountains,10,1,2,1
-Stone,Stone,Stone,Common,Grass / Snow,Grass / Snow,5,1,2,1
-carpet,Carpet,carpet,Epic,N/A,N/A,1,0,0,0
-lamp,Lamp,lamp,Epic,N/A,N/A,1,0,0,0
-painting,Painting,painting,Epic,N/A,N/A,1,0,0,0
-rack,Rack,rack,Epic,N/A,N/A,1,0,0,0
-table,Table,table,Epic,N/A,N/A,1,0,0,0
+Class Name,Display Name,Image Name,Rarity,Spawn Biome 1,Spawn Biome 2,Stack Size,SellPrice,StorePrice,GoblinPrice,IsPotion
+,,,,,,,,,,
+wood,Wood,wood,Common,Grassland,SnowyMountains,15,5,5,10,FALSE
+honey,Honey,honey,Rare,Grassland,none,16,3,3,6,FALSE
+sugar,Sugar,sugar,Uncommon,none,none,20,3,3,6,FALSE
+melon, Melon,melon,Epic,Volcano,none,5,3,3,6,FALSE
+feather,Feather,feather,Common,none,none,30,1,1,5,FALSE
+frost_air,Frost Air,frost_air,Uncommon,SnowyMountains,none,5,5,5,10,FALSE
+magic_flower,Magic Flower,magic_flower,Epic,Grassland,none,20,3,3,6,FALSE
+stick,Stick,stick,Common,Grassland,SnowyMountains,20,1,1,10,FALSE
+coal,Coal,coal,Uncommon,Grassland,Volcano,16,3,3,15,FALSE
+water,Water,water,Common,Grassland,SnowyMountains,1,4,4,8,FALSE
+Ice,Ice,Ice,Common,SnowyMountains,SnowyMountains,10,8,8,16,FALSE
+Stone,Stone,Stone,Common,Grass / Snow,Grass / Snow,5,5,5,10,FALSE
+carpet,Carpet,carpet,Epic,N/A,N/A,1,6,6,0,FALSE
+lamp,Lamp,lamp,Epic,N/A,N/A,1,2,2,0,FALSE
+painting,Painting,painting,Epic,N/A,N/A,1,3,3,0,FALSE
+rack,Rack,rack,Epic,N/A,N/A,1,6,6,0,FALSE
+table,Table,table,Epic,N/A,N/A,1,16,16,0,FALSE
+boiled_melon,Boiled Melon,Boiled_Melon,Rare ,Crafted By player ,N/A,5,10,10,20,FALSE
+feather _scorched ,Feather Scorched ,Feather _Scorched ,Rare,Crafted By player,N/A,20,6,6,12,FALSE
+magic_flower_wilted,Magic Flower wilted,Magic_Flower_wilted,Epic ,Crafted By player,N/A,20,6,6,12,FALSE
+heated_coal,Heated Coal,Heated_Coal,Rare,Crafted By player,N/A,16,10,10,20,FALSE
+split_stone,Split Stone,Split_Stone,Rare,Crafted By player,N/A,8,8,8,16,FALSE
+wood_splinted ,wood Splinted ,wood_Splinted ,Rare,Crafted By player,N/A,16,10,10,20,FALSE
+sugar_syrup,Sugar syrup,Sugar_syrup,Rare,Crafted By player,N/A,20,6,6,12,FALSE
+sugar_grounded,Sugar Grounded,Sugar_Grounded,Rare,Crafted By player ,N/A,20,6,6,12,FALSE
+half_melted_ice,Half melted Ice,Half_melted_Ice,Epic,Crafted By player,N/A,10,10,10,20,FALSE
+boiled_water,Boiled water,Boiled_water,Epic,Crafted By player,N/A,1,15,15,30,FALSE
+Sweet Elixir,Sweet Elixir,Sweet Elixir,Epic,Brewed By the Player ,N/A,5,20,20,40,TRUE
+Volcanic Boost,Volcanic Boost,Volcanic Boost,Epic,Brewed By the Player ,N/A,5,30,30,60,TRUE
+Featherfall Brew,Featherfall Brew,Featherfall Brew,Epic,Brewed By the Player ,N/A,5,20,20,20,TRUE
+Frostbite Potion,Frostbite Potion,Frostbite Potion,Epic,Brewed By the Player ,N/A,5,40,40,80,TRUE
+Enchanted Flora,Enchanted Flora,Enchanted Flora,Epic,Brewed By the Player ,N/A,5,30,30,60,TRUE
+Energizing Elixir,Energizing Elixir,Energizing Elixir,Epic,Brewed By the Player ,N/A,5,40,40,80,TRUE
+Warmth Potion,Warmth Potion,Warmth Potion,Epic,Brewed By the Player ,N/A,5,30,30,60,TRUE
+Aqua Vitality,Aqua Vitality,Aqua Vitality,Epic,Brewed By the Player ,N/A,5,25,25,50,TRUE
+Icy Veins Tonic,Icy Veins Tonic,Icy Veins Tonic,Epic,Brewed By the Player ,N/A,5,20,20,40,TRUE
+Earthshaker Brew,Earthshaker Brew,Earthshaker Brew,Epic,Brewed By the Player ,N/A,5,25,25,25,TRUE
+Woodland Guardian Potion,Woodland Guardian Potion,Woodland Guardian Potion,Epic,Brewed By the Player ,N/A,5,20,20,40,TRUE
+Soothing Draught,Soothing Draught,Soothing Draught,Epic,Brewed By the Player ,N/A,5,25,25,50,TRUE
+Melody of Flames,Melody of Flames,Melody of Flames,Epic,Brewed By the Player ,N/A,5,40,40,80,TRUE
+Frostbloom Extract,Frostbloom Extract,Frostbloom Extract,Legendary,Brewed By the Player ,N/A,5,70,70,140,TRUE
+Stalwart Brew,Stalwart Brew,Stalwart Brew,Epic,Brewed By the Player ,N/A,5,25,25,50,TRUE
