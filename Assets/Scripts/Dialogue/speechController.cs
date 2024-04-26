@@ -51,10 +51,10 @@ public class SpeechController : MonoBehaviour
         }
 
         isRevealing = false;
-        //clearCoroutine = StartCoroutine(ClearText(1f));
+        clearCoroutine = StartCoroutine(ClearText(1f));
     }
 
-    public IEnumerator ClearText(float seconds)
+    private IEnumerator ClearText(float seconds)
     {
         isClearing = true;
         yield return new WaitForSeconds(seconds);
