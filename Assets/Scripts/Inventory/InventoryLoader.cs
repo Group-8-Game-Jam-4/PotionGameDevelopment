@@ -13,6 +13,7 @@ public class InventoryLoader : MonoBehaviour
     public bool playerInventory = true;
     public bool containerInventory = false;
     public bool isCupboard = false;
+    public bool isShop = false;
     public bool isWorkstation = false;
     public bool isWorkstationOutput = false;
     public bool renderPlayerInv = true;
@@ -24,6 +25,7 @@ public class InventoryLoader : MonoBehaviour
     public PlayerInventory playerInv;
     public ContainerInventory containerInv;
     public WorkstationSystem workstation;
+    populateBenches[] benches;
     ItemClass selectedItem;
     bool selectedPlayerItem;
 
@@ -33,6 +35,8 @@ public class InventoryLoader : MonoBehaviour
     private void Start() 
     {
         RefreshInventories();
+
+        benches = FindObjectsOfType<populateBenches>();
     }
 
     public void OnSliderChange(float value)
@@ -100,6 +104,14 @@ public class InventoryLoader : MonoBehaviour
                         // if we can actually fit that many
                         if(containerInv.inventory.AddItem(selectedItem.className, sliderValue));
 
+                        if (isShop && containerInv.inventory.IsPotion(selectedItem.className))
+                        {
+                            foreach (populateBenches bench in benches)
+                            {
+                                bench.stockShelf();
+                            }
+                        }
+
                         //if the container we're interacting with is a cupboard
                         if (isCupboard)
                         {
@@ -162,6 +174,14 @@ public class InventoryLoader : MonoBehaviour
             {
                 // if we can actually fit that many
                 if(playerInv.inventory.AddItem(selectedItem.className, sliderValue));
+
+                if (isShop)
+                {
+                    foreach (populateBenches bench in benches)
+                    {
+                        bench.unstockShelf();
+                    }
+                }
 
                 //if item is being taken from the cupboard
                 if (isCupboard)
