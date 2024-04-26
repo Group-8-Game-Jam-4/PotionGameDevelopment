@@ -5,12 +5,14 @@ using System.Linq;
 using TMPro;
 using UnityEngine.UI;
 using System.Resources;
+using Unity.VisualScripting;
 
 public class InventoryLoader : MonoBehaviour
 {
     // inventory
     public bool playerInventory = true;
     public bool containerInventory = false;
+    public bool isCupboard = false;
     public bool isWorkstation = false;
     public bool isWorkstationOutput = false;
     public bool renderPlayerInv = true;
@@ -96,7 +98,47 @@ public class InventoryLoader : MonoBehaviour
                     if(containerInventory == true)
                     {
                         // if we can actually fit that many
-                        containerInv.inventory.AddItem(selectedItem.className, sliderValue);
+                        if(containerInv.inventory.AddItem(selectedItem.className, sliderValue));
+
+                        //if the container we're interacting with is a cupboard
+                        if (isCupboard)
+                        {
+                            //loop through the containers inventory
+                            foreach (string[] a in containerInv.inventory.formattedInventory)
+                            {
+                                //check if it has a specific item in it
+                                if (a[0] == "carpet")
+                                {
+                                    //activate carpet if its in the container inventory
+                                    GameObject furnitureObject = GameObject.Find("carpet_prefab");
+                                    furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
+                                }
+                                if (a[0] == "lamp")
+                                {
+                                    //activate lamp if its in the container inventory
+                                    GameObject furnitureObject = GameObject.Find("lamp_prefab");
+                                    furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
+                                }
+                                if (a[0] == "painting")
+                                {
+                                    //activate painting if its in the container inventory
+                                    GameObject furnitureObject = GameObject.Find("painting_prefab");
+                                    furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
+                                }
+                                if (a[0] == "rack")
+                                {
+                                    //activate rack if its in the container inventory
+                                    GameObject furnitureObject = GameObject.Find("rack_prefab");
+                                    furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
+                                }
+                                if (a[0] == "table")
+                                {
+                                    //activate table if its in the container inventory
+                                    GameObject furnitureObject = GameObject.Find("table_prefab");
+                                    furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
+                                }
+                            }
+                        }
                     }
                 }
                 containerInv.SaveInventory();
@@ -119,7 +161,47 @@ public class InventoryLoader : MonoBehaviour
             if(containerInv.inventory.TakeItem(selectedItem.className, sliderValue))
             {
                 // if we can actually fit that many
-                playerInv.inventory.AddItem(selectedItem.className, sliderValue);
+                if(playerInv.inventory.AddItem(selectedItem.className, sliderValue));
+
+                //if item is being taken from the cupboard
+                if (isCupboard)
+                {
+                    //loop through the players inventory
+                    foreach (string[] a in playerInv.inventory.formattedInventory)
+                    {
+                        //check if they have a specific item in it
+                        if (a[0] == "carpet")
+                        {
+                            //remove carpet if they have it in their inventory
+                            GameObject furnitureObject = GameObject.Find("carpet_prefab");
+                            furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
+                        }
+                        if (a[0] == "lamp")
+                        {
+                            //remove carpet if they have it in their inventory
+                            GameObject furnitureObject = GameObject.Find("lamp_prefab");
+                            furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
+                        }
+                        if (a[0] == "painting")
+                        {
+                            //remove painting if they have it in their inventory
+                            GameObject furnitureObject = GameObject.Find("painting_prefab");
+                            furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
+                        }
+                        if (a[0] == "rack")
+                        {
+                            //remove rack if they have it in their inventory
+                            GameObject furnitureObject = GameObject.Find("rack_prefab");
+                            furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
+                        }
+                        if (a[0] == "table")
+                        {
+                            //remove table if they have it in their inventory
+                            GameObject furnitureObject = GameObject.Find("table_prefab");
+                            furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
+                        }
+                    }
+                }
             }
         }
 
