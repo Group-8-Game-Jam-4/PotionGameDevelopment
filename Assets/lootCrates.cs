@@ -79,16 +79,9 @@ public class lootCrates : MonoBehaviour
         // add however many
         for(int i = 0; i < itemAmount; i++)
         {
-            Debug.Log("SDFDSFGD");
-
             // pick the random item each time
             int itemNumber = Random.Range(0, itemTable.Count);
             containerInv.inventory.AddItem(itemTable[itemNumber], 1);
-        }
-
-        foreach(string item in itemTable)
-        {
-            Debug.Log(item);
         }
 
         // actually show the crate
