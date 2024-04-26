@@ -9,9 +9,6 @@ public class ContainerInventory : MonoBehaviour
     public List<string[]> formattedInventory = new List<string[]>();
     public Dictionary<string, ItemClass> totalInventory = new Dictionary<string, ItemClass>();
 
-    // this is purely to make it easier in editor
-    public string InventoryName;
-
     // Start is called before the first frame update
     void Awake()
     {
