@@ -7,12 +7,10 @@ public class GameplayManager : MonoBehaviour
     private Dictionary<string, List<string[]>> questLines = new Dictionary<string, List<string[]>>();
     private Dictionary<string, QuestClass> ongoingQuests = new Dictionary<string, QuestClass>();
     private List<string> npcNames = new List<string>();
-    private PlayerInventory playerInventory;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerInventory = GameObject.Find("Player").GetComponent<PlayerInventory>();
         LoadCSV();
     }
 
@@ -24,7 +22,8 @@ public class GameplayManager : MonoBehaviour
 
             int textCounter = ongoingQuests[NPCName].TextCounter;
             bool awaitingItems = ongoingQuests[NPCName].AwaitingItems;
-            List<ItemClass> neededItems = ongoingQuests[NPCName].NeededItems;
+            List<string[]> submittedItems = ongoingQuests[NPCName].SubmittedItems;
+            List<string[]> neededItems = ongoingQuests[NPCName].NeededItems;
 
             // get the questlines for that npc
             List<string[]> values = questLines[NPCName];
@@ -100,7 +99,6 @@ public class GameplayManager : MonoBehaviour
         // loops are slow and theres no point trying to do this every time if were already waiting for items
         if(!ongoingQuests[NPCName].AwaitingItems)
         {
-            ongoingQuests[NPCName].NeededItems = new List<ItemClass>();
             for(int i = 2; i < 5; i++)
             {
                 if(array[i] != "")
@@ -110,41 +108,6 @@ public class GameplayManager : MonoBehaviour
                     // fill out the needed items in the quest class (wont do this until the inventory is like existing)
                     ongoingQuests[NPCName].AwaitingItems = true;
                     ongoingQuests[NPCName].state = 1;
-
-                    if(array[i].Contains("*"))
-                    {
-                        string[] parts = array[i].Split('*');
-                        string itemName = parts [0];
-                        int quantity;
-
-                        if (int.TryParse(parts[1], out quantity))
-                        {
-                            // setup the item
-                            ItemClass item = new ItemClass
-                            {
-                                className = itemName,
-                                quantity = quantity
-                            };
-
-                            // get the items display name
-                            if (playerInventory.inventory.totalInventory.ContainsKey(itemName))
-                            {
-                                item.displayName = playerInventory.inventory.totalInventory[itemName].displayName;
-                                ongoingQuests[NPCName].NeededItems.Add(item);
-                                Debug.Log($"Added {quantity} of {itemName} to the npcs needed items");
-                            }
-                            else
-                            {
-                                Debug.LogError($"Failed to add item: {itemName} to the npc {NPCName}'s needed items due to an invalid item name: '{itemName}'");
-                            }
-                        }
-                        else
-                        {
-                            Debug.LogError($"Failed to add item: {itemName} to the npc {NPCName}'s needed items due to an invalid quantity of: '{parts[1]}'");
-                        }
-                    }
-
-                    // fill out the needed items in the quest class
                 }
             }
         }
