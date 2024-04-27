@@ -99,8 +99,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalSprites:
   - {fileID: 1168196882, guid: 01e5416479188034d919c66bcafc26e0, type: 3}
-  - {fileID: 1338107399, guid: 01e5416479188034d919c66bcafc26e0, type: 3}
-  - {fileID: 523042218, guid: 01e5416479188034d919c66bcafc26e0, type: 3}
   randomSprites:
   - {fileID: 1513321824, guid: 01e5416479188034d919c66bcafc26e0, type: 3}
   - {fileID: 1447463179, guid: 01e5416479188034d919c66bcafc26e0, type: 3}

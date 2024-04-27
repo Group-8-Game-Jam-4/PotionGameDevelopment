@@ -173,7 +173,7 @@ public class Inventory
     public bool IsPotion(string itemName)
     {
         // if the item exists
-        if(!totalInventory.ContainsKey(itemName))
+        if(totalInventory.ContainsKey(itemName))
         {
             if(totalInventory[itemName].isPotion == "TRUE")
             {
@@ -181,16 +181,19 @@ public class Inventory
             }
             else
             {
+                Debug.Log("item name is + " + itemName + " also the bool is: '" + totalInventory[itemName].isPotion + "sd'");
+                Debug.Log($"Potion is: {itemName} and the bool is '{totalInventory[itemName].isPotion}' fuck off");
                 return false;
             }
         }
+        Debug.Log($"Total inventory does not contain key {itemName}");
         return false;
     }
 
     public bool Contains(string itemName)
     {
         // if the item exists
-        if(!totalInventory.ContainsKey(itemName))
+        if(totalInventory.ContainsKey(itemName))
         {
             if(totalInventory[itemName].quantity >= 1)
             {
@@ -222,7 +225,7 @@ public class Inventory
         TextAsset textFile = Resources.Load<TextAsset>("itemTable");
 
         // Split CSV into lines
-        string[] lines = textFile.text.Split('\n');
+        string[] lines = textFile.text.Replace("\r", "").Split('\n');
 
         // Parse each line of the CSV
         for (int i = 2; i < lines.Length; i++)
@@ -313,7 +316,7 @@ public class Inventory
         // Debug output for verification
         foreach (var item in totalInventory.Values)
         {
-            //Debug.Log($"Item: {item.className}, Display Name: {item.displayName}, Image Name: {item.imageName}, Stack Size: {item.stackSize}, Rarity: {item.rarity}, Spawn Biome 1: {item.spawnBiome1}, Spawn Biome 2: {item.spawnBiome2}, Sell Price: {item.sellPrice}, Store Price: {item.storePrice}, Goblin Price: {item.goblinPrice}");
+            //Debug.Log($"Item: {item.className}, Display Name: {item.displayName}, Image Name: {item.imageName}, Stack Size: {item.stackSize}, Rarity: {item.rarity}, Spawn Biome 1: {item.spawnBiome1}, Spawn Biome 2: {item.spawnBiome2}, Sell Price: {item.sellPrice}, Store Price: {item.storePrice}, Goblin Price: {item.goblinPrice}, Is Potion: {item.isPotion}");
         }
     }
 

@@ -103,14 +103,16 @@ public class InventoryLoader : MonoBehaviour
                     {
                         // if we can actually fit that many
                         if(containerInv.inventory.AddItem(selectedItem.className, sliderValue));
-
-                        if (isShop && containerInv.inventory.IsPotion(selectedItem.className))
+                        if (containerInv.inventory.IsPotion(selectedItem.className) && isShop)
                         {
+
                             foreach (populateBenches bench in benches)
                             {
                                 bench.stockShelf();
                             }
                         }
+
+
 
                         //if the container we're interacting with is a cupboard
                         if (isCupboard)
