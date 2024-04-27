@@ -1411,15 +1411,15 @@ RectTransform:
   m_GameObject: {fileID: 177682044}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.62876, y: 0.62876, z: 0.62876}
+  m_LocalScale: {x: 0.40646186, y: 0.40646186, z: 0.40646186}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 802746063}
   m_Father: {fileID: 938734349}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 306.4, y: 17.5}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 252.5, y: 12.762}
   m_SizeDelta: {x: 44.17769, y: 44.177696}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &177682046
@@ -1435,6 +1435,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubble: {fileID: 177682044}
+  bubbleSprite: {fileID: 802746062}
+  registered: 0
 --- !u!1 &184038549
 GameObject:
   m_ObjectHideFlags: 0
@@ -1957,13 +1959,15 @@ GameObject:
   - component: {fileID: 223513318}
   - component: {fileID: 223513317}
   - component: {fileID: 223513316}
+  - component: {fileID: 223513320}
+  - component: {fileID: 223513319}
   m_Layer: 0
   m_Name: bubble sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &223513315
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2027,28 +2031,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 223513314}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 223513319}
+        m_TargetAssemblyTypeName: CauldronAnimationController, Assembly-CSharp
+        m_MethodName: StartAnimation
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 223513314}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SendMessageUpwards
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: onClickPop
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &223513317
@@ -2071,7 +2063,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 52aed888b5ec9044eac9793be40bd45c, type: 3}
+  m_Sprite: {fileID: 2036136348, guid: da9fc1c458a2500429189d147ccef508, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2089,6 +2081,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 223513314}
   m_CullTransparentMesh: 1
+--- !u!114 &223513319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223513314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0d9bcd2405574c43bf4305e9af244c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 223513320}
+  sprite: {fileID: 223513314}
+  bubbleHandler: {fileID: 938734348}
+  bubble: {fileID: 2066248293}
+--- !u!95 &223513320
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223513314}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cf7f134d20b9bca419b7948b2bf75de4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &223776437
 GameObject:
   m_ObjectHideFlags: 0
@@ -2675,13 +2705,15 @@ GameObject:
   - component: {fileID: 327923802}
   - component: {fileID: 327923801}
   - component: {fileID: 327923800}
+  - component: {fileID: 327923804}
+  - component: {fileID: 327923803}
   m_Layer: 0
   m_Name: bubble sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &327923799
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2745,28 +2777,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 327923798}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 327923803}
+        m_TargetAssemblyTypeName: CauldronAnimationController, Assembly-CSharp
+        m_MethodName: StartAnimation
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 327923798}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SendMessageUpwards
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: onClickPop
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &327923801
@@ -2789,7 +2809,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 52aed888b5ec9044eac9793be40bd45c, type: 3}
+  m_Sprite: {fileID: 2036136348, guid: da9fc1c458a2500429189d147ccef508, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2807,6 +2827,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 327923798}
   m_CullTransparentMesh: 1
+--- !u!114 &327923803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327923798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0d9bcd2405574c43bf4305e9af244c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 327923804}
+  sprite: {fileID: 327923798}
+  bubbleHandler: {fileID: 938734348}
+  bubble: {fileID: 730352408}
+--- !u!95 &327923804
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327923798}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cf7f134d20b9bca419b7948b2bf75de4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &368125576
 GameObject:
   m_ObjectHideFlags: 0
@@ -3363,10 +3421,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 941765051}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 302.8, y: -62.8}
-  m_SizeDelta: {x: 500, y: 600}
+  m_AnchorMin: {x: 1, y: 0.66}
+  m_AnchorMax: {x: 1, y: 0.66}
+  m_AnchoredPosition: {x: -258.2, y: -144.3}
+  m_SizeDelta: {x: 500, y: 599}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &439453045
 MonoBehaviour:
@@ -3434,15 +3492,15 @@ RectTransform:
   m_GameObject: {fileID: 457674192}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 74.1424, y: 80.136406, z: 80.136406}
+  m_LocalScale: {x: 86.991005, y: 71.63714, z: 71.63714}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 941765051}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 302.8, y: -52.457012}
-  m_SizeDelta: {x: 4, y: 5}
+  m_AnchorMin: {x: 1, y: 0.66}
+  m_AnchorMax: {x: 1, y: 0.66}
+  m_AnchoredPosition: {x: -255.1, y: -136.1}
+  m_SizeDelta: {x: 3, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &457674194
 Animator:
@@ -3454,7 +3512,7 @@ Animator:
   m_GameObject: {fileID: 457674192}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 85b91e424cae9e9448053adc6b3b3bb8, type: 2}
+  m_Controller: {fileID: 9100000, guid: af9b5e5ecf6747247a43c79592856118, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 1
   m_ApplyRootMotion: 0
@@ -3486,7 +3544,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1207600622, guid: c9093b4d9e1411145a0ac11725abf3ab, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9207f2e9732e3da4abda5766673616fe, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4949,15 +5007,15 @@ RectTransform:
   m_GameObject: {fileID: 730352408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.62876, y: 0.62876, z: 0.62876}
+  m_LocalScale: {x: 0.40646186, y: 0.40646186, z: 0.40646186}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 327923799}
   m_Father: {fileID: 938734349}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 336.3, y: 10.6}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 276.5, y: 1.2}
   m_SizeDelta: {x: 44.17769, y: 44.177696}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &730352410
@@ -4973,6 +5031,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubble: {fileID: 730352408}
+  bubbleSprite: {fileID: 327923798}
+  registered: 0
 --- !u!1 &747397510
 GameObject:
   m_ObjectHideFlags: 0
@@ -5253,13 +5313,15 @@ GameObject:
   - component: {fileID: 802746066}
   - component: {fileID: 802746065}
   - component: {fileID: 802746064}
+  - component: {fileID: 802746068}
+  - component: {fileID: 802746067}
   m_Layer: 0
   m_Name: bubble sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &802746063
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5323,28 +5385,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 802746062}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 802746067}
+        m_TargetAssemblyTypeName: CauldronAnimationController, Assembly-CSharp
+        m_MethodName: StartAnimation
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 802746062}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SendMessageUpwards
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: onClickPop
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &802746065
@@ -5367,7 +5417,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 52aed888b5ec9044eac9793be40bd45c, type: 3}
+  m_Sprite: {fileID: 2036136348, guid: da9fc1c458a2500429189d147ccef508, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5385,6 +5435,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 802746062}
   m_CullTransparentMesh: 1
+--- !u!114 &802746067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802746062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0d9bcd2405574c43bf4305e9af244c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 802746068}
+  sprite: {fileID: 802746062}
+  bubbleHandler: {fileID: 938734348}
+  bubble: {fileID: 177682044}
+--- !u!95 &802746068
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802746062}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cf7f134d20b9bca419b7948b2bf75de4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &804130119
 GameObject:
   m_ObjectHideFlags: 0
@@ -6135,15 +6223,15 @@ RectTransform:
   m_GameObject: {fileID: 882515485}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.62876, y: 0.62876, z: 0.62876}
+  m_LocalScale: {x: 0.40646186, y: 0.40646186, z: 0.40646186}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1204552496}
   m_Father: {fileID: 938734349}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 247.1, y: 3.3}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 206.3, y: 3.5828}
   m_SizeDelta: {x: 44.17769, y: 44.177696}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &882515487
@@ -6159,6 +6247,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubble: {fileID: 882515485}
+  bubbleSprite: {fileID: 1204552495}
+  registered: 0
 --- !u!1 &938734348
 GameObject:
   m_ObjectHideFlags: 0
@@ -6195,10 +6285,10 @@ RectTransform:
   - {fileID: 2066248294}
   m_Father: {fileID: 941765051}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 1, y: 0.66}
+  m_AnchorMax: {x: 1, y: 0.66}
+  m_AnchoredPosition: {x: -561, y: -83}
+  m_SizeDelta: {x: 98, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &938734350
 MonoBehaviour:
@@ -6213,6 +6303,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubblesPopped: 0
+  bubbleObject:
+  - {fileID: 882515485}
+  - {fileID: 1884914938}
+  - {fileID: 730352408}
+  - {fileID: 177682044}
+  - {fileID: 2066248293}
 --- !u!1 &941765050
 GameObject:
   m_ObjectHideFlags: 0
@@ -6247,10 +6343,10 @@ RectTransform:
   - {fileID: 938734349}
   m_Father: {fileID: 1689951936}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 960, y: 398}
-  m_SizeDelta: {x: 1121.5, y: 513.5}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -961, y: -141.5}
+  m_SizeDelta: {x: 1123.5, y: 514.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &953442276
 GameObject:
@@ -6450,14 +6546,14 @@ RectTransform:
   m_GameObject: {fileID: 981962677}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.1605167, y: 4.058412, z: 4.16035}
+  m_LocalScale: {x: 4.1605167, y: 3.7033012, z: 4.16035}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 941765051}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 302, y: -14}
+  m_AnchorMin: {x: 1, y: 0.66}
+  m_AnchorMax: {x: 1, y: 0.66}
+  m_AnchoredPosition: {x: -259, y: -118}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &981962679
@@ -7343,13 +7439,15 @@ GameObject:
   - component: {fileID: 1129217597}
   - component: {fileID: 1129217596}
   - component: {fileID: 1129217595}
+  - component: {fileID: 1129217599}
+  - component: {fileID: 1129217598}
   m_Layer: 0
   m_Name: bubble sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1129217594
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7364,9 +7462,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1884914939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000091552734, y: 0.000020980835}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -21.999908, y: 0.000020980835}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1129217595
@@ -7413,28 +7511,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1129217593}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1129217598}
+        m_TargetAssemblyTypeName: CauldronAnimationController, Assembly-CSharp
+        m_MethodName: StartAnimation
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1129217593}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SendMessageUpwards
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: onClickPop
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1129217596
@@ -7457,7 +7543,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 52aed888b5ec9044eac9793be40bd45c, type: 3}
+  m_Sprite: {fileID: 2036136348, guid: da9fc1c458a2500429189d147ccef508, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7475,6 +7561,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1129217593}
   m_CullTransparentMesh: 1
+--- !u!114 &1129217598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129217593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0d9bcd2405574c43bf4305e9af244c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1129217599}
+  sprite: {fileID: 1129217593}
+  bubbleHandler: {fileID: 938734348}
+  bubble: {fileID: 1884914938}
+--- !u!95 &1129217599
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129217593}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cf7f134d20b9bca419b7948b2bf75de4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1131958088
 GameObject:
   m_ObjectHideFlags: 0
@@ -8130,13 +8254,15 @@ GameObject:
   - component: {fileID: 1204552498}
   - component: {fileID: 1204552497}
   - component: {fileID: 1204552500}
+  - component: {fileID: 1204552501}
+  - component: {fileID: 1204552502}
   m_Layer: 0
   m_Name: bubble sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1204552496
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8176,7 +8302,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 52aed888b5ec9044eac9793be40bd45c, type: 3}
+  m_Sprite: {fileID: 2036136348, guid: da9fc1c458a2500429189d147ccef508, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8238,10 +8364,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1204552495}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1204552502}
+        m_TargetAssemblyTypeName: CauldronAnimationController, Assembly-CSharp
+        m_MethodName: StartAnimation
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8250,18 +8376,44 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1204552495}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SendMessageUpwards
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: onClickPop
-          m_BoolArgument: 0
-        m_CallState: 2
+--- !u!95 &1204552501
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204552495}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cf7f134d20b9bca419b7948b2bf75de4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1204552502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204552495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0d9bcd2405574c43bf4305e9af244c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1204552501}
+  sprite: {fileID: 1204552495}
+  bubbleHandler: {fileID: 938734348}
+  bubble: {fileID: 882515485}
 --- !u!1 &1215844302
 GameObject:
   m_ObjectHideFlags: 0
@@ -13381,15 +13533,15 @@ RectTransform:
   m_GameObject: {fileID: 1884914938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.62876, y: 0.62876, z: 0.62876}
+  m_LocalScale: {x: 0.40646186, y: 0.40646186, z: 0.40646186}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1129217594}
   m_Father: {fileID: 938734349}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 277, y: -9.3}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 231.1, y: -7.1}
   m_SizeDelta: {x: 44.17769, y: 44.177696}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1884914940
@@ -13405,6 +13557,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubble: {fileID: 1884914938}
+  bubbleSprite: {fileID: 1129217593}
+  registered: 0
 --- !u!1 &1886937484
 GameObject:
   m_ObjectHideFlags: 0
@@ -14282,15 +14436,15 @@ RectTransform:
   m_GameObject: {fileID: 2066248293}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.62876, y: 0.62876, z: 0.62876}
+  m_LocalScale: {x: 0.40646186, y: 0.40646186, z: 0.40646186}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 223513315}
   m_Father: {fileID: 938734349}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 364.7, y: 1.3}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 304.4, y: 2.2899}
   m_SizeDelta: {x: 44.17769, y: 44.177696}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2066248295
@@ -14306,6 +14460,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubble: {fileID: 2066248293}
+  bubbleSprite: {fileID: 223513314}
+  registered: 0
 --- !u!1 &2069586520
 GameObject:
   m_ObjectHideFlags: 0
