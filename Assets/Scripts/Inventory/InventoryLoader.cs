@@ -86,6 +86,151 @@ public class InventoryLoader : MonoBehaviour
         sliderElement.SetActive(true);
     }
 
+    void AddShopItem(string itemName, int sliderNumber)
+    {
+        if(!isShop){return;}
+        if (containerInv.inventory.IsPotion(itemName))
+        {
+            RefreshShop();
+
+            // update the inventories
+            if(playerInv.inventory.TakeItem(itemName, sliderNumber))
+            {
+                containerInv.inventory.AddItem(itemName, sliderNumber);
+            }
+        }
+        else
+        {
+            Debug.Log("Shop container only accept potions");
+        }
+    }
+
+    void TakeShopItem(string itemName, int sliderNumber)
+    {
+        if(!isShop){return;}
+        // update the inventories
+        if(containerInv.inventory.TakeItem(itemName, sliderNumber))
+        {
+            playerInv.inventory.AddItem(itemName, sliderNumber);
+        }
+        RefreshShop();
+    }
+
+    void RefreshShop()
+    {
+        if(!isShop){return;}
+        // if theres any items refresh the benches
+        if(containerInv.inventory.formattedInventory.Count > 0)
+        {
+            foreach (populateBenches bench in benches)
+            {
+                bench.stockShelf();
+            }
+        }
+        else
+        {
+            if (isShop)
+            {
+                foreach (populateBenches bench in benches)
+                {
+                    bench.unstockShelf();
+                }
+            }
+        }
+    }
+    void AddCartItem(string itemName, int sliderNumber)
+    {
+        playerInv.inventory.TakeItem(itemName, sliderNumber);
+        containerInv.inventory.AddItem(itemName, sliderNumber);
+    }
+    void TakeCartItem(string itemName, int sliderNumber)
+    {
+        containerInv.inventory.TakeItem(itemName, sliderNumber);
+        playerInv.inventory.AddItem(itemName, sliderNumber);
+    }
+
+    void AddCupboardItem(string itemName, int sliderNumber)
+    {
+        if(!isCupboard){return;}
+
+    }
+    void TakeCupboardItem(string itemName, int sliderNumber)
+    {
+        if(!isCupboard){return;}
+        //check if it has a specific item in it
+        if (itemName == "carpet")
+        {
+            //activate carpet if its in the container inventory
+            GameObject furnitureObject = GameObject.Find("carpet_prefab");
+            furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
+        }
+        if (itemName == "lamp")
+        {
+            //activate lamp if its in the container inventory
+            GameObject furnitureObject = GameObject.Find("lamp_prefab");
+            furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
+        }
+        if (itemName == "painting")
+        {
+            //activate painting if its in the container inventory
+            GameObject furnitureObject = GameObject.Find("painting_prefab");
+            furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
+        }
+        if (itemName == "rack")
+        {
+            //activate rack if its in the container inventory
+            GameObject furnitureObject = GameObject.Find("rack_prefab");
+            furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
+        }
+        if (itemName == "table")
+        {
+            //activate table if its in the container inventory
+            GameObject furnitureObject = GameObject.Find("table_prefab");
+            furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
+        }
+        
+    }
+    void RefreshCupboard()
+    {
+        if(!isCupboard){return;}
+        //loop through the containers inventory
+        foreach (string[] a in containerInv.inventory.formattedInventory)
+        {
+            //check if it has a specific item in it
+            if (a[0] == "carpet")
+            {
+                //activate carpet if its in the container inventory
+                GameObject furnitureObject = GameObject.Find("carpet_prefab");
+                furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
+            }
+            if (a[0] == "lamp")
+            {
+                //activate lamp if its in the container inventory
+                GameObject furnitureObject = GameObject.Find("lamp_prefab");
+                furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
+            }
+            if (a[0] == "painting")
+            {
+                //activate painting if its in the container inventory
+                GameObject furnitureObject = GameObject.Find("painting_prefab");
+                furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
+            }
+            if (a[0] == "rack")
+            {
+                //activate rack if its in the container inventory
+                GameObject furnitureObject = GameObject.Find("rack_prefab");
+                furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
+            }
+            if (a[0] == "table")
+            {
+                //activate table if its in the container inventory
+                GameObject furnitureObject = GameObject.Find("table_prefab");
+                furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
+            }
+        }
+    }
+
+
     public void TransferItems()
     {
         // get how many items to transfer
@@ -97,67 +242,18 @@ public class InventoryLoader : MonoBehaviour
             if(containerInv)
             {
                 // if we can actually take that many
-                if(playerInv.inventory.TakeItem(selectedItem.className, sliderValue))
+                if(isShop)
                 {
-                    if(containerInventory == true)
-                    {
-                        if (isShop && containerInv.inventory.IsPotion(selectedItem.className))
-                        {
-                            // if we can actually fit that many
-                            if (containerInv.inventory.AddItem(selectedItem.className, sliderValue)) ;
-                            if (containerInv.inventory.IsPotion(selectedItem.className) && isShop)
-                            {
-
-                                foreach (populateBenches bench in benches)
-                                {
-                                    bench.stockShelf();
-                                }
-                            }
-                        }
-
-
-                        //if the container we're interacting with is a cupboard
-                        if (isCupboard)
-                        {
-                            //loop through the containers inventory
-                            foreach (string[] a in containerInv.inventory.formattedInventory)
-                            {
-                                //check if it has a specific item in it
-                                if (a[0] == "carpet")
-                                {
-                                    //activate carpet if its in the container inventory
-                                    GameObject furnitureObject = GameObject.Find("carpet_prefab");
-                                    furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
-                                }
-                                if (a[0] == "lamp")
-                                {
-                                    //activate lamp if its in the container inventory
-                                    GameObject furnitureObject = GameObject.Find("lamp_prefab");
-                                    furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
-                                }
-                                if (a[0] == "painting")
-                                {
-                                    //activate painting if its in the container inventory
-                                    GameObject furnitureObject = GameObject.Find("painting_prefab");
-                                    furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
-                                }
-                                if (a[0] == "rack")
-                                {
-                                    //activate rack if its in the container inventory
-                                    GameObject furnitureObject = GameObject.Find("rack_prefab");
-                                    furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
-                                }
-                                if (a[0] == "table")
-                                {
-                                    //activate table if its in the container inventory
-                                    GameObject furnitureObject = GameObject.Find("table_prefab");
-                                    furnitureObject.transform.GetChild(0).gameObject.SetActive(true);
-                                }
-                            }
-                        }
-                    }
+                    AddShopItem(selectedItem.className, sliderValue);
                 }
-                containerInv.SaveInventory();
+                else if(isCupboard)
+                {
+                    AddCupboardItem(selectedItem.className, sliderValue);
+                }
+                else
+                {
+                    AddCartItem(selectedItem.className, sliderValue);
+                }
             }
             else
             {
@@ -174,58 +270,17 @@ public class InventoryLoader : MonoBehaviour
         else
         {
             // if we can actually take that many
-            if(containerInv.inventory.TakeItem(selectedItem.className, sliderValue))
+            if(isShop)
             {
-                // if we can actually fit that many
-                if(playerInv.inventory.AddItem(selectedItem.className, sliderValue));
-
-                if (isShop)
-                {
-                    foreach (populateBenches bench in benches)
-                    {
-                        bench.unstockShelf();
-                    }
-                }
-
-                //if item is being taken from the cupboard
-                if (isCupboard)
-                {
-                    //loop through the players inventory
-                    foreach (string[] a in playerInv.inventory.formattedInventory)
-                    {
-                        //check if they have a specific item in it
-                        if (a[0] == "carpet")
-                        {
-                            //remove carpet if they have it in their inventory
-                            GameObject furnitureObject = GameObject.Find("carpet_prefab");
-                            furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
-                        }
-                        if (a[0] == "lamp")
-                        {
-                            //remove carpet if they have it in their inventory
-                            GameObject furnitureObject = GameObject.Find("lamp_prefab");
-                            furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
-                        }
-                        if (a[0] == "painting")
-                        {
-                            //remove painting if they have it in their inventory
-                            GameObject furnitureObject = GameObject.Find("painting_prefab");
-                            furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
-                        }
-                        if (a[0] == "rack")
-                        {
-                            //remove rack if they have it in their inventory
-                            GameObject furnitureObject = GameObject.Find("rack_prefab");
-                            furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
-                        }
-                        if (a[0] == "table")
-                        {
-                            //remove table if they have it in their inventory
-                            GameObject furnitureObject = GameObject.Find("table_prefab");
-                            furnitureObject.transform.GetChild(0).gameObject.SetActive(false);
-                        }
-                    }
-                }
+                TakeShopItem(selectedItem.className, sliderValue);
+            }
+            else if(isCupboard)
+            {
+                TakeCupboardItem(selectedItem.className, sliderValue);
+            }
+            else
+            {
+                TakeCartItem(selectedItem.className, sliderValue);
             }
         }
 
@@ -300,6 +355,9 @@ public class InventoryLoader : MonoBehaviour
         {
             workstation.CheckPotion();
         }
+
+        RefreshCupboard();
+        RefreshShop();
     }
 
     // this is only ever used under very specific circumstances and only exists because theres a major flaw with how i do these that should be fixed but i cant be arsed
