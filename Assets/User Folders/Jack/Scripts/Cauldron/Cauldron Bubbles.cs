@@ -6,6 +6,7 @@ public class CauldronBubbles : MonoBehaviour
 {
     public int bubblesPopped;
     public GameObject[] bubbleObject;
+    public WorkstationSystem workStationScript;
 
     // Update is called once per frame
     void Update()
@@ -27,9 +28,9 @@ public class CauldronBubbles : MonoBehaviour
 
                 //delete the bubbles
                 bubbleObject[i].transform.GetChild(0).gameObject.SetActive(false);
-
-                //hooking up to crafting goes here
             }
+            //hooking up to crafting goes here
+            workStationScript.BrewPotion();
 
             //reset bubbles popped
             bubblesPopped = 0;

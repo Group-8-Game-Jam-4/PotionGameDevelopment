@@ -7,6 +7,7 @@ public class BubblesMoving : MonoBehaviour
 {
     public GameObject bubble;
     public GameObject bubbleSprite;
+    public WorkstationSystem workStationScript;
     double stopDistance;
     float startDistance;
     float moveSpeed;
@@ -24,7 +25,7 @@ public class BubblesMoving : MonoBehaviour
     private void Update()
     {
         //temp just for testing, gonna be triggered by crafting later
-        if(registered == false)
+        if(workStationScript.readyToBrew == true)
         {
             //registered = true so it doesnt loop
             registered = true;
@@ -34,7 +35,7 @@ public class BubblesMoving : MonoBehaviour
 
             //stopDistance = Screen.height/1.9;
             stopDistance = Random.Range((float)(Screen.height / 1.9), (float)(Screen.height / 2.05));
-            moveSpeed = Random.Range(0.2f, 0.4f);
+            moveSpeed = Random.Range(0.1f, 0.2f);
             scaleEnd = Random.Range(0.25f, 0.35f);
 
             //set all bubbles to active
@@ -51,7 +52,7 @@ public class BubblesMoving : MonoBehaviour
             // if this like chokes the players fps then ill try think of an alterative
             //
             //repeat the move bubbles function
-            InvokeRepeating("MoveBubbles", 0f, 0.005f);
+            InvokeRepeating("MoveBubbles", 0f, 1f);
         }
     }
 
