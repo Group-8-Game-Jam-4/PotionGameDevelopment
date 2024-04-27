@@ -27,4 +27,6 @@ public class ItemClass
     public int sellPrice;
     public int storePrice;
     public int goblinPrice;
+
+    public string isPotion;
 }
