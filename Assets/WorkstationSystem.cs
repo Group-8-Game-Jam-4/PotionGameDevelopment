@@ -9,6 +9,7 @@ public class WorkstationSystem : MonoBehaviour
     public string workstation;
     public InventoryLoader inputInventoryLoader;
     public InventoryLoader outputInventoryLoader;
+    public CraftingSystem craftingSystem;
 
     // the key string here is the class name of the item. NOT the displayname
     public Dictionary<string, RecipeClass> recipeOptions = new Dictionary<string, RecipeClass>();
@@ -28,6 +29,19 @@ public class WorkstationSystem : MonoBehaviour
                 // Access the className property of the ItemClass and add it to the list
                 itemNames.Add(entry.Key);
             }
+        }
+
+        if(workstation == "Crafting Table" && itemNames.Count == 2)
+        {
+            craftingSystem.UpdateItems(itemNames[0], itemNames[1]);
+        }
+        if(workstation == "Crafting Table" && itemNames.Count == 1)
+        {
+            craftingSystem.UpdateItems(itemNames[0], "");
+        }
+        if(workstation == "Crafting Table" && itemNames.Count == 0)
+        {
+            craftingSystem.UpdateItems("", "");
         }
 
         foreach (KeyValuePair<string, RecipeClass> entry in recipeOptions)

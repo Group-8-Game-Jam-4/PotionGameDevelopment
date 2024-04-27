@@ -207,6 +207,16 @@ public class Inventory
         return false;
     }
 
+    public string GetDisplayName(string itemName)
+    {
+        // if the item exists
+        if(totalInventory.ContainsKey(itemName))
+        {
+            return totalInventory[itemName].displayName;
+        }
+        return "";
+    }
+
     public void LoadCSV()
     {
         // // loop thru the csv, see if the className (column 0 (not rows 0 or 1)) exists in totalInventory as a key. If it doesent make a new instance of "ItemClass", add in the info from the csv and add it into totalInventory
