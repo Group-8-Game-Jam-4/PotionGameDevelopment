@@ -170,6 +170,53 @@ public class Inventory
         // get the inventory and see if there is any of the item to take, if there is -1 of that item and return true. This method will be used primarily by give item
     }
 
+    public bool IsPotion(string itemName)
+    {
+        // if the item exists
+        if(totalInventory.ContainsKey(itemName))
+        {
+            if(totalInventory[itemName].isPotion == "TRUE")
+            {
+                return true;
+            }
+            else
+            {
+                Debug.Log("item name is + " + itemName + " also the bool is: '" + totalInventory[itemName].isPotion + "sd'");
+                Debug.Log($"Potion is: {itemName} and the bool is '{totalInventory[itemName].isPotion}' fuck off");
+                return false;
+            }
+        }
+        Debug.Log($"Total inventory does not contain key {itemName}");
+        return false;
+    }
+
+    public bool Contains(string itemName)
+    {
+        // if the item exists
+        if(totalInventory.ContainsKey(itemName))
+        {
+            if(totalInventory[itemName].quantity >= 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    public string GetDisplayName(string itemName)
+    {
+        // if the item exists
+        if(totalInventory.ContainsKey(itemName))
+        {
+            return totalInventory[itemName].displayName;
+        }
+        return "";
+    }
+
     public void LoadCSV()
     {
         // // loop thru the csv, see if the className (column 0 (not rows 0 or 1)) exists in totalInventory as a key. If it doesent make a new instance of "ItemClass", add in the info from the csv and add it into totalInventory
@@ -188,7 +235,7 @@ public class Inventory
         TextAsset textFile = Resources.Load<TextAsset>("itemTable");
 
         // Split CSV into lines
-        string[] lines = textFile.text.Split('\n');
+        string[] lines = textFile.text.Replace("\r", "").Split('\n');
 
         // Parse each line of the CSV
         for (int i = 2; i < lines.Length; i++)
@@ -196,7 +243,7 @@ public class Inventory
             string[] values = ParseCSVLine(lines[i]);
 
             // Check if all required values are present
-            if (values.Length < 10)
+            if (values.Length < 11)
             {
                 Debug.LogError($"Incomplete data for line {i + 1}: {lines[i]}");
                 continue;
@@ -232,6 +279,7 @@ public class Inventory
             newItem.rarity = values[3];
             newItem.spawnBiome1 = values[4];
             newItem.spawnBiome2 = values[5];
+            newItem.isPotion = values[10];
 
             // Check if className exists in totalInventory
             if (totalInventory.ContainsKey(values[0]))
@@ -248,7 +296,8 @@ public class Inventory
                     existingItem.sellPrice != newItem.sellPrice ||
                     existingItem.storePrice != newItem.storePrice ||
                     existingItem.stackSize != newItem.stackSize ||
-                    existingItem.goblinPrice != newItem.goblinPrice)
+                    existingItem.goblinPrice != newItem.goblinPrice ||
+                    existingItem.isPotion != newItem.isPotion)
                 {
                     // Update values
                     existingItem.displayName = newItem.displayName;
@@ -260,6 +309,7 @@ public class Inventory
                     existingItem.storePrice = newItem.storePrice;
                     existingItem.stackSize = newItem.stackSize;
                     existingItem.goblinPrice = newItem.goblinPrice;
+                    existingItem.isPotion = newItem.isPotion;
 
                     totalInventory[values[0]] = existingItem;
 
@@ -276,7 +326,7 @@ public class Inventory
         // Debug output for verification
         foreach (var item in totalInventory.Values)
         {
-            //Debug.Log($"Item: {item.className}, Display Name: {item.displayName}, Image Name: {item.imageName}, Stack Size: {item.stackSize}, Rarity: {item.rarity}, Spawn Biome 1: {item.spawnBiome1}, Spawn Biome 2: {item.spawnBiome2}, Sell Price: {item.sellPrice}, Store Price: {item.storePrice}, Goblin Price: {item.goblinPrice}");
+            //Debug.Log($"Item: {item.className}, Display Name: {item.displayName}, Image Name: {item.imageName}, Stack Size: {item.stackSize}, Rarity: {item.rarity}, Spawn Biome 1: {item.spawnBiome1}, Spawn Biome 2: {item.spawnBiome2}, Sell Price: {item.sellPrice}, Store Price: {item.storePrice}, Goblin Price: {item.goblinPrice}, Is Potion: {item.isPotion}");
         }
     }
 

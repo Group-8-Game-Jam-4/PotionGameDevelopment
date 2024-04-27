@@ -19,6 +19,9 @@ public class PlayerInventory : MonoBehaviour
 
         inventory.AddItem("stick", 10);
         inventory.AddItem("wood", 10);
+        inventory.AddItem("sugar", 10);
+        inventory.AddItem("honey", 10);
+        inventory.AddItem("stone", 10);
     }
 
     public void SaveInventory()
