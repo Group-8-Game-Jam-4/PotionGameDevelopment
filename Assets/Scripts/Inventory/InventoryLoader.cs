@@ -32,11 +32,14 @@ public class InventoryLoader : MonoBehaviour
     // this is only ever used under very specific circumstances and only exists because theres a major flaw with how i do these that should be fixed but i cant be arsed
     public GameObject playerInventoryObject;
 
+    private void Awake() 
+    {
+        benches = FindObjectsOfType<populateBenches>();
+    }
+
     private void Start() 
     {
         RefreshInventories();
-
-        benches = FindObjectsOfType<populateBenches>();
     }
 
     public void OnSliderChange(float value)
