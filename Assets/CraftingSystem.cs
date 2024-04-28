@@ -88,7 +88,7 @@ public class CraftingSystem : MonoBehaviour
                     newPanel.GetComponent<CraftingPanel>().input2.GetComponent<Image>().sprite = Resources.Load<Sprite>(itemTwoClassName);
 
                     // sets the workstation image and text
-                    string neededWorkstation = recipeClasses[currentRecipe.itemOne].workstation + "_icon";
+                    string neededWorkstation = recipeClasses[currentRecipe.itemOne].workstation.Replace(" ", "_").ToLower() + "_icon";
                     newPanel.GetComponent<CraftingPanel>().workstation.GetComponent<Image>().sprite = Resources.Load<Sprite>(neededWorkstation);
                     newPanel.GetComponent<CraftingPanel>().workstationText.text = recipeClasses[currentRecipe.itemOne].workstation;
 
@@ -142,7 +142,7 @@ public class CraftingSystem : MonoBehaviour
                     newPanel.GetComponent<CraftingPanel>().input2.GetComponent<Image>().sprite = Resources.Load<Sprite>(itemTwoClassName);
 
                     // sets the workstation image and text
-                    string neededWorkstation = recipeClasses[currentRecipe.itemTwo].workstation + "_icon";
+                    string neededWorkstation = recipeClasses[currentRecipe.itemTwo].workstation.Replace(" ", "_").ToLower() + "_icon";
                     newPanel.GetComponent<CraftingPanel>().workstation.GetComponent<Image>().sprite = Resources.Load<Sprite>(neededWorkstation);
                     newPanel.GetComponent<CraftingPanel>().workstationText.text = recipeClasses[currentRecipe.itemTwo].workstation;
 
