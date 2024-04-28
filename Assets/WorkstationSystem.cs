@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using UnityEngine;
 
 public class WorkstationSystem : MonoBehaviour
@@ -7,6 +9,7 @@ public class WorkstationSystem : MonoBehaviour
     public string workstation;
     public InventoryLoader inputInventoryLoader;
     public InventoryLoader outputInventoryLoader;
+    public CraftingSystem craftingSystem;
 
     // the key string here is the class name of the item. NOT the displayname
     public Dictionary<string, RecipeClass> recipeOptions = new Dictionary<string, RecipeClass>();
@@ -28,14 +31,42 @@ public class WorkstationSystem : MonoBehaviour
             }
         }
 
+        if(workstation == "Crafting Table" && itemNames.Count == 2)
+        {
+            craftingSystem.UpdateItems(itemNames[0], itemNames[1]);
+        }
+        if(workstation == "Crafting Table" && itemNames.Count == 1)
+        {
+            craftingSystem.UpdateItems(itemNames[0], "");
+        }
+        if(workstation == "Crafting Table" && itemNames.Count == 0)
+        {
+            craftingSystem.UpdateItems("", "");
+        }
+
         foreach (KeyValuePair<string, RecipeClass> entry in recipeOptions)
         {
-            // Check if either itemOne or itemTwo of the current RecipeClass matches any classNames in classNamesList
-            if (itemNames.Contains(entry.Value.itemOne) && itemNames.Contains(entry.Value.itemTwo))
+            if(entry.Value.itemTwo != "" && entry.Value.itemOne != "")
             {
-                currentRecipe = entry.Value;
-                validRecipe = true;
+                // Check if either itemOne or itemTwo of the current RecipeClass matches any classNames in classNamesList
+                if (itemNames.Contains(entry.Value.itemOne) && itemNames.Contains(entry.Value.itemTwo))
+                {
+                    currentRecipe = entry.Value;
+                    validRecipe = true;
+                }
             }
+            else
+            {
+                if(inputInventoryLoader.containerInv.formattedInventory.Count == 1)
+                {
+                    if (itemNames.Contains(entry.Value.itemOne) || itemNames.Contains(entry.Value.itemTwo))
+                    {
+                        currentRecipe = entry.Value;
+                        validRecipe = true;
+                    }
+                }
+            }
+
         }
 
         if(validRecipe)
@@ -43,10 +74,36 @@ public class WorkstationSystem : MonoBehaviour
             // we can actually make it here
             Debug.Log($"The items in the {workstation} match the recipe for {currentRecipe.displayName}");
 
-            // check item quantities
-            if(inputInventoryLoader.containerInv.totalInventory[itemNames[0]].quantity >= currentRecipe.itemOneQuantity)
+            // we know its a twin item recipe
+            if(inputInventoryLoader.containerInv.formattedInventory.Count > 1)
             {
-                if(inputInventoryLoader.containerInv.totalInventory[itemNames[1]].quantity >= currentRecipe.itemTwoQuantity)
+                // check item quantities
+                if(inputInventoryLoader.containerInv.totalInventory[itemNames[0]].quantity >= currentRecipe.itemOneQuantity)
+                {
+                    if(inputInventoryLoader.containerInv.totalInventory[itemNames[1]].quantity >= currentRecipe.itemTwoQuantity)
+                    {
+                        // we have a valid amount of items to make the potion
+                        Debug.Log($"The items in the {workstation} have the correct quantity for {currentRecipe.displayName}");
+
+                        // check the output isnt full
+                        if(outputInventoryLoader.containerInv.inventory.AddItem(currentRecipe.className, 1))
+                        {
+                            // remove the item we added to test
+                            outputInventoryLoader.containerInv.inventory.TakeItem(currentRecipe.className, 1);
+
+                            outputInventoryLoader.RefreshInventories();
+                            readyToBrew = true;
+                        }
+                    }
+                    else{readyToBrew = false;}
+                }
+                else{readyToBrew = false;}
+            }
+            else
+            {
+                // this is a single item recipe
+                // check item quantities
+                if(inputInventoryLoader.containerInv.totalInventory[itemNames[0]].quantity >= currentRecipe.itemOneQuantity || inputInventoryLoader.containerInv.totalInventory[itemNames[0]].quantity >= currentRecipe.itemTwoQuantity )
                 {
                     // we have a valid amount of items to make the potion
                     Debug.Log($"The items in the {workstation} have the correct quantity for {currentRecipe.displayName}");
@@ -60,10 +117,11 @@ public class WorkstationSystem : MonoBehaviour
                         outputInventoryLoader.RefreshInventories();
                         readyToBrew = true;
                     }
+                    else{readyToBrew = false;}
                 }
                 else{readyToBrew = false;}
             }
-            else{readyToBrew = false;}
+
         }
         else
         {
@@ -128,109 +186,151 @@ public class WorkstationSystem : MonoBehaviour
             string[] values = ParseCSVLine(lines[i]);
 
             // Check if all required values are present
-            if (values.Length < 6)
+            if (values.Length < 5)
             {
                 Debug.LogError($"Incomplete data for line {i + 1}: {lines[i]}");
                 continue;
             }
-
-            if(values[3] == workstation)
+            else
             {
-                // Attempt to parse values
-                RecipeClass newRecipe = new RecipeClass();
-
-                // Assign other values
-                newRecipe.className = values[0];
-                newRecipe.displayName = values[1];
-                newRecipe.imageName = values[2];
-                newRecipe.workstation = values[3];
-                newRecipe.itemTwo = values[5];
-
-                // if it has the asterisk its multiple items needed
-                if(values[4].Contains("*"))
+                if(values[3] == workstation)
                 {
-                    string[] parts = values[4].Split('*');
-                    string itemName = parts [0];
-                    int quantity;
+                    // Attempt to parse values
+                    RecipeClass newRecipe = new RecipeClass();
 
-                    if (int.TryParse(parts[1], out quantity))
+                    // Assign other values
+                    newRecipe.className = values[0];
+                    newRecipe.displayName = values[1];
+                    newRecipe.imageName = values[2];
+                    newRecipe.workstation = values[3];
+
+
+                    if(values[4] != null && values[4] != "")
                     {
-                        newRecipe.itemOneQuantity = quantity;
-                        newRecipe.itemOne = itemName;
+                        newRecipe.itemOne = values[4];
                     }
                     else
                     {
-                        Debug.LogError($"Failed to add item: {values[4]} to the recipe for {values[0]}'s needed items due to an invalid quantity of: '{parts[1]}'");
+                        newRecipe.itemOne = "";
                     }
-                }
-                else
-                {
-                    // doesent contain the asterisk so its a single item
-                    newRecipe.itemOne = values[4];
-                    newRecipe.itemOneQuantity = 1;
-                }
-
-                // if it has the asterisk its multiple items needed
-                if(values[5].Contains("*"))
-                {
-                    string[] parts = values[5].Split('*');
-                    string itemName = parts [0];
-                    int quantity;
-
-                    if (int.TryParse(parts[1], out quantity))
+                    if(values.Length >= 6)
                     {
-                        newRecipe.itemTwoQuantity = quantity;
-                        newRecipe.itemTwo = itemName;
+                        if(values[5] != null && values[5] != "")
+                        {
+                            newRecipe.itemTwo = values[5];
+                        }
+                        else
+                        {
+                            newRecipe.itemTwo = "";
+                        }
                     }
                     else
                     {
-                        Debug.LogError($"Failed to add item: {values[5]} to the recipe for {values[0]}'s needed items due to an invalid quantity of: '{parts[1]}'");
+                        newRecipe.itemTwo = "";
                     }
-                }
-                else
-                {
-                    // doesent contain the asterisk so its a single item
-                    newRecipe.itemTwo = values[5];
-                    newRecipe.itemTwoQuantity = 1;
-                }
-
-
-
-                // Check if className exists in totalInventory
-                if (recipeOptions.ContainsKey(values[0]))
-                {
-                    // Retrieve existing item
-                    RecipeClass existingItem = recipeOptions[values[0]];
-
-                    // Check if any property has changed (excluding stackSize)
-                    if (
-                        existingItem.displayName != newRecipe.displayName ||
-                        existingItem.imageName != newRecipe.imageName ||
-                        existingItem.workstation != newRecipe.workstation ||
-                        existingItem.itemOne != newRecipe.itemOne ||
-                        existingItem.itemTwo != newRecipe.itemTwo ||
-                        existingItem.itemOneQuantity != newRecipe.itemOneQuantity ||
-                        existingItem.itemTwoQuantity != newRecipe.itemTwoQuantity
-                    )
+                    
+                    if(newRecipe.itemOne != "")
                     {
-                        // Update values
-                        existingItem.displayName = newRecipe.displayName;
-                        existingItem.imageName = newRecipe.imageName;
-                        existingItem.workstation = newRecipe.workstation;
-                        existingItem.itemOne = newRecipe.itemOne;
-                        existingItem.itemTwo = newRecipe.itemTwo;
-                        existingItem.itemOneQuantity = newRecipe.itemOneQuantity;
-                        existingItem.itemTwoQuantity = newRecipe.itemTwoQuantity;
+                        // if it has the asterisk its multiple items needed
+                        if(values[4].Contains("*"))
+                        {
+                            string[] parts = values[4].Split('*');
+                            string itemName = parts [0];
+                            int quantity;
 
-                        recipeOptions[values[0]] = existingItem;
-
-                        Debug.Log($"Recipe {existingItem.className} updated in recipeOptions.");
+                            if (int.TryParse(parts[1], out quantity))
+                            {
+                                newRecipe.itemOneQuantity = quantity;
+                                newRecipe.itemOne = itemName;
+                            }
+                            else
+                            {
+                                Debug.LogError($"Failed to add item: {values[4]} to the recipe for {values[0]}'s needed items due to an invalid quantity of: '{parts[1]}'");
+                            }
+                        }
+                        else
+                        {
+                            // doesent contain the asterisk so its a single item
+                            newRecipe.itemOne = values[4];
+                            newRecipe.itemOneQuantity = 1;
+                        }
                     }
-                }
-                else
-                {
-                    // Add newPotion to totalInventory
-                    recipeOptions.Add(newRecipe.className, newRecipe);
+                    else
+                    {
+                        Debug.Log($"Recipe for {values[0]} is a single item recipe");
+                        newRecipe.itemOneQuantity = 0;
+                    }
+
+
+                    if(newRecipe.itemTwo != "")
+                    {
+                        // if it has the asterisk its multiple items needed
+                        if(values[5].Contains("*"))
+                        {
+                            string[] parts = values[5].Split('*');
+                            string itemName = parts [0];
+                            int quantity;
+
+                            if (int.TryParse(parts[1], out quantity))
+                            {
+                                newRecipe.itemTwoQuantity = quantity;
+                                newRecipe.itemTwo = itemName;
+                            }
+                            else
+                            {
+                                Debug.LogError($"Failed to add item: {values[5]} to the recipe for {values[0]}'s needed items due to an invalid quantity of: '{parts[1]}'");
+                            }
+                        }
+                        else
+                        {
+                            // doesent contain the asterisk so its a single item
+                            newRecipe.itemTwo = values[5];
+                            newRecipe.itemTwoQuantity = 1;
+                        }
+                    }
+                    else
+                    {
+                        Debug.Log($"Recipe for {values[0]} is a single item recipe'");
+                        newRecipe.itemTwoQuantity = 0;
+                    }
+
+
+                    // Check if className exists in totalInventory
+                    if (recipeOptions.ContainsKey(values[0]))
+                    {
+                        // Retrieve existing item
+                        RecipeClass existingItem = recipeOptions[values[0]];
+
+                        // Check if any property has changed (excluding stackSize)
+                        if (
+                            existingItem.displayName != newRecipe.displayName ||
+                            existingItem.imageName != newRecipe.imageName ||
+                            existingItem.workstation != newRecipe.workstation ||
+                            existingItem.itemOne != newRecipe.itemOne ||
+                            existingItem.itemTwo != newRecipe.itemTwo ||
+                            existingItem.itemOneQuantity != newRecipe.itemOneQuantity ||
+                            existingItem.itemTwoQuantity != newRecipe.itemTwoQuantity
+                        )
+                        {
+                            // Update values
+                            existingItem.displayName = newRecipe.displayName;
+                            existingItem.imageName = newRecipe.imageName;
+                            existingItem.workstation = newRecipe.workstation;
+                            existingItem.itemOne = newRecipe.itemOne;
+                            existingItem.itemTwo = newRecipe.itemTwo;
+                            existingItem.itemOneQuantity = newRecipe.itemOneQuantity;
+                            existingItem.itemTwoQuantity = newRecipe.itemTwoQuantity;
+
+                            recipeOptions[values[0]] = existingItem;
+
+                            Debug.Log($"Recipe {existingItem.className} updated in recipeOptions.");
+                        }
+                    }
+                    else
+                    {
+                        // Add newPotion to totalInventory
+                        recipeOptions.Add(newRecipe.className, newRecipe);
+                    }
                 }
             }
         }

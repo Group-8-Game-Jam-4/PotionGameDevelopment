@@ -1,5 +1,27 @@
-Class Name,Display Name,Image Name,Workstation,Item One,Item Two
-,,,,,
-soot,Soot,soot,Furnace,stick,wood
-wet_honey,Wet Honey,wet_honey,Cauldron,honey,water
-shiny_shit,Shiny Shit,shiny_shit,Enchanting,shit,
+Class Name,Display Name,Image Name,Workstation,Item One,Item Two,Description (if potion)
+,,,,,,
+boiled_melon,Boiled Melon,boiled_melon,Cauldron,boiled_water,melon,
+scorched_feather,Scorched Feather,scorched_feather,Furnace,feather,coal,
+wilted_magic_flower,Wilted Magic Flower,wilted_magic_flower,Cauldron,magic_flower,water,
+heated_coal,Heated Coal,heated_coal,Furnace,coal,wood,
+split_stone,Split Stone,split_stone,Crafting Table,stone,stick,
+splintered_wood,Splintered Wood,splintered_wood,Crafting Table,wood,stick,
+syrup,Syrup,syrup,Cauldron,sugar,honey,
+fine_sugar,Fine Sugar,fine_sugar,Crafting Table,sugar,stone,
+half_melted_Ice,Half Melted Ice,half_melted_Ice,Furnace,ice,coal,
+boiled_water,Boiled water,boiled_water,Cauldron,water,coal,
+sweet_elixir,Sweet Elixir,sweet_elixir,Crafting Table,syrup,fine_sugar,"A potion that brings a rush of sweetness and energy, revitalizing the drinker."
+volcanic_boost,Volcanic Boost,volcanic_boost,Crafting Table,boiled_melon,coal,"An intense potion that ignites inner strength, enhancing physical prowess and agility"
+featherfall_brew,Featherfall Brew,featherfall_brew,Crafting Table,scorched_feather,water,"Imbues the drinker with the lightness of a feather, granting temporary levitation or slow descent"
+frostbite_potion,Frostbite Potion,frostbite_potion,Crafting Table,frost_air,half_melted_ice,"Chills the body to resist extreme temperatures, granting immunity to frostbite and cold"
+enchanted_flora,Enchanted Flora,enchanted_flora,Crafting Table,wilted_magic_flower,stick,"Infused with the magic of nature, it heals wounds and bolsters vitality with the essence of the forest"
+energizing_elixir,Energizing Elixir,energizing_elixir,Crafting Table,water,syrup,"Provides a surge of energy and mental clarity, banishing fatigue and sharpening focus"
+warmth_potion,Warmth Potion,warmth_potion,Crafting Table,heated_coal,stick,"Emits a comforting warmth, protecting against the biting cold and soothing tired muscles"
+aqua_vitality,Aqua Vitality,aqua_vitality,Crafting Table,half_melted_ice,wilted_magic_flower,"Refreshes the body with pure hydration, restoring stamina and replenishing lost fluids"
+icy_veins_tonic,Icy Veins Tonic,icy_veins_tonic,Crafting Table,split_stone,splintered_wood,"Cools the blood and enhances endurance, granting resilience against heat and exhaustion"
+earthshaker_brew,Earthshaker Brew,earthshaker_brew,Crafting Table,wood,boiled_melon,"Strengthens the earth within, granting temporary superhuman strength and resilience"
+woodland_guardian_potion,Woodland Guardian Potion,woodland_guardian_potion,Crafting Table,splintered_wood,wilted_magic_flower,"Grants the essence of the forest, offering protection from harm and fostering a connection with nature"
+soothing_draught,Soothing Draught,soothing_draught,Crafting Table,syrup,half_melted_ice,"Calms the mind and body, alleviating stress and promoting relaxation"
+melody_of_flames,Melody of Flames,melody_of_flames,Crafting Table,heated_coal,wilted_magic_flower,"Conjures a protective aura of fire, warding off darkness and providing warmth in the coldest of nights"
+frostbloom_extract,Frostbloom Extract,frostbloom_extract,Crafting Table,frost_air,wilted_magic_flower,"Harnesses the power of frostbloom flowers, granting resistance to ice-based attacks and ailments"
+stalwart_brew,Stalwart Brew,stalwart_brew,Crafting Table,stone,heated_coal,"Fortifies the drinker's resolve and resilience, granting immunity to fear and bolstering courage in the face of adversity"

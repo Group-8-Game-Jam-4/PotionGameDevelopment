@@ -10,6 +10,7 @@ public class RecipeClass
     // item properties
     // name of the image that will be displayed without extension
     public string imageName = "";
+    public string description = "";
 
     // workstation it will be made in
     public string workstation;
