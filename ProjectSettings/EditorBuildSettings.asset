@@ -9,13 +9,13 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu Test.unity
     guid: dc36f2a8c14b8bb4e8f4f9664bb7674c
   - enabled: 1
-    path: Assets/Scenes/FinalGame.unity
-    guid: cae3e379bdd448d4e9a9549ca9a5a5c0
+    path: Assets/Scenes/FinalGrasslandsScene.unity
+    guid: 019fabd81e510e0409ba14f20ee0b436
+  - enabled: 1
+    path: Assets/Scenes/FinalSnowScene.unity
+    guid: 065c4283f924ce44c8e9d0301ccf85d4
   - enabled: 1
     path: Assets/Scenes/ShopInterior.unity
-    guid: 2794ed0552e20984bb48441da3759ccc
-  - enabled: 1
-    path: Assets/User Folders/Morgan/Morg_ShopInterior.unity
-    guid: 783b071376636b145bd8c447076fa1fd
+    guid: 6021b09d6a1c6124fbe1278937e8014c
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
