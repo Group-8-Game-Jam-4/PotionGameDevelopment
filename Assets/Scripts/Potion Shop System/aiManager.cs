@@ -9,19 +9,14 @@ public class aiManager : MonoBehaviour
 
     public Transform[] spawnPoints; // Array to hold the spawn points for the NPC
 
-    private GameObject currentNPC; // Reference to the current NPC instance
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        SpawnNPC(); // Spawn the initial NPC
-    }
+    public GameObject currentNPC; // Reference to the current NPC instance
+    public bool playerHasItem = false;
 
     // Update is called once per frame
     void Update()
     {
         // Check if there are items in stock
-        if (inventoryLoader.containerInv.inventory.formattedInventory.Count > 0)
+        if (inventoryLoader.containerInv.inventory.formattedInventory.Count != 0)
         {
             // If there are items in stock and no NPC instance exists, spawn one
             if (currentNPC == null)

@@ -12,6 +12,10 @@ public class npcController : MonoBehaviour
     public float movementSpeed = 5f;
     public InventoryLoader inventoryLoader;
     public List<string> potionOptions = new List<string>();
+    public string CurrentPotion = "";
+    private bool entered = false;
+    private aiManager aiManager;
+    public bool goToExit = false;
 
     void Start()
     {
@@ -39,73 +43,93 @@ public class npcController : MonoBehaviour
             Debug.LogError("Exclamation mark prefab is not assigned!");
         }
 
+        aiManager = GameObject.Find("AIManager").GetComponent<aiManager>();
     }
 
     void Update()
     {
-        if (currentShopCounterIndex >= 0)
+        if(!goToExit)
         {
-            // Check if NPC is close enough to the shop counter
-            if (Vector3.Distance(transform.position, shopCounters[currentShopCounterIndex].position) < 0.1f)
+            if (currentShopCounterIndex >= 0)
             {
-                // Activate exclamation mark
-                ActivateExclamationMark();
-
-                // Move to the exit waypoint
-                MoveToNextExitWaypoint();
-                currentShopCounterIndex = -1;
-            }
-            else
-            {
-                // Move towards the shop counter
-                MoveToNextShopCounter();
+                // Check if NPC is close enough to the shop counter
+                if (Vector3.Distance(transform.position, shopCounters[currentShopCounterIndex].position) < 0.1)
+                {
+                    // Activate exclamation mark
+                    ActivateExclamationMark();
+                    currentShopCounterIndex = -1;
+                }
+                else
+                {
+                    // Move towards the shop counter
+                    MoveToNextShopCounter();
+                }
             }
         }
-        else if (currentExitWaypointIndex >= 0 && Vector3.Distance(transform.position, exitWaypoints[currentExitWaypointIndex].position) < 0.1f)
+        else
         {
-            Destroy(gameObject);
+            // Move to the exit waypoint
+            MoveToNextExitWaypoint();
+        }
+        if(currentExitWaypointIndex >= 0 && Vector3.Distance(transform.position, exitWaypoints[currentExitWaypointIndex].position) < 0.1f && goToExit)
+        {
+            Destroy(aiManager.currentNPC);
+        }
+    
+        if(entered && Input.GetKeyDown(KeyCode.E) && aiManager.playerHasItem)
+        {
+            // do the items and crap if it needs to
+            inventoryLoader.containerInv.inventory.TakeItem(aiManager.currentNPC.GetComponent<npcController>().CurrentPotion, 1);
+            aiManager.playerHasItem = false;
+
+            // use this to give money
+            // playerInventory.inventory.AddItem("coin", 1);
+
+            currentExitWaypointIndex = Random.Range(0, exitWaypoints.Length);
+            goToExit = true;
         }
     }
 
 
     void MoveToNextShopCounter()
     {
-        Debug.Log("Moving");
         Vector3 direction = (shopCounters[currentShopCounterIndex].position - transform.position).normalized;
         transform.position += direction * movementSpeed * Time.deltaTime;
     }
 
     void MoveToNextExitWaypoint()
     {
-        currentExitWaypointIndex = Random.Range(0, exitWaypoints.Length);
-
         Vector3 direction = (exitWaypoints[currentExitWaypointIndex].position - transform.position).normalized;
         transform.position += direction * movementSpeed * Time.deltaTime;
     }
 
     void ChangePotionSpriteRandomly()
     {
-        Transform potionImage = transform.Find("potionimage");
-        if (potionImage != null)
+        if(potionOptions.Count != 0)
         {
-            int randomIndex = Random.Range(0, potionOptions.Count);
-            string potionName = potionOptions[randomIndex];
-
-            Sprite potionSprite = Resources.Load<Sprite>(potionName);
-
-            if (potionSprite != null)
+            Transform potionImage = transform.Find("potionimage");
+            if (potionImage != null)
             {
-                SpriteRenderer spriteRenderer = potionImage.GetComponent<SpriteRenderer>();
-                spriteRenderer.sprite = potionSprite;
+                int randomIndex = Random.Range(0, potionOptions.Count);
+                string potionName = potionOptions[randomIndex];
+                CurrentPotion = potionName;
+
+                Sprite potionSprite = Resources.Load<Sprite>(potionName);
+
+                if (potionSprite != null)
+                {
+                    SpriteRenderer spriteRenderer = potionImage.GetComponent<SpriteRenderer>();
+                    spriteRenderer.sprite = potionSprite;
+                }
+                else
+                {
+                    Debug.LogError("Sprite for potion '" + potionName + "' not found in the Resources folder.");
+                }
             }
             else
             {
-                Debug.LogError("Sprite for potion '" + potionName + "' not found in the Resources folder.");
+                Debug.LogError("Child object 'potionimage' not found.");
             }
-        }
-        else
-        {
-            Debug.LogError("Child object 'potionimage' not found.");
         }
     }
 
@@ -118,12 +142,26 @@ public class npcController : MonoBehaviour
 
         if (shelf != null && exclamationMarkPrefab != null)
         {
-            Instantiate(exclamationMarkPrefab, shelf.position + Vector3.up * 2f, Quaternion.identity);
+            GameObject mark = Instantiate(exclamationMarkPrefab, shelf.position + Vector3.up * 2f, Quaternion.identity);
+            mark.transform.Rotate(0,0,-90);
         }
         else
         {
             Debug.LogError("Shelf or exclamation mark prefab not found!");
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            entered = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        entered = false;
     }
 
 }

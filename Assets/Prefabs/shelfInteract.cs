@@ -6,22 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class shelfInteract : MonoBehaviour
 {
-    public PlayerInventory playerInventory;
-    public InventoryLoader inventoryLoader;
-    public npcController npcController;
-    public bool entered = false;
+    private PlayerInventory playerInventory;
+    private InventoryLoader inventoryLoader;
+    private aiManager aiManager;
+    private bool entered = false;
 
     public void Start()
     {
         playerInventory = GameObject.Find("Player").GetComponent<PlayerInventory>();
         inventoryLoader = GameObject.Find("ShopStock").transform.Find("PotionStockUI").GetComponent<InventoryLoader>();
-        npcController = GameObject.Find("ShopNPC").GetComponent<npcController>();
+        aiManager = GameObject.Find("AIManager").GetComponent<aiManager>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Press 'E' to change scene");
             entered = true;
         }
     }
@@ -35,9 +34,8 @@ public class shelfInteract : MonoBehaviour
     {
         if (entered == true && (Input.GetKeyDown(KeyCode.E)))
         {
+            aiManager.playerHasItem = true;
             Destroy(gameObject);
-            playerInventory.inventory.AddItem(npcController.potion, 1);
-            inventoryLoader.containerInv.inventory.TakeItem()
         }
     }
 }
