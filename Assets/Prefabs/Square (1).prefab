@@ -98,10 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90c4e4ec8babe204e8ddbf4690cd12ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInventory: {fileID: 0}
-  inventoryLoader: {fileID: 0}
-  aiManager: {fileID: 0}
-  entered: 0
 --- !u!58 &2933263999897391727
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -136,5 +132,5 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 2
+  m_Offset: {x: 3.3670888, y: 0.0000004013882}
+  m_Radius: 1.4843199
