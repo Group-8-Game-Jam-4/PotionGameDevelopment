@@ -31,11 +31,13 @@ public class InventoryLoader : MonoBehaviour
 
     // this is only ever used under very specific circumstances and only exists because theres a major flaw with how i do these that should be fixed but i cant be arsed
     public GameObject playerInventoryObject;
-    private void Awake()
+
+    private void Awake() 
     {
         benches = FindObjectsOfType<populateBenches>();
     }
-    private void Start()
+
+    private void Start() 
     {
         RefreshInventories();
     }
@@ -123,7 +125,6 @@ public class InventoryLoader : MonoBehaviour
         // if theres any items refresh the benches
         if(containerInv.inventory.formattedInventory.Count > 0)
         {
-
             foreach (populateBenches bench in benches)
             {
                 bench.stockShelf();
@@ -289,7 +290,6 @@ public class InventoryLoader : MonoBehaviour
         // refresh inventories
         RefreshInventories();
         sliderElement.SetActive(false);
-
     }
 
     void Dropitem(string name, int quantity)

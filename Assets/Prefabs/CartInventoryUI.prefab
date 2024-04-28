@@ -393,7 +393,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInventory: 1
   containerInventory: 1
+  isCupboard: 0
+  isShop: 0
   isWorkstation: 0
+  isWorkstationOutput: 0
   renderPlayerInv: 1
   playerInvUI: {fileID: 5852546193258844266}
   containerInvUI: {fileID: 2033826554490878874}
@@ -403,6 +406,7 @@ MonoBehaviour:
   playerInv: {fileID: 0}
   containerInv: {fileID: 0}
   workstation: {fileID: 0}
+  playerInventoryObject: {fileID: 0}
 --- !u!1 &1562255637730054825
 GameObject:
   m_ObjectHideFlags: 0
