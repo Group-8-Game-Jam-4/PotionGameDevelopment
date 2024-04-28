@@ -17,8 +17,6 @@ public class itemCollect : MonoBehaviour
 
     private Color originalColor;
     private SpriteRenderer spriteRenderer;
-    private float hueChangeSpeed = 0.5f;
-    private float currentHue = 0f;
 
     private void Awake()
     {

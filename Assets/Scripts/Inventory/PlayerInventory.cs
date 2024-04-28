@@ -22,6 +22,8 @@ public class PlayerInventory : MonoBehaviour
         inventory.AddItem("sugar", 10);
         inventory.AddItem("honey", 10);
         inventory.AddItem("stone", 10);
+        inventory.AddItem("water", 10);
+        inventory.AddItem("earthshaker_brew", 10);
     }
 
     public void SaveInventory()
