@@ -8711,6 +8711,8 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 2257449822701468152}
   - {fileID: 1469375190956952135}
+  currentNPC: {fileID: 0}
+  playerHasItem: 0
 --- !u!4 &1380552348
 Transform:
   m_ObjectHideFlags: 0
@@ -13203,7 +13205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7273255778653840531, guid: b0827bfab6e4ee14a8206b09aef6f382, type: 3}
       propertyPath: m_Name
-      value: Shelves_0
+      value: Shelves_0 (0)
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 176161770730849377, guid: b0827bfab6e4ee14a8206b09aef6f382, type: 3}
@@ -14431,6 +14433,7 @@ MonoBehaviour:
   workstation: Furnace
   inputInventoryLoader: {fileID: 2216874175657464289}
   outputInventoryLoader: {fileID: 4364782150217879445}
+  craftingSystem: {fileID: 0}
   readyToBrew: 0
 --- !u!1 &6717776595835585445
 GameObject:

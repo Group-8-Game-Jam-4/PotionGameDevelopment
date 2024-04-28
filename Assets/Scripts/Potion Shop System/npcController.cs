@@ -83,7 +83,7 @@ public class npcController : MonoBehaviour
             aiManager.playerHasItem = false;
 
             // use this to give money
-            // playerInventory.inventory.AddItem("coin", 1);
+            inventoryLoader.playerInv.inventory.AddItem("coin", 1);
 
             currentExitWaypointIndex = Random.Range(0, exitWaypoints.Length);
             goToExit = true;
@@ -136,13 +136,13 @@ public class npcController : MonoBehaviour
     void ActivateExclamationMark()
     {
         // Instantiate exclamation mark above a random shelf
-        int randomShelfIndex = Random.Range(0, 8); // Generate a random shelf index (0 to 7)
+        int randomShelfIndex = Random.Range(0, 7); // Generate a random shelf index (0 to 7)
         string shelfName = "Shelves_0 (" + randomShelfIndex + ")"; // Construct the shelf name
-        Transform shelf = GameObject.Find(shelfName).transform; // Find the shelf by name
+        GameObject shelf = GameObject.Find(shelfName); // Find the shelf by name
 
         if (shelf != null && exclamationMarkPrefab != null)
         {
-            GameObject mark = Instantiate(exclamationMarkPrefab, shelf.position + Vector3.up * 2f, Quaternion.identity);
+            GameObject mark = Instantiate(exclamationMarkPrefab, shelf.transform.position + Vector3.up * 2f, Quaternion.identity);
             mark.transform.Rotate(0,0,-90);
         }
         else

@@ -43,3 +43,4 @@ soothing_draught,Soothing Draught,soothing_draught,Epic,Brewed By the Player ,N/
 melody_of_flames,Melody of Flames,melody_of_flames,Epic,Brewed By the Player ,N/A,5,40,40,80,TRUE
 frostbloom_extract,Frostbloom Extract,frostbloom_extract,Epic,Brewed By the Player ,N/A,5,70,70,140,TRUE
 stalwart_brew,Stalwart Brew,stalwart_brew,Epic,Brewed By the Player ,N/A,5,25,25,50,TRUE
+coin,Coin,coin,Common,N/A,N/A,64,1,1,1,FALSE
