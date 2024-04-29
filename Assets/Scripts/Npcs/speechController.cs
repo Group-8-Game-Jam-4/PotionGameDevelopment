@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpeechController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class SpeechController : MonoBehaviour
     public bool isRevealing = false;
     private bool isClearing = false;
     string currentText;
+    public GameObject npcBackgroundPanel;
 
     public void RevealText(string text)
     {
@@ -47,6 +49,7 @@ public class SpeechController : MonoBehaviour
         for (int i = 0; i < text.Length; i++)
         {
             textUI.text += text[i];
+            npcBackgroundPanel.SetActive(true);
             yield return new WaitForSeconds(interval);
         }
 
@@ -59,6 +62,7 @@ public class SpeechController : MonoBehaviour
         isClearing = true;
         yield return new WaitForSeconds(seconds);
         textUI.text = "";
+        npcBackgroundPanel.SetActive(false);   
         isClearing = false;
     }
 }
