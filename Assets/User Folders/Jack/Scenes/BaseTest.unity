@@ -384,6 +384,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &787040893 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6712104064605541121, guid: c3e3f84bf956c0a4a9aa4a1b7e65cc0e, type: 3}
+  m_PrefabInstance: {fileID: 927426417}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &927426417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1213,6 +1218,10 @@ PrefabInstance:
       propertyPath: containerInvUI
       value: 
       objectReference: {fileID: 268928168}
+    - target: {fileID: 2913154752512643305, guid: 575283267d79e9b4585b2fca19f0d6a4, type: 3}
+      propertyPath: playerInventoryObject
+      value: 
+      objectReference: {fileID: 787040893}
     - target: {fileID: 4415281594515804818, guid: 575283267d79e9b4585b2fca19f0d6a4, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1325,6 +1334,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: carpet_prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 7126547145373733634, guid: 7941d09c057a81b41be6d9d92624e715, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7495633191930906454, guid: 7941d09c057a81b41be6d9d92624e715, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.48
@@ -1367,7 +1380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9060528427061191023, guid: 7941d09c057a81b41be6d9d92624e715, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
