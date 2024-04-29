@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2909534838713316262}
   - component: {fileID: 1841255285691316336}
   m_Layer: 0
-  m_Name: scorched_feather_prefab
+  m_Name: boiled_melon_prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d46befec06a4863408e026d6a5ada9e2, type: 2}
+  m_Sprite: {fileID: 21300000, guid: eabe4b9c6e1a4034c87531ef48bb3acc, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
