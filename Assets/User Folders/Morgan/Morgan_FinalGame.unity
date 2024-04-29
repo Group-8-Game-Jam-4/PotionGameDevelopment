@@ -2349,6 +2349,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3680303808396689129, guid: 26c7249ae0be2c44f90584a84993453e, type: 3}
+      propertyPath: dropItemPrefab
+      value: 
+      objectReference: {fileID: 149313383514137156, guid: 907449cb8769e01438af9d21c148dd7d, type: 3}
     - target: {fileID: 5368988415492125993, guid: 26c7249ae0be2c44f90584a84993453e, type: 3}
       propertyPath: m_Name
       value: SmallTree 1
