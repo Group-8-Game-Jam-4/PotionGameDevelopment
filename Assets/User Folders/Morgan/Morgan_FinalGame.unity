@@ -2515,6 +2515,18 @@ MonoBehaviour:
   - {fileID: 1028903689}
   - {fileID: 104711930}
   - {fileID: 1133479420}
+  npcBackground: {fileID: 0}
+  deer: {fileID: 0}
+  hedgehog: {fileID: 0}
+  fox: {fileID: 0}
+  arctic_fox: {fileID: 0}
+  penguin: {fileID: 0}
+  polar_bear: {fileID: 0}
+  whale: {fileID: 0}
+  panda: {fileID: 0}
+  squirrel: {fileID: 0}
+  albino_squirrel: {fileID: 0}
+  mouse: {fileID: 0}
 --- !u!1 &891567126
 GameObject:
   m_ObjectHideFlags: 0
@@ -4824,6 +4836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textUI: {fileID: 1808193604}
   isRevealing: 0
+  npcBackgroundPanel: {fileID: 0}
 --- !u!1 &1831677868
 GameObject:
   m_ObjectHideFlags: 0

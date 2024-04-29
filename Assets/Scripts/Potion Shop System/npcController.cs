@@ -17,8 +17,15 @@ public class npcController : MonoBehaviour
     private aiManager aiManager;
     public bool goToExit = false;
 
+    // Random sprites for NPC
+    public Sprite[] npcSprites;
+
     void Start()
     {
+        // Randomly select sprite for NPC
+        int spriteIndex = Random.Range(0, npcSprites.Length);
+        GetComponent<SpriteRenderer>().sprite = npcSprites[spriteIndex];
+
         inventoryLoader = GameObject.Find("ShopStock").transform.Find("PotionStockUI").GetComponent<InventoryLoader>();
         shopCounters = new Transform[3];
         shopCounters[0] = GameObject.Find("FrontDesk").transform;
@@ -48,35 +55,35 @@ public class npcController : MonoBehaviour
 
     void Update()
     {
-        if(!goToExit)
+        if (!goToExit)
         {
             if (currentShopCounterIndex >= 0)
             {
                 // Check if NPC is close enough to the shop counter
                 if (Vector3.Distance(transform.position, shopCounters[currentShopCounterIndex].position) < 0.1)
                 {
-                    // Activate exclamation mark
+                    // activate exclamation mark
                     ActivateExclamationMark();
                     currentShopCounterIndex = -1;
                 }
                 else
                 {
-                    // Move towards the shop counter
+                    // move towards the shop counter
                     MoveToNextShopCounter();
                 }
             }
         }
         else
         {
-            // Move to the exit waypoint
+            // move to the exit waypoint
             MoveToNextExitWaypoint();
         }
-        if(currentExitWaypointIndex >= 0 && Vector3.Distance(transform.position, exitWaypoints[currentExitWaypointIndex].position) < 0.1f && goToExit)
+        if (currentExitWaypointIndex >= 0 && Vector3.Distance(transform.position, exitWaypoints[currentExitWaypointIndex].position) < 0.1f && goToExit)
         {
             Destroy(aiManager.currentNPC);
         }
-    
-        if(entered && Input.GetKeyDown(KeyCode.E) && aiManager.playerHasItem)
+
+        if (entered && Input.GetKeyDown(KeyCode.E) && aiManager.playerHasItem)
         {
             // do the items and crap if it needs to
             inventoryLoader.containerInv.inventory.TakeItem(aiManager.currentNPC.GetComponent<npcController>().CurrentPotion, 1);
@@ -89,7 +96,6 @@ public class npcController : MonoBehaviour
             goToExit = true;
         }
     }
-
 
     void MoveToNextShopCounter()
     {
@@ -105,7 +111,7 @@ public class npcController : MonoBehaviour
 
     void ChangePotionSpriteRandomly()
     {
-        if(potionOptions.Count != 0)
+        if (potionOptions.Count != 0)
         {
             Transform potionImage = transform.Find("potionimage");
             if (potionImage != null)
@@ -143,7 +149,7 @@ public class npcController : MonoBehaviour
         if (shelf != null && exclamationMarkPrefab != null)
         {
             GameObject mark = Instantiate(exclamationMarkPrefab, shelf.transform.position + Vector3.up * 2f, Quaternion.identity);
-            mark.transform.Rotate(0,0,-90);
+            mark.transform.Rotate(0, 0, -90);
         }
         else
         {
@@ -163,5 +169,4 @@ public class npcController : MonoBehaviour
     {
         entered = false;
     }
-
 }

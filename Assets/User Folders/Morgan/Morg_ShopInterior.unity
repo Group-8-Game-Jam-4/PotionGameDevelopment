@@ -8760,6 +8760,8 @@ MonoBehaviour:
   - {fileID: 1469375190956952135}
   currentNPC: {fileID: 0}
   playerHasItem: 0
+  minWait: 3
+  maxWait: 6
 --- !u!4 &1380552348
 Transform:
   m_ObjectHideFlags: 0
@@ -9958,6 +9960,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textUI: {fileID: 1808193604}
   isRevealing: 0
+  npcBackgroundPanel: {fileID: 0}
 --- !u!1 &1826244562 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7273255778653840531, guid: b0827bfab6e4ee14a8206b09aef6f382, type: 3}
