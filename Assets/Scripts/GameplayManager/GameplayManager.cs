@@ -29,6 +29,8 @@ public class GameplayManager : MonoBehaviour
             // get the questlines for that npc
             List<string[]> values = questLines[NPCName];
 
+            Debug.Log("shit " + textCounter);
+
             // if awaiting items (also check we have questlines left just for saftey)
             if(awaitingItems && textCounter <= values.Count)
             {
