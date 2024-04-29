@@ -13,7 +13,7 @@ public class InventoryOpener : MonoBehaviour
     private bool playerInRange = false;
     public bool inUi = false;
     InventoryOpener[] inventoryOpeners;
-    bool pressed = false;
+    public bool pressed = false;
 
     // Update is called once per frame
     void Start()
@@ -51,13 +51,10 @@ public class InventoryOpener : MonoBehaviour
                 pressed = true;
                 if(InInventory())
                 {
+                    Debug.Log("ALLAH FUCK");
                     inventoryObject.SetActive(false);
                     inUi = false;
                     return;
-                }
-                else
-                {
-                    pressed = false;
                 }
             }
         }
@@ -75,7 +72,7 @@ public class InventoryOpener : MonoBehaviour
 
         if(isPlayer)
         {
-            if(Input.GetKeyDown(KeyCode.Tab) && !InInventory() && !pressed)
+            if(Input.GetKeyDown(KeyCode.Tab) && !InInventory() && pressed)
             {
                 pressed = true;
                 inventoryObject.SetActive(true);

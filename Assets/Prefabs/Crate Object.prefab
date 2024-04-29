@@ -247,7 +247,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press "E" to open cart
+  m_text: Press "E" to open crate
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -763,6 +763,7 @@ MonoBehaviour:
   playerInventory: 1
   containerInventory: 1
   isCupboard: 0
+  isShop: 0
   isWorkstation: 0
   isWorkstationOutput: 0
   renderPlayerInv: 1
@@ -1760,7 +1761,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d4e5de7ffa1ba214185bd61d9273b209, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1825,6 +1826,7 @@ MonoBehaviour:
   isWorkstation: 0
   interactText: {fileID: 4081389060009475636}
   inUi: 0
+  pressed: 0
 --- !u!1 &7452410751354882632
 GameObject:
   m_ObjectHideFlags: 0

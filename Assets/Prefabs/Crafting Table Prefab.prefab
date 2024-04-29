@@ -4379,6 +4379,7 @@ MonoBehaviour:
   isWorkstation: 1
   interactText: {fileID: 8076420063407781065}
   inUi: 0
+  pressed: 0
 --- !u!58 &6516812460486093457
 CircleCollider2D:
   m_ObjectHideFlags: 0

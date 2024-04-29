@@ -22,8 +22,9 @@ public class PlayerInventory : MonoBehaviour
         inventory.AddItem("coal", 10);
         inventory.AddItem("melon", 10);
         inventory.AddItem("stone", 10);
-        inventory.AddItem("magic_flower", 10);
-        inventory.AddItem("woodland_guardian_potion", 1);
+        inventory.AddItem("water", 10);
+        inventory.AddItem("earthshaker_brew", 10);
+        inventory.AddItem("carpet", 1);
     }
 
     public void SaveInventory()
