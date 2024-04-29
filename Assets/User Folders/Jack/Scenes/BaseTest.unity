@@ -473,6 +473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textUI: {fileID: 1189231825}
   isRevealing: 0
+  npcBackgroundPanel: {fileID: 0}
 --- !u!114 &1189231825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1585,75 +1586,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 575283267d79e9b4585b2fca19f0d6a4, type: 3}
---- !u!1001 &8107337733837655106
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3639624713021081122, guid: 0385b9c783c77e242bb225faf42c6b8c, type: 3}
-      propertyPath: scenename
-      value: GameTest
-      objectReference: {fileID: 0}
-    - target: {fileID: 3639624713021081122, guid: 0385b9c783c77e242bb225faf42c6b8c, type: 3}
-      propertyPath: interactText
-      value: 
-      objectReference: {fileID: 1692409444}
-    - target: {fileID: 3639624713021081122, guid: 0385b9c783c77e242bb225faf42c6b8c, type: 3}
-      propertyPath: transitioner
-      value: 
-      objectReference: {fileID: 4955446414705402419}
-    - target: {fileID: 6596643499848595148, guid: 0385b9c783c77e242bb225faf42c6b8c, type: 3}
-      propertyPath: m_Name
-      value: Biome Gate
-      objectReference: {fileID: 0}
-    - target: {fileID: 7985775001050373129, guid: 0385b9c783c77e242bb225faf42c6b8c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -48.36
-      objectReference: {fileID: 0}
-    - target: {fileID: 7985775001050373129, guid: 0385b9c783c77e242bb225faf42c6b8c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 7985775001050373129, guid: 0385b9c783c77e242bb225faf42c6b8c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -406.10303
-      objectReference: {fileID: 0}
-    - target: {fileID: 7985775001050373129, guid: 0385b9c783c77e242bb225faf42c6b8c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7985775001050373129, guid: 0385b9c783c77e242bb225faf42c6b8c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7985775001050373129, guid: 0385b9c783c77e242bb225faf42c6b8c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7985775001050373129, guid: 0385b9c783c77e242bb225faf42c6b8c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7985775001050373129, guid: 0385b9c783c77e242bb225faf42c6b8c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7985775001050373129, guid: 0385b9c783c77e242bb225faf42c6b8c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7985775001050373129, guid: 0385b9c783c77e242bb225faf42c6b8c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0385b9c783c77e242bb225faf42c6b8c, type: 3}
 --- !u!1001 &8448687240797862299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1723,7 +1655,6 @@ SceneRoots:
   - {fileID: 1614045542}
   - {fileID: 6215983532618558017}
   - {fileID: 4955446414705402428}
-  - {fileID: 8107337733837655106}
   - {fileID: 3513056489298051273}
   - {fileID: 8448687240797862299}
   - {fileID: 6048945064009181457}
