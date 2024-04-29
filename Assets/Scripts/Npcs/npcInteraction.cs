@@ -2,7 +2,7 @@ using Cinemachine;
 using System.Collections;
 using TMPro;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class npcInteraction : MonoBehaviour
 {
     // Flag to check if the player is inside the trigger zone
@@ -28,6 +28,20 @@ public class npcInteraction : MonoBehaviour
 
     QuestClass lastQuest;
     Inventory playerInventory;
+
+    // npc backgrounds
+    public GameObject npcBackground;
+    public Sprite deer;
+    public Sprite hedgehog;
+    public Sprite fox;
+    public Sprite arctic_fox;
+    public Sprite penguin;
+    public Sprite polar_bear;
+    public Sprite whale;
+    public Sprite panda;
+    public Sprite squirrel;
+    public Sprite albino_squirrel;
+    public Sprite mouse;
 
     private void Start()
     {
@@ -138,10 +152,13 @@ public class npcInteraction : MonoBehaviour
                 case 0:
                     // display the standard storyline like text
                     speechController.RevealText(currentQuest.currentStoryline);
+                    SetBackground(NPCname);
+                    
                     break;
                 case 1:
                     // display the text asking for the missing items and then probably display like a ui where the player can transfer them
                     speechController.RevealText(currentQuest.doYouHaveThis);
+                    SetBackground(NPCname);
 
                     // show the ui where its like do you want to give these items
                     ResetUi();
@@ -150,8 +167,58 @@ public class npcInteraction : MonoBehaviour
                 case 2:
                     // display the text saying there are no more quests available
                     speechController.RevealText(currentQuest.noQuestsAvailable);
+                    SetBackground(NPCname);
                     break;
             }  
+        }
+    }
+
+    public void SetBackground(string name)
+    {
+        npcBackground.SetActive(true);
+        if(name == "Deer")
+        {
+            npcBackground.GetComponent<Image>().sprite = deer;
+        }
+        if(name == "Hedgehog")
+        {
+            npcBackground.GetComponent<Image>().sprite = hedgehog;
+        }
+        if(name == "Fox")
+        {
+            npcBackground.GetComponent<Image>().sprite = fox;
+        }
+        if(name == "Arctic Fox")
+        {
+            npcBackground.GetComponent<Image>().sprite = arctic_fox;
+        }
+        if(name == "Penguin")
+        {
+            npcBackground.GetComponent<Image>().sprite = penguin;
+        }
+        if(name == "Polar Bear")
+        {
+            npcBackground.GetComponent<Image>().sprite = polar_bear;
+        }
+        if(name == "Whale")
+        {
+            npcBackground.GetComponent<Image>().sprite = whale;
+        }
+        if(name == "Panda")
+        {
+            npcBackground.GetComponent<Image>().sprite = panda;
+        }
+        if(name == "Squirrel")
+        {
+            npcBackground.GetComponent<Image>().sprite = squirrel;
+        }
+        if(name == "Albino Squirrel")
+        {
+            npcBackground.GetComponent<Image>().sprite = albino_squirrel;
+        }
+        if(name == "Mice")
+        {
+            npcBackground.GetComponent<Image>().sprite = mouse;
         }
     }
 
@@ -212,6 +279,7 @@ public class npcInteraction : MonoBehaviour
             haveItemsUi.SetActive(false);
             missingItemsUi.SetActive(false);
         }
+        npcBackground.SetActive(false);
     }
 
     public void GiveQuestItems()
