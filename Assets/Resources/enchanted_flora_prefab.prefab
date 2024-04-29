@@ -144,7 +144,7 @@ MonoBehaviour:
   moveSpeed: 10
   isPickedUp: 0
   hasInteracted: 0
-  itemName: woodland_guardian_potion
+  itemName: enchanted_flora
 --- !u!50 &2909534838713316262
 Rigidbody2D:
   serializedVersion: 4
