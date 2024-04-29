@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1880456052556786253}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 2.43, z: 0}
+  m_LocalPosition: {x: 0.182, y: 0.029, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -222,8 +222,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.34117648, g: 0.21960786, b: 0.09019608, a: 1}
-      maxColor: {r: 0.29803923, g: 0.5882353, b: 0.14509805, a: 1}
+      minColor: {r: 0.22352943, g: 0.25490198, b: 0.25882354, a: 1}
+      maxColor: {r: 0.75133497, g: 0.7799929, b: 0.7924528, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4915,7 +4915,7 @@ Transform:
   m_GameObject: {fileID: 2205157749981042148}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 2.43, z: 0}
+  m_LocalPosition: {x: 0.172, y: 0.029, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5110,8 +5110,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.29803923, g: 0.5882353, b: 0.14509805, a: 1}
-      maxColor: {r: 0.2924528, g: 0.1791603, b: 0, a: 1}
+      minColor: {r: 0.87058824, g: 0.9529412, b: 0.96862745, a: 1}
+      maxColor: {r: 0.22352943, g: 0.25490198, b: 0.25882354, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9789,8 +9789,10 @@ GameObject:
   - component: {fileID: 1358503963375826704}
   - component: {fileID: 3680303808396689129}
   - component: {fileID: 5483858506151275429}
+  - component: {fileID: 4143343048647726520}
+  - component: {fileID: -1393336550163696802}
   m_Layer: 0
-  m_Name: SnowTree 1
+  m_Name: Large_Rock_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9854,7 +9856,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 805778372, guid: dac8d138c47bb2b41bf57c45bb753fd9, type: 3}
+  m_Sprite: {fileID: -1586334823, guid: ba9b3683b94c6af4b94d435abfcdae62, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -9899,17 +9901,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 1}
+  m_Offset: {x: 0.16612577, y: -0.01729095}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.875, y: 3.9375}
+    oldSize: {x: 2.5, y: 1.25}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3, y: 3}
+  m_Size: {x: 2.8766775, y: 2.6494944}
   m_EdgeRadius: 0
 --- !u!114 &3680303808396689129
 MonoBehaviour:
@@ -9928,9 +9930,9 @@ MonoBehaviour:
   damageParticle: {fileID: 6322994865195184620}
   destroyParticle: {fileID: 2982997862874129149}
   spriteRenderer: {fileID: 6375727171448939790}
-  brokenSprite: {fileID: -1878414230, guid: dac8d138c47bb2b41bf57c45bb753fd9, type: 3}
-  grownSprite: {fileID: 805778372, guid: dac8d138c47bb2b41bf57c45bb753fd9, type: 3}
-  dropItemPrefab: {fileID: 149313383514137156, guid: 41f72ecf509218147867631fb03a1447, type: 3}
+  brokenSprite: {fileID: 0}
+  grownSprite: {fileID: -1586334823, guid: ba9b3683b94c6af4b94d435abfcdae62, type: 3}
+  dropItemPrefab: {fileID: 149313383514137156, guid: f1219d7c034c4e845a6f9d64d8db7240, type: 3}
   regrowTime: 10
   shakeIntensity: 0.1
   shakeDuration: 0.1
@@ -9970,6 +9972,82 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.06498772, y: 0.45008415}
-  m_Size: {x: 1.8363593, y: 0.923146}
+  m_Offset: {x: 0.18590285, y: -0.065393806}
+  m_Size: {x: 2.1282022, y: 0.8165025}
   m_Direction: 1
+--- !u!1839735485 &4143343048647726520
+Tilemap:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5368988415492125993}
+  m_Enabled: 1
+  m_Tiles: {}
+  m_AnimatedTiles: {}
+  m_TileAssetArray: []
+  m_TileSpriteArray: []
+  m_TileMatrixArray: []
+  m_TileColorArray: []
+  m_TileObjectToInstantiateArray: []
+  m_AnimationFrameRate: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Origin: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0, y: 0, z: 1}
+  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
+  m_TileOrientation: 0
+  m_TileOrientationMatrix:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+--- !u!19719996 &-1393336550163696802
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5368988415492125993}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
+  m_UseDelaunayMesh: 0

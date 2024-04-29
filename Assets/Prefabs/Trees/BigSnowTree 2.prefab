@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1880456052556786253}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.17, y: 0.17, z: 0}
+  m_LocalPosition: {x: 0, y: 0.44, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 2
       minColor: {r: 0.34117648, g: 0.21960786, b: 0.09019608, a: 1}
-      maxColor: {r: 0.8705883, g: 0.95294124, b: 0.9686275, a: 1}
+      maxColor: {r: 0.87058824, g: 0.9529412, b: 0.96862745, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4915,7 +4915,7 @@ Transform:
   m_GameObject: {fileID: 2205157749981042148}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.17000008, y: 0.16999984, z: 0}
+  m_LocalPosition: {x: 0, y: 0.43999982, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9788,8 +9788,9 @@ GameObject:
   - component: {fileID: 6375727171448939790}
   - component: {fileID: 1358503963375826704}
   - component: {fileID: 3680303808396689129}
+  - component: {fileID: 5483858506151275429}
   m_Layer: 0
-  m_Name: Water
+  m_Name: BigSnowTree 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9853,8 +9854,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 329e60e0cf912d143871228754e9f661, type: 3}
-  m_Color: {r: 0.25490195, g: 0.4863643, b: 0.98039216, a: 1}
+  m_Sprite: {fileID: 805778372, guid: dac8d138c47bb2b41bf57c45bb753fd9, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -9898,17 +9899,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.0083835125}
+  m_Offset: {x: 0, y: -0.009380221}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 2.875, y: 3.9375}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3, y: 3.966466}
+  m_Size: {x: 4, y: 4.2474604}
   m_EdgeRadius: 0
 --- !u!114 &3680303808396689129
 MonoBehaviour:
@@ -9922,16 +9923,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d2d9d6369391094891f773f0fbd28f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectHealth: 3
+  objectHealth: 100
   enterTrigger: 0
   damageParticle: {fileID: 6322994865195184620}
   destroyParticle: {fileID: 2982997862874129149}
   spriteRenderer: {fileID: 6375727171448939790}
-  brokenSprite: {fileID: 0}
-  grownSprite: {fileID: 21300000, guid: a048f1f3b86d75342b00e68ce3f3d5bc, type: 2}
-  dropItemPrefab: {fileID: 149313383514137156, guid: 93a1335c1f6872242beb5bf047fe52ed, type: 3}
+  brokenSprite: {fileID: -1848878960, guid: c3b3f1b25da2ea1458c368cebb4f90ab, type: 3}
+  grownSprite: {fileID: 239049786, guid: c3b3f1b25da2ea1458c368cebb4f90ab, type: 3}
+  dropItemPrefab: {fileID: 149313383514137156, guid: 907449cb8769e01438af9d21c148dd7d, type: 3}
   regrowTime: 10
   shakeIntensity: 0.1
   shakeDuration: 0.1
   spawnRadius: 2
-  itemDropNum: 1
+  itemDropNum: 5
+--- !u!70 &5483858506151275429
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5368988415492125993}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.00000013124857, y: -0.100992694}
+  m_Size: {x: 2.5000005, y: 1.3306909}
+  m_Direction: 1

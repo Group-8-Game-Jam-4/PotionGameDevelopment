@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1880456052556786253}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 2.43, z: 0}
+  m_LocalPosition: {x: -0.17, y: 0.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 2
       minColor: {r: 0.34117648, g: 0.21960786, b: 0.09019608, a: 1}
-      maxColor: {r: 0.29803923, g: 0.5882353, b: 0.14509805, a: 1}
+      maxColor: {r: 0.8705883, g: 0.95294124, b: 0.9686275, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4915,7 +4915,7 @@ Transform:
   m_GameObject: {fileID: 2205157749981042148}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 2.43, z: 0}
+  m_LocalPosition: {x: -0.17000008, y: 0.16999984, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5110,7 +5110,7 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.29803923, g: 0.5882353, b: 0.14509805, a: 1}
+      minColor: {r: 0.87058824, g: 0.9529412, b: 0.96862745, a: 1}
       maxColor: {r: 0.2924528, g: 0.1791603, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
@@ -9790,7 +9790,7 @@ GameObject:
   - component: {fileID: 3680303808396689129}
   - component: {fileID: 5483858506151275429}
   m_Layer: 0
-  m_Name: SnowTree 5
+  m_Name: MediumSnowTree 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9854,7 +9854,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1212308703, guid: dac8d138c47bb2b41bf57c45bb753fd9, type: 3}
+  m_Sprite: {fileID: 869500058, guid: dac8d138c47bb2b41bf57c45bb753fd9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -9899,17 +9899,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 1}
+  m_Offset: {x: 0, y: 0.0083835125}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.6875, y: 3.25}
+    oldSize: {x: 2.5625, y: 3.875}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3, y: 3}
+  m_Size: {x: 3, y: 3.966466}
   m_EdgeRadius: 0
 --- !u!114 &3680303808396689129
 MonoBehaviour:
@@ -9928,9 +9928,9 @@ MonoBehaviour:
   damageParticle: {fileID: 6322994865195184620}
   destroyParticle: {fileID: 2982997862874129149}
   spriteRenderer: {fileID: 6375727171448939790}
-  brokenSprite: {fileID: -1480456600, guid: dac8d138c47bb2b41bf57c45bb753fd9, type: 3}
-  grownSprite: {fileID: -1212308703, guid: dac8d138c47bb2b41bf57c45bb753fd9, type: 3}
-  dropItemPrefab: {fileID: 149313383514137156, guid: 41f72ecf509218147867631fb03a1447, type: 3}
+  brokenSprite: {fileID: -397279030, guid: dac8d138c47bb2b41bf57c45bb753fd9, type: 3}
+  grownSprite: {fileID: 869500058, guid: dac8d138c47bb2b41bf57c45bb753fd9, type: 3}
+  dropItemPrefab: {fileID: 149313383514137156, guid: 907449cb8769e01438af9d21c148dd7d, type: 3}
   regrowTime: 10
   shakeIntensity: 0.1
   shakeDuration: 0.1
@@ -9970,6 +9970,6 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.06498772, y: 0.45008415}
-  m_Size: {x: 1.8363593, y: 0.923146}
+  m_Offset: {x: 0.026249673, y: 0.19332278}
+  m_Size: {x: 1.944912, y: 1.2080575}
   m_Direction: 1

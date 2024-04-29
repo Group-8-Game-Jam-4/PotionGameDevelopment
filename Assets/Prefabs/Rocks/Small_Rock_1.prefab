@@ -9788,9 +9788,9 @@ GameObject:
   - component: {fileID: 6375727171448939790}
   - component: {fileID: 1358503963375826704}
   - component: {fileID: 3680303808396689129}
-  - component: {fileID: 1085808958058743384}
+  - component: {fileID: 5483858506151275429}
   m_Layer: 0
-  m_Name: CoalNode 1
+  m_Name: Small_Rock_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9854,7 +9854,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ff7f07da19113df45bcaaf3bb3fd2a2d, type: 3}
+  m_Sprite: {fileID: -966923166, guid: ba9b3683b94c6af4b94d435abfcdae62, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -9903,7 +9903,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 1.75, y: 1.3125}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -9923,21 +9923,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d2d9d6369391094891f773f0fbd28f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectHealth: 140
+  objectHealth: 100
   enterTrigger: 0
   damageParticle: {fileID: 6322994865195184620}
   destroyParticle: {fileID: 2982997862874129149}
   spriteRenderer: {fileID: 6375727171448939790}
-  brokenSprite: {fileID: 21300000, guid: 67359471045a2354f8c56423cc576f44, type: 3}
-  grownSprite: {fileID: 21300000, guid: ff7f07da19113df45bcaaf3bb3fd2a2d, type: 3}
-  dropItemPrefab: {fileID: 149313383514137156, guid: b6986e0d300145245a2a6ae2fdb4dd95, type: 3}
+  brokenSprite: {fileID: 0}
+  grownSprite: {fileID: -966923166, guid: ba9b3683b94c6af4b94d435abfcdae62, type: 3}
+  dropItemPrefab: {fileID: 149313383514137156, guid: f1219d7c034c4e845a6f9d64d8db7240, type: 3}
   regrowTime: 10
   shakeIntensity: 0.1
   shakeDuration: 0.1
   spawnRadius: 2
-  itemDropNum: 3
---- !u!68 &1085808958058743384
-EdgeCollider2D:
+  itemDropNum: 5
+--- !u!70 &5483858506151275429
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -9970,12 +9970,6 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -1, y: 0}
-  - {x: 1, y: 0}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
+  m_Offset: {x: 0.18590285, y: -0.065393806}
+  m_Size: {x: 2.1282022, y: 0.8165025}
+  m_Direction: 1
