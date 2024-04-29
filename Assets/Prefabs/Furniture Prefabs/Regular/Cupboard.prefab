@@ -761,11 +761,19 @@ MonoBehaviour:
   playerInventory: 1
   containerInventory: 1
   isCupboard: 1
+  isShop: 0
+  isWorkstation: 0
+  isWorkstationOutput: 0
+  renderPlayerInv: 1
+  playerInvUI: {fileID: 0}
+  containerInvUI: {fileID: 0}
   UITemplate: {fileID: 8050344346438448059, guid: cdc12a99278a14a42bdb25bc1fdf88a3, type: 3}
   sliderElement: {fileID: 1289935079692375014}
   sliderQuantityText: {fileID: 5111170463888388852}
   playerInv: {fileID: 0}
   containerInv: {fileID: 6180310179588798546}
+  workstation: {fileID: 0}
+  playerInventoryObject: {fileID: 0}
 --- !u!1 &4662987518372494764
 GameObject:
   m_ObjectHideFlags: 0
@@ -1767,7 +1775,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.03129697, y: -0.16962278}
+  m_Offset: {x: 0.00056532025, y: 0.7969477}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1777,7 +1785,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.7511282, y: 3.617864}
+  m_Size: {x: 1.8148527, y: 1.6847229}
   m_EdgeRadius: 0
 --- !u!50 &4344403695967126173
 Rigidbody2D:
@@ -1856,6 +1864,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryMaxLength: 10
+  InventoryName: 
 --- !u!114 &5222970945240550795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1870,7 +1879,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryObject: {fileID: 4415281594515804818}
   isPlayer: 0
-  isCart: 1
+  isContainer: 0
+  isWorkstation: 0
   interactText: {fileID: 0}
   inUi: 0
 --- !u!1 &7389617429171916975
