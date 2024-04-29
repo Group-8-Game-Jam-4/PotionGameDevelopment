@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2909534838713316262}
   - component: {fileID: 1841255285691316336}
   m_Layer: 0
-  m_Name: featherfall_brew_prefab
+  m_Name: lamp_prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,12 +79,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f72c3d53f08ad8d419809cd563ff09c8, type: 2}
+  m_Sprite: {fileID: 21300000, guid: db30222c5e7f7d4439a50390316d147e, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.5, y: 0.5}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -125,7 +125,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 2
+  m_Radius: 0.5
 --- !u!114 &2001631397305405468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
   moveSpeed: 10
   isPickedUp: 0
   hasInteracted: 0
-  itemName: featherfall_brew
+  itemName: lamp
 --- !u!50 &2909534838713316262
 Rigidbody2D:
   serializedVersion: 4
