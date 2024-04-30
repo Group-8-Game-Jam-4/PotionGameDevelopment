@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 
+[Serializable]
 public class QuestClass
 {
     // what text line were on in the csv

@@ -13,11 +13,13 @@ public class GameplayManager : MonoBehaviour
     void Start()
     {
         playerInventory = GameObject.Find("Player").GetComponent<PlayerInventory>();
+        LoadQuests();
         LoadCSV();
     }
 
     public QuestClass GetQuest(string NPCName)
     {
+        LoadQuests();
         if(ongoingQuests.ContainsKey(NPCName))
         {
             // gets info from the questClass of that npc
@@ -28,8 +30,6 @@ public class GameplayManager : MonoBehaviour
 
             // get the questlines for that npc
             List<string[]> values = questLines[NPCName];
-
-            Debug.Log("shit " + textCounter);
 
             // if awaiting items (also check we have questlines left just for saftey)
             if(awaitingItems && textCounter <= values.Count)
@@ -83,6 +83,7 @@ public class GameplayManager : MonoBehaviour
             ongoingQuests[NPCName].TextCounter += 1;
         }
 
+        SaveQuests();
         return ongoingQuests[NPCName];
     }
 
@@ -219,5 +220,23 @@ public class GameplayManager : MonoBehaviour
 
         fields.Add(currentField); // Add the last field
         return fields.ToArray();
+    }
+
+    public void SaveQuests()
+    {
+        Player saveSystem = GameObject.Find("GameplayManager").GetComponent<Player>();
+        saveSystem.ongoingQuests = ongoingQuests;
+        saveSystem.SaveGame();
+    }
+
+    public void LoadQuests()
+    {
+        Player saveSystem = GameObject.Find("GameplayManager").GetComponent<Player>();
+        saveSystem.LoadGame();
+        if(saveSystem.ongoingQuests == null)
+        {
+            SaveQuests();
+        }
+        ongoingQuests = saveSystem.ongoingQuests;
     }
 }

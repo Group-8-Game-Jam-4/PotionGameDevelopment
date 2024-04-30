@@ -4,11 +4,19 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
+    public GameObject transitioner;
 
     public void PlayGame()
     {
         Debug.Log("PLAY GAME!");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        transitioner.GetComponent<LevelLoader>().LoadNextScene("FinalGrasslandsScene");
+    }
+
+    public void PlayNewSave()
+    {
+        Player player = GameObject.Find("GameplayManager").GetComponent<Player>();
+        player.ResetSave();
+        transitioner.GetComponent<LevelLoader>().LoadNextScene("FinalGrasslandsScene");
     }
 
     public void QuitGame()

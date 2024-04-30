@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
+[Serializable]
 public class Inventory
 {
     public int inventoryMaxLength = 10;
@@ -182,7 +184,7 @@ public class Inventory
             else
             {
                 Debug.Log("item name is + " + itemName + " also the bool is: '" + totalInventory[itemName].isPotion + "sd'");
-                Debug.Log($"Potion is: {itemName} and the bool is '{totalInventory[itemName].isPotion}' fuck off");
+                Debug.Log($"Potion is: {itemName} and the bool is '{totalInventory[itemName].isPotion}'");
                 return false;
             }
         }
@@ -357,4 +359,54 @@ public class Inventory
         fields.Add(currentField); // Add the last field
         return fields.ToArray();
     }
+
+    public void SaveInventory(string uid)
+    {
+        // game object find gameplayManager, get component
+        if(uid != null)
+        {
+            Player saveSystem = GameObject.Find("GameplayManager").GetComponent<Player>();
+            if(saveSystem.totalInventories.ContainsKey(uid))
+            {
+                saveSystem.totalInventories[uid] = totalInventory;
+                saveSystem.formattedInventories[uid] = formattedInventory;
+                saveSystem.SaveGame();
+                Debug.Log("Saved inventory for: " + uid);
+            }
+            else
+            {
+                saveSystem.totalInventories.Add(uid, totalInventory);
+                saveSystem.formattedInventories.Add(uid, formattedInventory);
+                saveSystem.SaveGame();
+                Debug.Log("Saved inventory for: " + uid);
+            }
+        }
+        
+
+        // do the save system save here
+    }
+
+    public void LoadInventory(string uid)
+    {
+        // game object find gameplayManager, get component
+        if(uid != null)
+        {
+            Player saveSystem = GameObject.Find("GameplayManager").GetComponent<Player>();
+            saveSystem.LoadGame();
+            if(saveSystem.totalInventories.ContainsKey(uid))
+            {
+                Debug.Log("Loaded inventory for: " + uid);
+                totalInventory = saveSystem.totalInventories[uid];
+                formattedInventory = saveSystem.formattedInventories[uid];
+            }
+            else
+            {
+                SaveInventory(uid);
+            }
+        }
+        
+
+        // do the save system save here
+    }
+
 }

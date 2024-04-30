@@ -51,7 +51,6 @@ public class InventoryOpener : MonoBehaviour
                 pressed = true;
                 if(InInventory())
                 {
-                    Debug.Log("ALLAH FUCK");
                     inventoryObject.SetActive(false);
                     inUi = false;
                     return;

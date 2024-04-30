@@ -326,7 +326,6 @@ public class InventoryLoader : MonoBehaviour
                     // drop the itms
                     Dropitem(selectedItem.className, sliderValue);
                 }
-                playerInv.SaveInventory();
             }
         }
         else
@@ -402,20 +401,25 @@ public class InventoryLoader : MonoBehaviour
         {
             playerInvUI.SetActive(true);
             PopulateInventoryUI(playerInv.formattedInventory, playerInv.inventoryMaxLength, true);
+            playerInv.SaveInventory();
         }
         if(playerInventory && !renderPlayerInv && isWorkstationOutput)
         {
             PopulateContainerOutputInventoryUI(playerInv.formattedInventory, playerInv.inventoryMaxLength);
+            playerInv.SaveInventory();
+            containerInv.SaveInventory();
         }
         if(containerInventory)
         {
             containerInvUI.SetActive(true);
             // change these to be well not the playerInv. Like the cart inv or something
             PopulateInventoryUI(containerInv.formattedInventory, containerInv.inventoryMaxLength, false);
+            containerInv.SaveInventory();
         }
         if(isWorkstation)
         {
             workstation.CheckPotion();
+            containerInv.SaveInventory();
         }
 
         RefreshCupboard();

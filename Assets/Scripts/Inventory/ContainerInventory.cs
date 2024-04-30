@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.GUID;
 
 public class ContainerInventory : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class ContainerInventory : MonoBehaviour
     public Inventory inventory = new Inventory();
     public List<string[]> formattedInventory = new List<string[]>();
     public Dictionary<string, ItemClass> totalInventory = new Dictionary<string, ItemClass>();
+    public GuidReference uid;
 
     // this is purely to make it easier in editor
     public string InventoryName;
@@ -16,18 +19,19 @@ public class ContainerInventory : MonoBehaviour
     void Awake()
     {
         inventory.inventoryMaxLength = inventoryMaxLength;
-        formattedInventory = inventory.formattedInventory;
-        totalInventory = inventory.totalInventory;
-        inventory.LoadCSV();
+        LoadInventory();
     }
 
     public void SaveInventory()
     {
-        // do the save system save here
+        inventory.SaveInventory(uid.guidString.ToString());
     }
 
     public void LoadInventory()
     {
+        inventory.LoadInventory(uid.guidString.ToString());
+        formattedInventory = inventory.formattedInventory;
+        totalInventory = inventory.totalInventory;
         inventory.LoadCSV();
         // do the save system load here
     }
