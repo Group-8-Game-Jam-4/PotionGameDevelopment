@@ -16,11 +16,11 @@ EditorBuildSettings:
     guid: 065c4283f924ce44c8e9d0301ccf85d4
   - enabled: 1
     path: Assets/Scenes/ShopInterior.unity
-    guid: 6021b09d6a1c6124fbe1278937e8014c
-  - enabled: 1
+    guid: eb8abd6b92d3a654bb8abdaf4534d564
+  - enabled: 0
     path: Assets/User Folders/Jack/Scenes/CauldronTest.unity
     guid: 31850854f0d2db14a820744c74388685
-  - enabled: 1
+  - enabled: 0
     path: Assets/User Folders/Jack/Scenes/EnchantingTest.unity
     guid: e61f17b85d680154cb59ebd52b96a1c8
   m_configObjects: {}
