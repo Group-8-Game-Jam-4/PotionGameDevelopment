@@ -9804,7 +9804,7 @@ Transform:
   m_GameObject: {fileID: 5368988415492125993}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.52, y: 0.22, z: 3.158519}
+  m_LocalPosition: {x: -12.516, y: 0.23933, z: 3.158519}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9852,7 +9852,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 74db28d7bb7ac6a4b8fd666e7e41f2dd, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -9898,7 +9898,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.0083835125}
+  m_Offset: {x: -0.0066051483, y: -0.031244397}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -9908,7 +9908,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3, y: 3.966466}
+  m_Size: {x: 0.79405975, y: 0.7698357}
   m_EdgeRadius: 0
 --- !u!114 &3680303808396689129
 MonoBehaviour:
@@ -9930,7 +9930,7 @@ MonoBehaviour:
   brokenSprite: {fileID: 0}
   grownSprite: {fileID: 21300000, guid: 74db28d7bb7ac6a4b8fd666e7e41f2dd, type: 2}
   dropItemPrefab: {fileID: 149313383514137156, guid: f8eb423fc0243ed44b5b84e3ef9dce07, type: 3}
-  regrowTime: 10
+  regrowTime: 60
   shakeIntensity: 0.1
   shakeDuration: 0.1
   spawnRadius: 2

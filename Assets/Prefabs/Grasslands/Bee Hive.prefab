@@ -9852,9 +9852,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 329e60e0cf912d143871228754e9f661, type: 3}
-  m_Color: {r: 0.990566, g: 0.8737273, b: 0.22801708, a: 1}
+  m_SortingOrder: -1
+  m_Sprite: {fileID: 21300000, guid: 58665e5c79178954a9969cc90d0fffe2, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -9902,7 +9902,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 3, y: 2}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -9927,11 +9927,11 @@ MonoBehaviour:
   damageParticle: {fileID: 6322994865195184620}
   destroyParticle: {fileID: 2982997862874129149}
   spriteRenderer: {fileID: 6375727171448939790}
-  brokenSprite: {fileID: 0}
-  grownSprite: {fileID: 21300000, guid: a048f1f3b86d75342b00e68ce3f3d5bc, type: 2}
+  brokenSprite: {fileID: 21300000, guid: a45ba900b3c1f7a4d8ca04907b3dc94e, type: 3}
+  grownSprite: {fileID: 21300000, guid: 58665e5c79178954a9969cc90d0fffe2, type: 3}
   dropItemPrefab: {fileID: 149313383514137156, guid: 7f102727eb6bb9a4096ebc3f5edb1add, type: 3}
-  regrowTime: 10
+  regrowTime: 60
   shakeIntensity: 0.1
   shakeDuration: 0.1
   spawnRadius: 2
-  itemDropNum: 1
+  itemDropNum: 2
