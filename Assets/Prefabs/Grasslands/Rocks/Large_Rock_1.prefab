@@ -9931,7 +9931,7 @@ MonoBehaviour:
   brokenSprite: {fileID: 21300000, guid: d9459ef62a4d4f743a85697a4ecf302c, type: 3}
   grownSprite: {fileID: 21300000, guid: 6a59f5bc6b7486546b5e354dda1fc549, type: 3}
   dropItemPrefab: {fileID: 149313383514137156, guid: f1219d7c034c4e845a6f9d64d8db7240, type: 3}
-  regrowTime: 10
+  regrowTime: 60
   shakeIntensity: 0.1
   shakeDuration: 0.1
   spawnRadius: 2

@@ -9899,7 +9899,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 1}
+  m_Offset: {x: -0.09957886, y: -1.5076078}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -9909,7 +9909,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3, y: 3}
+  m_Size: {x: 2.4025288, y: 1.605901}
   m_EdgeRadius: 0
 --- !u!114 &3680303808396689129
 MonoBehaviour:
@@ -9931,7 +9931,7 @@ MonoBehaviour:
   brokenSprite: {fileID: -397279030, guid: dac8d138c47bb2b41bf57c45bb753fd9, type: 3}
   grownSprite: {fileID: 869500058, guid: dac8d138c47bb2b41bf57c45bb753fd9, type: 3}
   dropItemPrefab: {fileID: 149313383514137156, guid: 41f72ecf509218147867631fb03a1447, type: 3}
-  regrowTime: 10
+  regrowTime: 90
   shakeIntensity: 0.1
   shakeDuration: 0.1
   spawnRadius: 2
@@ -9970,6 +9970,6 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.06498772, y: 0.45008415}
-  m_Size: {x: 1.8363593, y: 0.923146}
+  m_Offset: {x: -0.063042216, y: -0.36788225}
+  m_Size: {x: 2.4053805, y: 0.19765148}
   m_Direction: 1

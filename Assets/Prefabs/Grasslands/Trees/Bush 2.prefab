@@ -9928,10 +9928,10 @@ MonoBehaviour:
   damageParticle: {fileID: 6322994865195184620}
   destroyParticle: {fileID: 2982997862874129149}
   spriteRenderer: {fileID: 6375727171448939790}
-  brokenSprite: {fileID: 0}
+  brokenSprite: {fileID: 21300000, guid: 7593c93061af44f418e5e5ddc3e02adb, type: 3}
   grownSprite: {fileID: -504504051, guid: 4e66d42b2cd98664994e7652eac6eea2, type: 3}
   dropItemPrefab: {fileID: 149313383514137156, guid: daeda550d2ff4ee4199281f0c7c9845a, type: 3}
-  regrowTime: 10
+  regrowTime: 90
   shakeIntensity: 0.1
   shakeDuration: 0.1
   spawnRadius: 2
@@ -9970,6 +9970,6 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.048758335, y: -0.5}
-  m_Size: {x: 2.5402935, y: 0.5000002}
+  m_Offset: {x: 0.042322747, y: -0.10531836}
+  m_Size: {x: 1.5566344, y: 0.02638324}
   m_Direction: 1
