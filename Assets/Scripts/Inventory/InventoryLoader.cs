@@ -304,17 +304,20 @@ public class InventoryLoader : MonoBehaviour
             if(containerInv)
             {
                 // if we can actually take that many
-                if(isShop)
+                if(containerInv.inventory.CanAddItems(selectedItem.className, sliderValue))
                 {
-                    AddShopItem(selectedItem.className, sliderValue);
-                }
-                else if(isCupboard)
-                {
-                    AddCupboardItem(selectedItem.className, sliderValue);
-                }
-                else
-                {
-                    AddCartItem(selectedItem.className, sliderValue);
+                    if(isShop)
+                    {
+                        AddShopItem(selectedItem.className, sliderValue);
+                    }
+                    else if(isCupboard)
+                    {
+                        AddCupboardItem(selectedItem.className, sliderValue);
+                    }
+                    else
+                    {
+                        AddCartItem(selectedItem.className, sliderValue);
+                    }
                 }
             }
             else
@@ -331,17 +334,20 @@ public class InventoryLoader : MonoBehaviour
         else
         {
             // if we can actually take that many
-            if(isShop)
-            {
-                TakeShopItem(selectedItem.className, sliderValue);
-            }
-            else if(isCupboard)
-            {
-                TakeCupboardItem(selectedItem.className, sliderValue);
-            }
-            else
-            {
-                TakeCartItem(selectedItem.className, sliderValue);
+            if(playerInv.inventory.CanAddItems(selectedItem.className, sliderValue))
+            {   
+                if(isShop)
+                {
+                    TakeShopItem(selectedItem.className, sliderValue);
+                }
+                else if(isCupboard)
+                {
+                    TakeCupboardItem(selectedItem.className, sliderValue);
+                }
+                else
+                {
+                    TakeCartItem(selectedItem.className, sliderValue);
+                }
             }
         }
 

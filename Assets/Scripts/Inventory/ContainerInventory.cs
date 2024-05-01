@@ -11,6 +11,7 @@ public class ContainerInventory : MonoBehaviour
     public List<string[]> formattedInventory = new List<string[]>();
     public Dictionary<string, ItemClass> totalInventory = new Dictionary<string, ItemClass>();
     public GuidReference uid;
+    public bool isCrate = false;
 
     // this is purely to make it easier in editor
     public string InventoryName;
@@ -24,15 +25,31 @@ public class ContainerInventory : MonoBehaviour
 
     public void SaveInventory()
     {
-        inventory.SaveInventory(uid.guidString.ToString());
+        if(!isCrate)
+        {
+            inventory.SaveInventory(uid.guidString.ToString());
+        }
+        else
+        {
+
+        }
     }
 
     public void LoadInventory()
     {
-        inventory.LoadInventory(uid.guidString.ToString());
-        formattedInventory = inventory.formattedInventory;
-        totalInventory = inventory.totalInventory;
-        inventory.LoadCSV();
-        // do the save system load here
+        if(!isCrate)
+        {
+            inventory.LoadInventory(uid.guidString.ToString());
+            formattedInventory = inventory.formattedInventory;
+            totalInventory = inventory.totalInventory;
+            inventory.LoadCSV();
+            // do the save system load here
+        }
+        else
+        {
+            inventory.LoadCSV();
+            formattedInventory = inventory.formattedInventory;
+            totalInventory = inventory.totalInventory;
+        }
     }
 }

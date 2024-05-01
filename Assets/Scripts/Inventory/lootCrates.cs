@@ -86,7 +86,6 @@ public class lootCrates : MonoBehaviour
 
         // actually show the crate
         worldSprite.SetActive(true);
-        containerInv.SaveInventory();
         onTimer = false;
     }
 }
