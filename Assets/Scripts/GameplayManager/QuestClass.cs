@@ -15,6 +15,7 @@ public class QuestClass
 
     // listo f item classes so we can get the amounts needed
     public List<ItemClass> NeededItems = new List<ItemClass>();
+    public ItemClass rewardItem;
 
     // various text things for the npc to display
     public string currentStoryline = "";

@@ -43,10 +43,13 @@ public class npcInteraction : MonoBehaviour
     public Sprite albino_squirrel;
     public Sprite mouse;
 
+    GameplayManager gameplayManager;
+
     private void Start()
     {
         // Assign the current GameObject to currentNPC
         currentNPC = gameObject;
+        gameplayManager = GameObject.Find("GameplayManager").GetComponent<GameplayManager>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -74,9 +77,9 @@ public class npcInteraction : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // Debug.Log("Player exited trigger zone of NPC.");
+            Debug.Log("sdfjklsdfjlksdfjklsdfkl;sdflsdfjkl;sdfjkl;sdfsdfjklsdf");
             playerInRange = false;
             StartCoroutine(ResetCamera());
-            speechController.textUI.text = "";
         }
     }
 
@@ -95,6 +98,9 @@ public class npcInteraction : MonoBehaviour
 
     IEnumerator ResetCamera()
     {
+        speechController.SkipText();
+        speechController.textUI.text = "";
+
         if(camAtNPC)
         {
             float currentFov = mainCamera.m_Lens.FieldOfView;
@@ -242,6 +248,7 @@ public class npcInteraction : MonoBehaviour
                     // enable the strike for this index as we have enough of it
                     missingText[i].text = item.displayName + " x" + item.quantity.ToString();
                     haveText[i].text = item.displayName + " x" + item.quantity.ToString();
+                    Debug.Log(item.displayName);
                     missingStrikes[i].SetActive(true);
                     haveStrikes[i].SetActive(true);
                 }
@@ -249,6 +256,7 @@ public class npcInteraction : MonoBehaviour
                 {
                     missingText[i].text = item.displayName + " x" + item.quantity.ToString();
                     haveText[i].text = item.displayName + " x" + item.quantity.ToString();
+                    Debug.Log(item.displayName);
                     hasAllItems = false;
                 }
             }
@@ -290,11 +298,17 @@ public class npcInteraction : MonoBehaviour
             playerInventory.TakeItem(item.className, item.quantity);
         }
 
+        // give the reward item
+        playerInventory.AddItem(lastQuest.rewardItem.className, lastQuest.rewardItem.quantity);
+
         // make it so this quest is like done
         lastQuest.NeededItems = null;
         lastQuest.AwaitingItems = false;
         haveItemsUi.SetActive(false);
         missingItemsUi.SetActive(false);
+
+        // save
+        gameplayManager.SaveQuests();
 
         // show the next bit of text
         StartCoroutine(AdjustCameraWithDelay());

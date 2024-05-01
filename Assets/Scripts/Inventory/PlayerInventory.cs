@@ -18,8 +18,6 @@ public class PlayerInventory : MonoBehaviour
     {
         inventory.inventoryMaxLength = inventoryMaxLength;
         LoadInventory();
-
-        inventory.AddItem("stick", 10);
     }
 
     public void SaveInventory()

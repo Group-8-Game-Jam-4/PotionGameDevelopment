@@ -20,73 +20,49 @@ public class Inventory
 
     public bool AddItem(string itemName, int quantity)
     {
-        // if the item exists
+        // Check if the item exists
         if(totalInventory.ContainsKey(itemName))
         {
-            // add it to the formatted inventory
             bool itemsAllAdded = false;
+            
+            // Check existing stacks for space
             foreach (string[] array in formattedInventory)
             {
-                // if there is items and if we have any of them
                 if(array[0] == itemName)
                 {
-                    // check to see if the stack isnt full
                     int currentQuantity;
                     if (int.TryParse(array[1], out currentQuantity))
                     {
-                        if (currentQuantity < totalInventory[array[0]].stackSize)
+                        int stackSpace = totalInventory[itemName].stackSize - currentQuantity;
+                        // If there's enough space in the stack, add the items
+                        if(quantity <= stackSpace)
                         {
-                            {
-                                // adds what it can to the formatted inventory
-
-                                // howm any items have been added to the stack
-
-                                // howm any more items can fit in that stack
-                                int stackSpace = 0;
-                                if (int.TryParse(array[1], out currentQuantity))
-                                {
-                                    stackSpace = totalInventory[array[0]].stackSize - currentQuantity;
-                                    // Use stackSpace as needed
-                                }
-
-                                // if we can fit all the items we want to add into the stack just do it
-                                if(quantity <= stackSpace)
-                                {
-                                    if (int.TryParse(array[1], out currentQuantity))
-                                    {
-                                        array[1] = (currentQuantity + quantity).ToString();
-                                    }
-
-                                    // adds it to the total inventory
-                                    totalInventory[itemName].quantity += quantity;
-
-                                    //quantity = 0;
-
-                                    itemsAllAdded = true;
-
-                                    Debug.Log($"InventoryStatus: Added {quantity} {itemName}s to the inventory");
-                                    return true;
-                                }
-                            }
+                            array[1] = (currentQuantity + quantity).ToString();
+                            totalInventory[itemName].quantity += quantity;
+                            itemsAllAdded = true;
+                            //Debug.Log($"InventoryStatus: Added {quantity} {itemName}(s) to an existing stack in the inventory");
+                            return true;
+                        }
+                        else
+                        {
+                            // If there's not enough space in the stack, continue checking other stacks
+                            quantity -= stackSpace;
                         }
                     }
                 }
             }
 
-            if(!itemsAllAdded)
+            // If items couldn't be added to existing stacks, check if there's space for a new stack
+            if(!itemsAllAdded && formattedInventory.Count < inventoryMaxLength)
             {
-                // if theres space for another stack in the inventory
-                if(formattedInventory.Count < inventoryMaxLength)
-                {
-                    addNewStack(itemName, quantity);
-                    Debug.Log($"InventoryStatus: Added {quantity} {itemName}s to the inventory as a new stack");
-                    return true;
-                }
-                else
-                {
-                    Debug.LogError($"InventoryError: No inventory space left for {quantity} {itemName}s");
-                    return false;
-                }
+                addNewStack(itemName, quantity);
+                //Debug.Log($"InventoryStatus: Added {quantity} {itemName}(s) to the inventory as a new stack");
+                return true;
+            }
+            else
+            {
+                Debug.LogError($"InventoryError: No inventory space left for {quantity} {itemName}(s)");
+                return false;
             }
         }
         else
@@ -94,23 +70,59 @@ public class Inventory
             Debug.LogError($"InventoryError: Invalid item {itemName}");
             return false;
         }
-        return false;
-        // if we cant add all the items needed we will return however many are left, if we can add them all we will return 0 which the script can check to make sure we got the items
     }
 
+    public bool CanAddItems(string itemName, int quantity)
+    {
+        // Check if the item exists
+        if(totalInventory.ContainsKey(itemName))
+        {
+            // Check existing stacks for space
+            foreach (string[] array in formattedInventory)
+            {
+                if(array[0] == itemName)
+                {
+                    int currentQuantity;
+                    if (int.TryParse(array[1], out currentQuantity))
+                    {
+                        int stackSpace = totalInventory[itemName].stackSize - currentQuantity;
+                        // If there's enough space in the stack, return true
+                        if(quantity <= stackSpace)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            // If there's not enough space in the stack, continue checking other stacks
+                            quantity -= stackSpace;
+                        }
+                    }
+                }
+            }
 
-    // this needs to be modified to confirm its adding the correct quantity that will fit in a stack (or potentially change it above line 150. This is because when you add idk like 40 items if you had none of them to begin with it just adds them as 1 stack)
-    // this could be an issue but it really shouldnt be because you can only ever move or recieve a stack of items at a time
+            // If items couldn't be added to existing stacks, check if there's space for a new stack
+            if(formattedInventory.Count < inventoryMaxLength)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            // If the item doesn't exist, return false
+            return false;
+        }
+    }
+
+    // Method to add a new stack to the inventory
     void addNewStack(string itemName, int quantity)
     {
-        // create a new string array with itemName and quantity
         string[] newItem = { itemName, quantity.ToString() };
-
-        // add the new item to formattedInventory
         formattedInventory.Add(newItem);
-
-        // adds it to the total inventory
-        totalInventory[itemName].quantity += quantity; 
+        totalInventory[itemName].quantity += quantity;
     }
     
     public bool TakeItem(string itemName, int quantity)
