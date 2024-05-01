@@ -136,17 +136,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4418624211954443128, guid: c23433a14d6cf8447ba0b2c7b26ef02d, type: 3}
   m_PrefabInstance: {fileID: 1836217519}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &145037525 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6670854388743791269, guid: 671ffe335dc83364f85755a06d352178, type: 3}
-  m_PrefabInstance: {fileID: 1609262500}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &146718148
 GameObject:
   m_ObjectHideFlags: 0
@@ -5297,6 +5286,7 @@ MonoBehaviour:
     serializedGuid: 8325fcb36860de44a728a32517bed388
     cachedName: ShopStock
     cachedScene: {fileID: 102900000, guid: eb8abd6b92d3a654bb8abdaf4534d564, type: 3}
+  isCrate: 0
   InventoryName: 
 --- !u!4 &379593292
 Transform:
@@ -7460,17 +7450,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &636461890 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2457283631471036156, guid: 671ffe335dc83364f85755a06d352178, type: 3}
-  m_PrefabInstance: {fileID: 1609262500}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &639632127
 GameObject:
   m_ObjectHideFlags: 0
@@ -8130,11 +8109,6 @@ PrefabInstance:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3365218912050757731, guid: b0827bfab6e4ee14a8206b09aef6f382, type: 3}
   m_PrefabInstance: {fileID: 837054843}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &891787801 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8289499551619833966, guid: 671ffe335dc83364f85755a06d352178, type: 3}
-  m_PrefabInstance: {fileID: 1609262500}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1028243776 stripped
 GameObject:
@@ -8848,11 +8822,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1401760867 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8051753190118409677, guid: 671ffe335dc83364f85755a06d352178, type: 3}
-  m_PrefabInstance: {fileID: 1609262500}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1453446676
 GameObject:
   m_ObjectHideFlags: 0
@@ -9221,14 +9190,6 @@ PrefabInstance:
       propertyPath: playerInv
       value: 
       objectReference: {fileID: 8898652458122037930}
-    - target: {fileID: 95342221645122592, guid: 671ffe335dc83364f85755a06d352178, type: 3}
-      propertyPath: sliderElement
-      value: 
-      objectReference: {fileID: 1401760867}
-    - target: {fileID: 95342221645122592, guid: 671ffe335dc83364f85755a06d352178, type: 3}
-      propertyPath: sliderQuantityText
-      value: 
-      objectReference: {fileID: 636461890}
     - target: {fileID: 1176566061074596349, guid: 671ffe335dc83364f85755a06d352178, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.93
@@ -9521,14 +9482,6 @@ PrefabInstance:
       propertyPath: playerInv
       value: 
       objectReference: {fileID: 8898652458122037930}
-    - target: {fileID: 9120724925487349608, guid: 671ffe335dc83364f85755a06d352178, type: 3}
-      propertyPath: sliderElement
-      value: 
-      objectReference: {fileID: 891787801}
-    - target: {fileID: 9120724925487349608, guid: 671ffe335dc83364f85755a06d352178, type: 3}
-      propertyPath: sliderQuantityText
-      value: 
-      objectReference: {fileID: 145037525}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7629506370468321280, guid: 671ffe335dc83364f85755a06d352178, type: 3}

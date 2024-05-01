@@ -248,6 +248,7 @@ public class npcInteraction : MonoBehaviour
                     // enable the strike for this index as we have enough of it
                     missingText[i].text = item.displayName + " x" + item.quantity.ToString();
                     haveText[i].text = item.displayName + " x" + item.quantity.ToString();
+                    Debug.Log(item.displayName);
                     missingStrikes[i].SetActive(true);
                     haveStrikes[i].SetActive(true);
                 }
@@ -255,6 +256,7 @@ public class npcInteraction : MonoBehaviour
                 {
                     missingText[i].text = item.displayName + " x" + item.quantity.ToString();
                     haveText[i].text = item.displayName + " x" + item.quantity.ToString();
+                    Debug.Log(item.displayName);
                     hasAllItems = false;
                 }
             }
@@ -295,6 +297,9 @@ public class npcInteraction : MonoBehaviour
         {
             playerInventory.TakeItem(item.className, item.quantity);
         }
+
+        // give the reward item
+        playerInventory.AddItem(lastQuest.rewardItem.className, lastQuest.rewardItem.quantity);
 
         // make it so this quest is like done
         lastQuest.NeededItems = null;

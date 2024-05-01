@@ -4506,8 +4506,8 @@ MonoBehaviour:
   playerInvUI: {fileID: 903128461619473225}
   containerInvUI: {fileID: 4350231724985266110}
   UITemplate: {fileID: 8050344346438448059, guid: cdc12a99278a14a42bdb25bc1fdf88a3, type: 3}
-  sliderElement: {fileID: 7777793158329530148}
-  sliderQuantityText: {fileID: 6359830877122153772}
+  sliderElement: {fileID: 8289499551619833966}
+  sliderQuantityText: {fileID: 6670854388743791269}
   playerInv: {fileID: 0}
   containerInv: {fileID: 5179146360341119972}
   workstation: {fileID: 2234691613273708062}
@@ -4563,6 +4563,7 @@ MonoBehaviour:
     serializedGuid: 00000000000000000000000000000000
     cachedName: 
     cachedScene: {fileID: 0}
+  isCrate: 0
   InventoryName: Input Inventory
 --- !u!1 &5167224556610327034
 GameObject:
@@ -5086,6 +5087,7 @@ MonoBehaviour:
     serializedGuid: 00000000000000000000000000000000
     cachedName: 
     cachedScene: {fileID: 0}
+  isCrate: 0
   InventoryName: Output Inventory
 --- !u!1 &5605076419739476303
 GameObject:
@@ -6411,8 +6413,8 @@ MonoBehaviour:
   playerInvUI: {fileID: 903128461619473225}
   containerInvUI: {fileID: 7590868647954740298}
   UITemplate: {fileID: 8050344346438448059, guid: cdc12a99278a14a42bdb25bc1fdf88a3, type: 3}
-  sliderElement: {fileID: 7629506370468321280}
-  sliderQuantityText: {fileID: 5007392235201129079}
+  sliderElement: {fileID: 3643761607411243786}
+  sliderQuantityText: {fileID: 2457283631471036156}
   playerInv: {fileID: 0}
   containerInv: {fileID: 3903155172744778923}
   workstation: {fileID: 2234691613273708062}

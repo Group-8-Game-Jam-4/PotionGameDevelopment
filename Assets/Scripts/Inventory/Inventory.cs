@@ -40,7 +40,7 @@ public class Inventory
                             array[1] = (currentQuantity + quantity).ToString();
                             totalInventory[itemName].quantity += quantity;
                             itemsAllAdded = true;
-                            Debug.Log($"InventoryStatus: Added {quantity} {itemName}(s) to an existing stack in the inventory");
+                            //Debug.Log($"InventoryStatus: Added {quantity} {itemName}(s) to an existing stack in the inventory");
                             return true;
                         }
                         else
@@ -56,7 +56,7 @@ public class Inventory
             if(!itemsAllAdded && formattedInventory.Count < inventoryMaxLength)
             {
                 addNewStack(itemName, quantity);
-                Debug.Log($"InventoryStatus: Added {quantity} {itemName}(s) to the inventory as a new stack");
+                //Debug.Log($"InventoryStatus: Added {quantity} {itemName}(s) to the inventory as a new stack");
                 return true;
             }
             else

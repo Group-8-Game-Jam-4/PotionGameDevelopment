@@ -2,11 +2,11 @@ Npc Name,Quest Text,Quest required item 1,Quest required item 2,Quest required i
 ,,,,,
 Deer,"Hey uhm I dont have anything for you right now, sorry!",,,,
 ,Have you been able to find those items yet? Its ok if not!,,,,
-,"Hey traveller! Ive not seen you before, how are you finding it here?",,,,
+,"Hey traveller nice to meet you, my names Bagel! How are you finding it here?",,,,
 ,Hihi im sorry to ask but could you get me some food? Ive ran out ^w^,,,,
 ,Needed Items,melon*1,,,melon*1
 ,Also could you get me some flowers? Gotta make my home pretty!,,,,
-,Needed Items,flower*9,,,wood*16
+,Needed Items,magic_flower*9,,,wood*16
 ,Thanks for your help!,,,,
 ,Feel free to visit again ^~^,,,,
 ,"I need some items for a chiller I'm making, could you help me get them? Thanks!",,,,
@@ -19,7 +19,7 @@ Hedgehog,Sorry I can't think of anything for you to do right now!,,,,
 ,Do you think you could get me some rocks? I need some new seats.,,,,
 ,Needed Items,stone*5,,,magic_flower*1
 ,Could you get me some sugar and honey? I'm baking a cake,,,,
-,Needed Items,honey*2,sugar*1,,carpet*1
+,Needed Items,honey*2,sugar*1,,
 ,Do you think you could help me get some frost air? It's chilly out here!,,,,
 ,Needed Items,frost_air*3,,,wood*10
 ,Thanks a bunch!,,,,
@@ -28,10 +28,24 @@ Hedgehog,Sorry I can't think of anything for you to do right now!,,,,
 ,Needed Items,frost_air*3,,,wood*10
 ,Excellent! Thanks traveller <3,,,,
 ,,,,,
-Fox,Hey there! Got any juicy gossip?,,,,
+Fox,Hey there! Welcome to Elysium!,,,,
 ,Have you managed to collect those items I mentioned earlier?,,,,
 ,"Greetings, wanderer! Seen any interesting sights?",,,,
-,Would you mind gathering some feathers for me? I'm working on a new nest. ^^,,,,
+,I see you're new round here? I'll be your guide!,,,,
+,Everything in this world is harvestable from trees to flowers and you can use them in quests or potions,,,,
+,"You get items such as sticks from bushes, and coal from rocks! (The ones with the little black bits on them)",,,,
+,Each NPC such as myself has quests! You can complete these for rewards,,,,
+,Around the world you can also find crates like the little chest to my right,,,,
+,These contain random items you may need and respawn after a short while,,,,
+,Also theres your shop behind me! Here you can brew and sell potions,,,,
+,"Theres also a cart next to your house under the little roof, this serves as a place to store your things",,,,
+,"Tab opens and closes your inventory, and E is used to interact with things. Oh and you can hold shift to sprint!",,,,
+,And here since you're new I'll give you your first quest,,,,
+,Do you think you could brew me a warmth potion? The crafting table in your house will tell you how to make it!,,,,
+,Needed Items,warmth_potion*1,,,carpet*1
+,Thank you so much! Here as a gift i'll give you your first piece of furniture,,,,
+,If you put it in the cabinet in your house you can use it as decoration!,,,,
+,Would you mind gathering some feathers for me? I'm working on a new den. ^^,,,,
 ,Needed Items,feather*9,,,wood*10
 ,I'm feeling peckish. How about some boiled melon?,,,,
 ,Needed Items,boiled_melon*3,water*3,,syrup*2
@@ -97,7 +111,7 @@ Panda,Hey there! How's the bamboo munching going?,,,,
 ,Have you managed to collect those items I mentioned earlier?,,,,
 ,"Greetings, traveler! How's the forest treating you?",,,,
 ,Could you gather some flowers for me? I need them to decorate my den.,,,,
-,Needed Items,flower*9,,,wood*10
+,Needed Items,magic_flower*9,,,wood*10
 ,I'm craving something sweet. How about some syrup?,,,,
 ,Needed Items,syrup*3,boiled_melon*5,,frostbloom_extract*2
 ,You're a true friend!,,,,

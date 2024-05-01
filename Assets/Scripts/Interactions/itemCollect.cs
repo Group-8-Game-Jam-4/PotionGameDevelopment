@@ -55,6 +55,8 @@ public class itemCollect : MonoBehaviour
 
         // actually give the item
         player.GetComponentInChildren<InventoryOpener>().inventoryObject.GetComponent<InventoryLoader>().playerInv.inventory.AddItem(itemName, 1);
+        player.GetComponentInChildren<InventoryOpener>().inventoryObject.GetComponent<InventoryLoader>().playerInv.SaveInventory();
+
         Debug.Log(itemName);
 
         Destroy(gameObject);
