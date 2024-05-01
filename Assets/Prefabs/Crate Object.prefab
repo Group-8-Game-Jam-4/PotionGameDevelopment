@@ -1651,8 +1651,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   containerInv: {fileID: 4522891603773426953}
   worldSprite: {fileID: 7441776936650170669}
-  maxRespawnTime: 5
-  minRespawnTime: 1
+  maxRespawnTime: 120
+  minRespawnTime: 30
   maxItems: 10
   minItems: 2
   rarityMultiplier: 10
