@@ -181,6 +181,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryMaxLength: 16
+  inventory:
+    inventoryMaxLength: 10
+  uid:
+    serializedGuid: 00000000000000000000000000000000
+    cachedName: 
+    cachedScene: {fileID: 0}
   InventoryName: 
 --- !u!1 &4081389060009475636
 GameObject:
@@ -1319,7 +1325,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sticks
+  m_text: Transfer
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 852099fbdfd3c2f48bc2962ef14c442f, type: 2}
   m_sharedMaterial: {fileID: 276258228696432902, guid: 852099fbdfd3c2f48bc2962ef14c442f, type: 2}
