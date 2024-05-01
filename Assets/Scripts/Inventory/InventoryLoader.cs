@@ -40,6 +40,10 @@ public class InventoryLoader : MonoBehaviour
     private void Start() 
     {
         RefreshInventories();
+        if(playerInv == null)
+        {
+            playerInv = GameObject.Find("Player").GetComponent<PlayerInventory>();
+        }
     }
 
     public void OnSliderChange(float value)
