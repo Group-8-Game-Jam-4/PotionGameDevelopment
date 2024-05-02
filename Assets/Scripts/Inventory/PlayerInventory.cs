@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.GUID;
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -9,31 +10,26 @@ public class PlayerInventory : MonoBehaviour
     public List<string[]> formattedInventory = new List<string[]>();
     public Dictionary<string, ItemClass> totalInventory = new Dictionary<string, ItemClass>();
 
+    private Player saveSystem;
+    public GuidReference uid;
+
     // Start is called before the first frame update
     void Awake()
     {
         inventory.inventoryMaxLength = inventoryMaxLength;
-        formattedInventory = inventory.formattedInventory;
-        totalInventory = inventory.totalInventory;
-        inventory.LoadCSV();
-
-        inventory.AddItem("stick", 10);
-        inventory.AddItem("wood", 10);
-        inventory.AddItem("coal", 10);
-        inventory.AddItem("melon", 10);
-        inventory.AddItem("stone", 10);
-        inventory.AddItem("water", 10);
-        inventory.AddItem("earthshaker_brew", 10);
-        inventory.AddItem("carpet", 1);
+        LoadInventory();
     }
 
     public void SaveInventory()
     {
-        // do the save system save here
+        inventory.SaveInventory("player");
     }
 
     public void LoadInventory()
     {
+        inventory.LoadInventory("player");
+        formattedInventory = inventory.formattedInventory;
+        totalInventory = inventory.totalInventory;
         inventory.LoadCSV();
         // do the save system load here
     }

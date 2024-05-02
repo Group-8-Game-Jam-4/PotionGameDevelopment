@@ -142,7 +142,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5403753830333524010}
-  - component: {fileID: 4119351964718714457}
+  - component: {fileID: 4522891603773426953}
   m_Layer: 0
   m_Name: Crate
   m_TagString: Untagged
@@ -168,7 +168,7 @@ Transform:
   - {fileID: 8395818097836974575}
   m_Father: {fileID: 211301025836468356}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4119351964718714457
+--- !u!114 &4522891603773426953
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,7 +180,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8d1ccfa5e0f8a6449299a33439eebc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryMaxLength: 16
+  inventoryMaxLength: 10
+  inventory:
+    inventoryMaxLength: 10
+  uid:
+    serializedGuid: 00000000000000000000000000000000
+    cachedName: 
+    cachedScene: {fileID: 0}
+  isCrate: 1
   InventoryName: 
 --- !u!1 &4081389060009475636
 GameObject:
@@ -773,7 +780,7 @@ MonoBehaviour:
   sliderElement: {fileID: 8308642978768279380}
   sliderQuantityText: {fileID: 7739720709505647752}
   playerInv: {fileID: 0}
-  containerInv: {fileID: 4119351964718714457}
+  containerInv: {fileID: 4522891603773426953}
   workstation: {fileID: 0}
   playerInventoryObject: {fileID: 0}
 --- !u!1 &4994101926473554554
@@ -1319,7 +1326,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sticks
+  m_text: Transfer
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 852099fbdfd3c2f48bc2962ef14c442f, type: 2}
   m_sharedMaterial: {fileID: 276258228696432902, guid: 852099fbdfd3c2f48bc2962ef14c442f, type: 2}
@@ -1642,10 +1649,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3c0822a558211846a237a05d0ec3917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  containerInv: {fileID: 4119351964718714457}
+  containerInv: {fileID: 4522891603773426953}
   worldSprite: {fileID: 7441776936650170669}
-  maxRespawnTime: 5
-  minRespawnTime: 1
+  maxRespawnTime: 120
+  minRespawnTime: 30
   maxItems: 10
   minItems: 2
   rarityMultiplier: 10

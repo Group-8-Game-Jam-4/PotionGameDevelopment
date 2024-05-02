@@ -33,8 +33,12 @@ public class itemCollect : MonoBehaviour
     {
         if (inRange && !isPickedUp)
         {
-            isPickedUp = true;
-            hasInteracted = true;
+            // will only let you pick up if you have space
+            if(player.GetComponentInChildren<InventoryOpener>().inventoryObject.GetComponent<InventoryLoader>().playerInv.inventory.CanAddItems(itemName, 1))
+            {
+                isPickedUp = true;
+                hasInteracted = true;
+            }
         }
 
         if (isPickedUp)
@@ -51,6 +55,8 @@ public class itemCollect : MonoBehaviour
 
         // actually give the item
         player.GetComponentInChildren<InventoryOpener>().inventoryObject.GetComponent<InventoryLoader>().playerInv.inventory.AddItem(itemName, 1);
+        player.GetComponentInChildren<InventoryOpener>().inventoryObject.GetComponent<InventoryLoader>().playerInv.SaveInventory();
+
         Debug.Log(itemName);
 
         Destroy(gameObject);

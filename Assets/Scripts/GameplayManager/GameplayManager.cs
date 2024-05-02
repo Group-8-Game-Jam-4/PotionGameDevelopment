@@ -13,11 +13,13 @@ public class GameplayManager : MonoBehaviour
     void Start()
     {
         playerInventory = GameObject.Find("Player").GetComponent<PlayerInventory>();
+        LoadQuests();
         LoadCSV();
     }
 
     public QuestClass GetQuest(string NPCName)
     {
+        LoadQuests();
         if(ongoingQuests.ContainsKey(NPCName))
         {
             // gets info from the questClass of that npc
@@ -25,11 +27,10 @@ public class GameplayManager : MonoBehaviour
             int textCounter = ongoingQuests[NPCName].TextCounter;
             bool awaitingItems = ongoingQuests[NPCName].AwaitingItems;
             List<ItemClass> neededItems = ongoingQuests[NPCName].NeededItems;
+            ItemClass rewardItem = ongoingQuests[NPCName].rewardItem;
 
             // get the questlines for that npc
             List<string[]> values = questLines[NPCName];
-
-            Debug.Log("shit " + textCounter);
 
             // if awaiting items (also check we have questlines left just for saftey)
             if(awaitingItems && textCounter <= values.Count)
@@ -83,6 +84,7 @@ public class GameplayManager : MonoBehaviour
             ongoingQuests[NPCName].TextCounter += 1;
         }
 
+        SaveQuests();
         return ongoingQuests[NPCName];
     }
 
@@ -149,9 +151,43 @@ public class GameplayManager : MonoBehaviour
                     // fill out the needed items in the quest class
                 }
             }
-        }
+            // set reward
+            if(reward != null && reward != "")
+            {
+                if(reward.Contains("*"))
+                {
+                    string[] parts = reward.Split('*');
+                    string itemName = parts [0];
+                    int quantity;
 
-        Debug.Log($"Reward: {reward}");
+                    if (int.TryParse(parts[1], out quantity))
+                    {
+                        // setup the item
+                        ItemClass item = new ItemClass
+                        {
+                            className = itemName,
+                            quantity = quantity
+                        };
+
+                        // get the items display name
+                        if (playerInventory.inventory.totalInventory.ContainsKey(itemName))
+                        {
+                            item.displayName = playerInventory.inventory.totalInventory[itemName].displayName;
+                            ongoingQuests[NPCName].rewardItem = item;
+                            Debug.Log($"Added {quantity} of {itemName} to the npcs reward");
+                        }
+                        else
+                        {
+                            Debug.LogError($"Failed to add item: {itemName} to the npc {NPCName}'s reward due to an invalid item name: '{itemName}'");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogError($"Failed to add item: {itemName} to the npc {NPCName}'s reward due to an invalid quantity of: '{parts[1]}'");
+                    }
+                }
+            }
+        }
     }
 
     void LoadCSV()
@@ -182,6 +218,7 @@ public class GameplayManager : MonoBehaviour
                 questsList = new List<string[]>();
 
                 // Add the new quest list to the hashmap by name
+                if(questLines.ContainsKey(splittedValues[0])){questLines.Remove(splittedValues[0]);}
                 questLines.Add(splittedValues[0], questsList);
 
                 // set the new prevName
@@ -219,5 +256,24 @@ public class GameplayManager : MonoBehaviour
 
         fields.Add(currentField); // Add the last field
         return fields.ToArray();
+    }
+
+    public void SaveQuests()
+    {
+        Player saveSystem = GameObject.Find("GameplayManager").GetComponent<Player>();
+        saveSystem.ongoingQuests = ongoingQuests;
+        saveSystem.SaveGame();
+    }
+
+    public void LoadQuests()
+    {
+        Player saveSystem = GameObject.Find("GameplayManager").GetComponent<Player>();
+        saveSystem.LoadGame();
+        LoadCSV();
+        if(saveSystem.ongoingQuests == null)
+        {
+            SaveQuests();
+        }
+        ongoingQuests = saveSystem.ongoingQuests;
     }
 }
