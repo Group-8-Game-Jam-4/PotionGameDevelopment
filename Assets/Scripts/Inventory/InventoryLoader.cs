@@ -302,55 +302,58 @@ public class InventoryLoader : MonoBehaviour
         // get how many items to transfer
         int sliderValue = (int)transform.Find("Give Items Slider").transform.Find("Slider").gameObject.GetComponent<Slider>().value;
 
-        // if we are moving an item from the player inventory
-        if(selectedPlayerItem)
+        if(sliderValue > 0)
         {
-            if(containerInv)
+            // if we are moving an item from the player inventory
+            if(selectedPlayerItem)
             {
-                // if we can actually take that many
-                if(containerInv.inventory.CanAddItems(selectedItem.className, sliderValue))
+                if(containerInv)
                 {
-                    if(isShop)
+                    // if we can actually take that many
+                    if(containerInv.inventory.CanAddItems(selectedItem.className, sliderValue))
                     {
-                        AddShopItem(selectedItem.className, sliderValue);
+                        if(isShop)
+                        {
+                            AddShopItem(selectedItem.className, sliderValue);
+                        }
+                        else if(isCupboard)
+                        {
+                            AddCupboardItem(selectedItem.className, sliderValue);
+                        }
+                        else
+                        {
+                            AddCartItem(selectedItem.className, sliderValue);
+                        }
                     }
-                    else if(isCupboard)
+                }
+                else
+                {
+                    // if theres no container we can assume its just the player inv so these items need to be dropped
+                    // if we can actually take that many
+                    if(playerInv.inventory.TakeItem(selectedItem.className, sliderValue))
                     {
-                        AddCupboardItem(selectedItem.className, sliderValue);
-                    }
-                    else
-                    {
-                        AddCartItem(selectedItem.className, sliderValue);
+                        // drop the itms
+                        Dropitem(selectedItem.className, sliderValue);
                     }
                 }
             }
             else
             {
-                // if theres no container we can assume its just the player inv so these items need to be dropped
                 // if we can actually take that many
-                if(playerInv.inventory.TakeItem(selectedItem.className, sliderValue))
-                {
-                    // drop the itms
-                    Dropitem(selectedItem.className, sliderValue);
-                }
-            }
-        }
-        else
-        {
-            // if we can actually take that many
-            if(playerInv.inventory.CanAddItems(selectedItem.className, sliderValue))
-            {   
-                if(isShop)
-                {
-                    TakeShopItem(selectedItem.className, sliderValue);
-                }
-                else if(isCupboard)
-                {
-                    TakeCupboardItem(selectedItem.className, sliderValue);
-                }
-                else
-                {
-                    TakeCartItem(selectedItem.className, sliderValue);
+                if(playerInv.inventory.CanAddItems(selectedItem.className, sliderValue))
+                {   
+                    if(isShop)
+                    {
+                        TakeShopItem(selectedItem.className, sliderValue);
+                    }
+                    else if(isCupboard)
+                    {
+                        TakeCupboardItem(selectedItem.className, sliderValue);
+                    }
+                    else
+                    {
+                        TakeCartItem(selectedItem.className, sliderValue);
+                    }
                 }
             }
         }
