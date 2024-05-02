@@ -4,28 +4,28 @@ Deer,"Hey uhm I dont have anything for you right now, sorry!",,,,
 ,Have you been able to find those items yet? Its ok if not!,,,,
 ,"Hey traveller nice to meet you, my names Bagel! How are you finding it here?",,,,
 ,Hihi im sorry to ask but could you get me some food? Ive ran out ^w^,,,,
-,Needed Items,melon*1,,,melon*1
+,Needed Items,melon*5,water*5,,sweet_elixir*1
 ,Also could you get me some flowers? Gotta make my home pretty!,,,,
-,Needed Items,magic_flower*9,,,wood*16
+,Needed Items,magic_flower*9,,,coin*5
 ,Thanks for your help!,,,,
 ,Feel free to visit again ^~^,,,,
 ,"I need some items for a chiller I'm making, could you help me get them? Thanks!",,,,
-,Needed Items,melon*1,frost_air*1,,stone*16
+,Needed Items,melon*1,frost_air*1,,lamp*1
 ,Wonderful thank you so much for all your help!,,,,
 ,,,,,
 Hedgehog,Sorry I can't think of anything for you to do right now!,,,,
 ,"Hey there, any luck gathering those items I mentioned earlier?",,,,
 ,"Hey traveler, how's your journey been so far?",,,,
-,Do you think you could get me some rocks? I need some new seats.,,,,
-,Needed Items,stone*5,,,magic_flower*1
+,I was walking through this lovely flower field but I dropped my money! Do you think you could be so kind and donate me some money to get home?,,,,
+,Needed Items,coin*5,,,magic_flower*5
 ,Could you get me some sugar and honey? I'm baking a cake,,,,
-,Needed Items,honey*2,sugar*1,,
-,Do you think you could help me get some frost air? It's chilly out here!,,,,
-,Needed Items,frost_air*3,,,wood*10
-,Thanks a bunch!,,,,
+,Needed Items,honey*6,sugar*3,syrup*5,
+,Do you think you could help me get a warmth potion? It's chilly out here!,,,,
+,Needed Items,warmth_potion*1,,,coin*5
+,Thanks a bunch! I feel so much warmer now!,,,,
 ,Come by whenever you want; I always need the help!,,,,
-,"Oh, also I could really do with some frost air, do you think you could help?",,,,
-,Needed Items,frost_air*3,,,wood*10
+,"Oh, I am oh so thirsty out here. I could really do with some stuff to help me!",,,,
+,Needed Items,aqua_vitality*2,water*10,,enchanted_flora*2
 ,Excellent! Thanks traveller <3,,,,
 ,,,,,
 Fox,Hey there! Welcome to Elysium!,,,,
@@ -59,22 +59,22 @@ Arctic Fox,Hello there! Enjoying the chilly weather?,,,,
 ,Have you managed to gather those items for me?,,,,
 ,"Greetings, traveler! How's the cold treating you?",,,,
 ,Could you gather some ice for me? I need it to keep my fur cool.,,,,
-,Needed Items,ice*9,,,wood*10
+,Needed Items,ice*10,half_melted_ice*5,,frostbloom_extract*1
 ,I'm craving something sweet. How about some syrup?,,,,
-,Needed Items,syrup*1,fine_sugar*2,,heated_coal*2
+,Needed Items,syrup*1,fine_sugar*2,,scorched_feather*5
 ,You're a true friend! :D,,,,
 ,Drop by anytime; I'll be here keeping cool!,,,,
 ,"Oh, and if you stumble upon some boiled water, could you bring it to me?",,,,
-,Needed Items,boiled_water*3,magic_flower*1,,split_stone*5
+,Needed Items,boiled_water*3,,,split_stone*5
 ,Thank you kindly! You're a lifesaver!,,,,
 ,,,,,
 Penguin,"Hey there, friend! How's the ice skating going?",,,,
 ,Have you managed to find those items I asked for?,,,,
 ,"Greetings, traveler! How's the Antarctic treating you?",,,,
-,Could you gather some coal for me? I need it for my igloo.,,,,wood*10
-,Needed Items,coal*9,,,
-,I'm in the mood for a snack. Can you fetch me some fish? Oh nevermind this world only has melons :p,,,,
-,Needed Items,boiled_melon*3,split_stone*1,,syrup*5
+,Could you craft a potion for me? Ever since that sice storm i've been struggling to get back on my feet!,,,,
+,Needed Items,icy_veins_tonic*1,,,ice*10
+,I'm so close to being able to afford a new igloo for me and my penguin babies!,,,,
+,Needed Items,heated_coal*10,volcanic_boost*1,stalwart_brew*1,coin*5
 ,Thanks for your help!,,,,
 ,Feel free to waddle by anytime!,,,,
 ,"Oh, and if you find any boiled water, could you bring it to me?",,,,
@@ -85,13 +85,13 @@ Polar Bear,"Hello there, traveler! How's the icy wilderness treating you?",,,,
 ,Have you managed to collect those items I mentioned earlier?,,,,
 ,"Greetings, wanderer! Seen any seals lately?",,,,
 ,Could you gather some sticks for me? I need them to build a new den.,,,,
-,Needed Items,stick*9,,,rack*1
-,I'm feeling a bit chilly. How about some heated coal?,,,,
-,Needed Items,heated_coal*3,boiled_water*2,,magic_flower_wilted*3
+,Needed Items,stick*9,,,splintered_wood*5
+,I'm feeling a bit chilly. Do you have anything I can use to make a fire?,,,,
+,Needed Items,heated_coal*3,sticks*5,splintered_wood*10,warmth_potion*1
 ,You're a true friend!,,,,
 ,Drop by anytime; I'll be here keeping warm!,,,,
 ,"Oh, and if you stumble upon some boiled water, could you bring it to me?",,,,
-,Needed Items,boiled_water*3,magic_flower*1,,heated_coal*2
+,Needed Items,boiled_water*3,,,heated_coal*5
 ,Thank you kindly! You're a lifesaver!,,,,
 ,,,,,
 Whale,Hello there! I hope you're having a whale of a time!,,,,
@@ -100,37 +100,37 @@ Whale,Hello there! I hope you're having a whale of a time!,,,,
 ,Could you help me gather some water? This ocean is feeling a bit dry,,,,
 ,Needed Items,water*9,,,painting*1
 ,"Its uh getting a little hot round here, must be global warming again!",,,,
-,Needed Items,ice*5,,,heated_coal*2
+,Needed Items,melody_of_flames*1,heated_coal*5,,coin*5
 ,Thank you kindly!,,,,
 ,Swim by again sometime!,,,,
 ,"Oh, I almost forgot! Can you fetch me some boiled water?",,,,
-,Needed Items,boiled_water*3,magic_flower*1,,boiled_melon*2
+,Needed Items,boiled_water*3,coin*25,,enchanted_flora*2
 ,Splendid! Thanks for your help!,,,,
 ,,,,,
 Panda,Hey there! How's the bamboo munching going?,,,,
 ,Have you managed to collect those items I mentioned earlier?,,,,
 ,"Greetings, traveler! How's the forest treating you?",,,,
-,Could you gather some flowers for me? I need them to decorate my den.,,,,
-,Needed Items,magic_flower*9,,,wood*10
+,I have theese amazing potions i've found but I don't really have a use for them! Would you like to buy them from me?,,,,
+,Needed Items,coin*3,,,woodland_guardian_potion*5
 ,I'm craving something sweet. How about some syrup?,,,,
 ,Needed Items,syrup*3,boiled_melon*5,,frostbloom_extract*2
 ,You're a true friend!,,,,
 ,Drop by anytime; I'll be here enjoying the bamboo!,,,,
 ,"Oh, and if you stumble upon some boiled water, could you bring it to me?",,,,
-,Needed Items,boiled_water*3,magic_flower*1,,half_melted_ice*1
+,Needed Items,boiled_water*3,magic_flower*1,,half_melted_ice*8
 ,Thank you kindly! You're a lifesaver!,,,,
 ,,,,,
 Squirrel,Hey there! Got any nuts to spare?,,,,
 ,Have you managed to gather those items for me?,,,,
 ,"Greetings, wanderer! Seen any tasty acorns lately?",,,,
 ,Could you gather some wood for me? I need it for my nest.,,,,
-,Needed Items,wood*9,,,wood*10
+,Needed Items,wood*10,,,splintered_wood*5
 ,I'm feeling a bit hungry. How about some scorched feathers? They have a lovely kick!,,,,
-,Needed Items,scorched_feather*3,heated_coal*2,,heated_coal*2
+,Needed Items,scorched_feather*3,heated_coal*2,coin*1,volcanic_boost*3
 ,You're a true friend!,,,,
 ,Drop by anytime; I'll be here gathering nuts!,,,,
 ,"Oh, and if you stumble upon some boiled water, could you bring it to me?",,,,
-,Needed Items,boiled_water*3,magic_flower*1,,scorched_feather*1
+,Needed Items,boiled_water*3,magic_flower*1,,coin*10
 ,Excellent thank you so much!,,,,
 ,,,,,
 Albino Squirrel,Hello there! How's the nut gathering going?,,,,
@@ -138,23 +138,23 @@ Albino Squirrel,Hello there! How's the nut gathering going?,,,,
 ,"Greetings, traveler! How's the forest treating you?",,,,
 ,Could you gather some sticks for me? I need them for my nest.,,,,
 ,Needed Items,stick*9,,,wood*10
-,I'm feeling a bit hungry. How about some wilted magic flowers?,,,,
-,Needed Items,wilted_magic_flower*3,,,table*1
+,I'm feeling a bit hungry. How about some wilted magic flowers? I have a great reward!,,,,
+,Needed Items,wilted_magic_flower*3,coin*5,,table*1
 ,You're a true friend!,,,,
 ,Drop by anytime; I'll be here gathering nuts!,,,,
 ,"Oh, and if you stumble upon some boiled water, could you bring it to me?",,,,
-,Needed Items,boiled_water*3,magic_flower*1,,heated_coal*2
+,Needed Items,boiled_water*3,,,coin*5
 ,Thank you kindly! You're a lifesaver!,,,,
 ,,,,,
 Mice,Hey there! Got any cheese us?,,,,
 ,Have ya managed to gather those items for us pal?,,,,
 ,"Greetings, pal! Seen any tasty crumbs lately?",,,,
 ,"Hey bud, gather some coals for us yeah? We mice need to keep warm!",,,,
-,Needed Items,coal*9,,,wood*10
+,Needed Items,coal*9,warmth_potion*1,,coin*10
 ,It's a bit chilly lately pal! Get us some split stones would ya?,,,,
 ,Needed Items,split_stone*3,heated_coal*1,,boiled_melon*2
 ,You're a true friend pal!,,,,
 ,Drop by anytime; We'll be here nibbling on cheese!,,,,
 ,"Oh, and if you stumble upon some boiled water, could you bring it to us?",,,,
-,Needed Items,boiled_water*3,magic_flower*1,,heated_coal*2
+,Needed Items,boiled_water*3,coin*5,,featherfall_brew*1
 ,Thanks! And keep us posted if you spot any cheese!,,,,

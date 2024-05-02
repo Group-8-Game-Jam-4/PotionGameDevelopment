@@ -300,6 +300,7 @@ public class npcInteraction : MonoBehaviour
 
         // give the reward item
         playerInventory.AddItem(lastQuest.rewardItem.className, lastQuest.rewardItem.quantity);
+        playerInventory.SaveInventory("player");
 
         // make it so this quest is like done
         lastQuest.NeededItems = null;
